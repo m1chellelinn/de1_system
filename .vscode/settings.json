@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "fcntl.h": "c",
-        "mman.h": "c"
+        "mman.h": "c",
+        "address_map_arm.h": "c",
+        "peripherals.h": "c"
     }
 }

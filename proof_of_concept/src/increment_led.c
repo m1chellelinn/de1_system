@@ -1,5 +1,5 @@
-#include "proof_of_concept/inc/address_map_arm.h"
-#include "proof_of_concept/inc/peripherals.h"
+#include "address_map_arm.h"
+#include "peripherals.h"
 
 /* This program increments the contents of the red LED parallel port */
 int main(void)
