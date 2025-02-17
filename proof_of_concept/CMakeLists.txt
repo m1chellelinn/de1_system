@@ -1,6 +1,10 @@
-cmake_minimum_required(VERSION 2.8.7)
-project(proof_of_concept C)
+cmake_minimum_required(VERSION 2.8)
+project(de1_system C)
 
-add_executable(increment_led src/increment_led.c)
+include_directories(inc)
 
-target_include_directories(increment_led PRIVATE inc src)
+add_library(peripherals src/peripherals.c)
+
+add_executable(increment_led src/increment_led.c)]
+
+target_link_libraries(increment_led peripherals)
