@@ -21,7 +21,6 @@ module Computer_System_Nios2 (
 		output wire        i_read,                              //                          .read
 		input  wire [31:0] i_readdata,                          //                          .readdata
 		input  wire        i_waitrequest,                       //                          .waitrequest
-		input  wire        i_readdatavalid,                     //                          .readdatavalid
 		input  wire [31:0] irq,                                 //                       irq.irq
 		output wire        debug_reset_request,                 //       debug_reset_request.reset
 		input  wire [8:0]  debug_mem_slave_address,             //           debug_mem_slave.address
@@ -32,22 +31,24 @@ module Computer_System_Nios2 (
 		output wire        debug_mem_slave_waitrequest,         //                          .waitrequest
 		input  wire        debug_mem_slave_write,               //                          .write
 		input  wire [31:0] debug_mem_slave_writedata,           //                          .writedata
-		input  wire        A_ci_multi_done,                     // custom_instruction_master.done
-		input  wire [31:0] A_ci_multi_result,                   //                          .multi_result
-		output wire [4:0]  A_ci_multi_a,                        //                          .multi_a
-		output wire [4:0]  A_ci_multi_b,                        //                          .multi_b
-		output wire [4:0]  A_ci_multi_c,                        //                          .multi_c
-		output wire        A_ci_multi_clk_en,                   //                          .clk_en
-		output wire        A_ci_multi_clock,                    //                          .clk
-		output wire        A_ci_multi_reset,                    //                          .reset
-		output wire        A_ci_multi_reset_req,                //                          .reset_req
-		output wire [31:0] A_ci_multi_dataa,                    //                          .multi_dataa
-		output wire [31:0] A_ci_multi_datab,                    //                          .multi_datab
-		output wire [7:0]  A_ci_multi_n,                        //                          .multi_n
-		output wire        A_ci_multi_readra,                   //                          .multi_readra
-		output wire        A_ci_multi_readrb,                   //                          .multi_readrb
-		output wire        A_ci_multi_start,                    //                          .start
-		output wire        A_ci_multi_writerc                   //                          .multi_writerc
+		input  wire        E_ci_multi_done,                     // custom_instruction_master.done
+		output wire        E_ci_multi_clk_en,                   //                          .clk_en
+		output wire        E_ci_multi_start,                    //                          .start
+		input  wire [31:0] E_ci_result,                         //                          .result
+		output wire [4:0]  D_ci_a,                              //                          .a
+		output wire [4:0]  D_ci_b,                              //                          .b
+		output wire [4:0]  D_ci_c,                              //                          .c
+		output wire [7:0]  D_ci_n,                              //                          .n
+		output wire        D_ci_readra,                         //                          .readra
+		output wire        D_ci_readrb,                         //                          .readrb
+		output wire        D_ci_writerc,                        //                          .writerc
+		output wire [31:0] E_ci_dataa,                          //                          .dataa
+		output wire [31:0] E_ci_datab,                          //                          .datab
+		output wire        E_ci_multi_clock,                    //                          .clk
+		output wire        E_ci_multi_reset,                    //                          .reset
+		output wire        E_ci_multi_reset_req,                //                          .reset_req
+		output wire        W_ci_estatus,                        //                          .estatus
+		output wire [31:0] W_ci_ipending                        //                          .ipending
 	);
 
 	Computer_System_Nios2_cpu cpu (
@@ -65,7 +66,6 @@ module Computer_System_Nios2 (
 		.i_read                              (i_read),                              //                          .read
 		.i_readdata                          (i_readdata),                          //                          .readdata
 		.i_waitrequest                       (i_waitrequest),                       //                          .waitrequest
-		.i_readdatavalid                     (i_readdatavalid),                     //                          .readdatavalid
 		.irq                                 (irq),                                 //                       irq.irq
 		.debug_reset_request                 (debug_reset_request),                 //       debug_reset_request.reset
 		.debug_mem_slave_address             (debug_mem_slave_address),             //           debug_mem_slave.address
@@ -76,22 +76,24 @@ module Computer_System_Nios2 (
 		.debug_mem_slave_waitrequest         (debug_mem_slave_waitrequest),         //                          .waitrequest
 		.debug_mem_slave_write               (debug_mem_slave_write),               //                          .write
 		.debug_mem_slave_writedata           (debug_mem_slave_writedata),           //                          .writedata
-		.A_ci_multi_done                     (A_ci_multi_done),                     // custom_instruction_master.done
-		.A_ci_multi_result                   (A_ci_multi_result),                   //                          .multi_result
-		.A_ci_multi_a                        (A_ci_multi_a),                        //                          .multi_a
-		.A_ci_multi_b                        (A_ci_multi_b),                        //                          .multi_b
-		.A_ci_multi_c                        (A_ci_multi_c),                        //                          .multi_c
-		.A_ci_multi_clk_en                   (A_ci_multi_clk_en),                   //                          .clk_en
-		.A_ci_multi_clock                    (A_ci_multi_clock),                    //                          .clk
-		.A_ci_multi_reset                    (A_ci_multi_reset),                    //                          .reset
-		.A_ci_multi_reset_req                (A_ci_multi_reset_req),                //                          .reset_req
-		.A_ci_multi_dataa                    (A_ci_multi_dataa),                    //                          .multi_dataa
-		.A_ci_multi_datab                    (A_ci_multi_datab),                    //                          .multi_datab
-		.A_ci_multi_n                        (A_ci_multi_n),                        //                          .multi_n
-		.A_ci_multi_readra                   (A_ci_multi_readra),                   //                          .multi_readra
-		.A_ci_multi_readrb                   (A_ci_multi_readrb),                   //                          .multi_readrb
-		.A_ci_multi_start                    (A_ci_multi_start),                    //                          .start
-		.A_ci_multi_writerc                  (A_ci_multi_writerc),                  //                          .multi_writerc
+		.E_ci_multi_done                     (E_ci_multi_done),                     // custom_instruction_master.done
+		.E_ci_multi_clk_en                   (E_ci_multi_clk_en),                   //                          .clk_en
+		.E_ci_multi_start                    (E_ci_multi_start),                    //                          .start
+		.E_ci_result                         (E_ci_result),                         //                          .result
+		.D_ci_a                              (D_ci_a),                              //                          .a
+		.D_ci_b                              (D_ci_b),                              //                          .b
+		.D_ci_c                              (D_ci_c),                              //                          .c
+		.D_ci_n                              (D_ci_n),                              //                          .n
+		.D_ci_readra                         (D_ci_readra),                         //                          .readra
+		.D_ci_readrb                         (D_ci_readrb),                         //                          .readrb
+		.D_ci_writerc                        (D_ci_writerc),                        //                          .writerc
+		.E_ci_dataa                          (E_ci_dataa),                          //                          .dataa
+		.E_ci_datab                          (E_ci_datab),                          //                          .datab
+		.E_ci_multi_clock                    (E_ci_multi_clock),                    //                          .clk
+		.E_ci_multi_reset                    (E_ci_multi_reset),                    //                          .reset
+		.E_ci_multi_reset_req                (E_ci_multi_reset_req),                //                          .reset_req
+		.W_ci_estatus                        (W_ci_estatus),                        //                          .estatus
+		.W_ci_ipending                       (W_ci_ipending),                       //                          .ipending
 		.reset_req                           (1'b0)                                 //               (terminated)
 	);
 

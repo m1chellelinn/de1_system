@@ -1,4 +1,4 @@
-//Legal Notice: (C)2019 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2025 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -51,13 +51,10 @@ module Computer_System_Nios2_cpu_debug_slave_wrapper (
                                                         take_action_ocimem_a,
                                                         take_action_ocimem_b,
                                                         take_action_tracectrl,
-                                                        take_action_tracemem_a,
-                                                        take_action_tracemem_b,
                                                         take_no_action_break_a,
                                                         take_no_action_break_b,
                                                         take_no_action_break_c,
-                                                        take_no_action_ocimem_a,
-                                                        take_no_action_tracemem_a
+                                                        take_no_action_ocimem_a
                                                      )
 ;
 
@@ -70,13 +67,10 @@ module Computer_System_Nios2_cpu_debug_slave_wrapper (
   output           take_action_ocimem_a;
   output           take_action_ocimem_b;
   output           take_action_tracectrl;
-  output           take_action_tracemem_a;
-  output           take_action_tracemem_b;
   output           take_no_action_break_a;
   output           take_no_action_break_b;
   output           take_no_action_break_c;
   output           take_no_action_ocimem_a;
-  output           take_no_action_tracemem_a;
   input   [ 31: 0] MonDReg;
   input   [ 31: 0] break_readreg;
   input            clk;
@@ -109,13 +103,10 @@ wire             take_action_break_c;
 wire             take_action_ocimem_a;
 wire             take_action_ocimem_b;
 wire             take_action_tracectrl;
-wire             take_action_tracemem_a;
-wire             take_action_tracemem_b;
 wire             take_no_action_break_a;
 wire             take_no_action_break_b;
 wire             take_no_action_break_c;
 wire             take_no_action_ocimem_a;
-wire             take_no_action_tracemem_a;
 wire             vji_cdr;
 wire    [  1: 0] vji_ir_in;
 wire    [  1: 0] vji_ir_out;
@@ -167,25 +158,22 @@ wire             vji_uir;
 
   Computer_System_Nios2_cpu_debug_slave_sysclk the_Computer_System_Nios2_cpu_debug_slave_sysclk
     (
-      .clk                       (clk),
-      .ir_in                     (vji_ir_in),
-      .jdo                       (jdo),
-      .sr                        (sr),
-      .take_action_break_a       (take_action_break_a),
-      .take_action_break_b       (take_action_break_b),
-      .take_action_break_c       (take_action_break_c),
-      .take_action_ocimem_a      (take_action_ocimem_a),
-      .take_action_ocimem_b      (take_action_ocimem_b),
-      .take_action_tracectrl     (take_action_tracectrl),
-      .take_action_tracemem_a    (take_action_tracemem_a),
-      .take_action_tracemem_b    (take_action_tracemem_b),
-      .take_no_action_break_a    (take_no_action_break_a),
-      .take_no_action_break_b    (take_no_action_break_b),
-      .take_no_action_break_c    (take_no_action_break_c),
-      .take_no_action_ocimem_a   (take_no_action_ocimem_a),
-      .take_no_action_tracemem_a (take_no_action_tracemem_a),
-      .vs_udr                    (vji_udr),
-      .vs_uir                    (vji_uir)
+      .clk                     (clk),
+      .ir_in                   (vji_ir_in),
+      .jdo                     (jdo),
+      .sr                      (sr),
+      .take_action_break_a     (take_action_break_a),
+      .take_action_break_b     (take_action_break_b),
+      .take_action_break_c     (take_action_break_c),
+      .take_action_ocimem_a    (take_action_ocimem_a),
+      .take_action_ocimem_b    (take_action_ocimem_b),
+      .take_action_tracectrl   (take_action_tracectrl),
+      .take_no_action_break_a  (take_no_action_break_a),
+      .take_no_action_break_b  (take_no_action_break_b),
+      .take_no_action_break_c  (take_no_action_break_c),
+      .take_no_action_ocimem_a (take_no_action_ocimem_a),
+      .vs_udr                  (vji_udr),
+      .vs_uir                  (vji_uir)
     );
 
 

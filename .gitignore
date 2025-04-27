@@ -18,4 +18,4 @@ de1_soc_computer/verilog/hps_isw_handoff/*
 *.smsg
 *.done
 *dump.txt
-*time_limited.sof
+# *time_limited.sof

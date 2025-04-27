@@ -1,4 +1,4 @@
-//Legal Notice: (C)2019 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2025 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -34,13 +34,10 @@ module Computer_System_Nios2_cpu_debug_slave_sysclk (
                                                        take_action_ocimem_a,
                                                        take_action_ocimem_b,
                                                        take_action_tracectrl,
-                                                       take_action_tracemem_a,
-                                                       take_action_tracemem_b,
                                                        take_no_action_break_a,
                                                        take_no_action_break_b,
                                                        take_no_action_break_c,
-                                                       take_no_action_ocimem_a,
-                                                       take_no_action_tracemem_a
+                                                       take_no_action_ocimem_a
                                                     )
 ;
 
@@ -51,13 +48,10 @@ module Computer_System_Nios2_cpu_debug_slave_sysclk (
   output           take_action_ocimem_a;
   output           take_action_ocimem_b;
   output           take_action_tracectrl;
-  output           take_action_tracemem_a;
-  output           take_action_tracemem_b;
   output           take_no_action_break_a;
   output           take_no_action_break_b;
   output           take_no_action_break_c;
   output           take_no_action_ocimem_a;
-  output           take_no_action_tracemem_a;
   input            clk;
   input   [  1: 0] ir_in;
   input   [ 37: 0] sr;
@@ -79,13 +73,10 @@ wire             take_action_break_c;
 wire             take_action_ocimem_a;
 wire             take_action_ocimem_b;
 wire             take_action_tracectrl;
-wire             take_action_tracemem_a;
-wire             take_action_tracemem_b;
 wire             take_no_action_break_a;
 wire             take_no_action_break_b;
 wire             take_no_action_break_c;
 wire             take_no_action_ocimem_a;
-wire             take_no_action_tracemem_a;
 wire             unxunused_resetxx3;
 wire             unxunused_resetxx4;
 reg              update_jdo_strobe /* synthesis ALTERA_ATTRIBUTE = "SUPPRESS_DA_RULE_INTERNAL=\"D101,D103\""  */;
@@ -156,17 +147,6 @@ reg              update_jdo_strobe /* synthesis ALTERA_ATTRIBUTE = "SUPPRESS_DA_
 
   assign take_action_tracectrl = enable_action_strobe && (ir == 2'b11) &&  
     jdo[15];
-
-  assign take_action_tracemem_a = enable_action_strobe && (ir == 2'b01) &&
-    ~jdo[37] && 
-    jdo[36];
-
-  assign take_no_action_tracemem_a = enable_action_strobe && (ir == 2'b01) &&
-    ~jdo[37] && 
-    ~jdo[36];
-
-  assign take_action_tracemem_b = enable_action_strobe && (ir == 2'b01) &&
-    jdo[37];
 
   always @(posedge clk)
     begin

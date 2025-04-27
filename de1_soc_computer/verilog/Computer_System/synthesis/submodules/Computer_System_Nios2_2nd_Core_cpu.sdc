@@ -1,4 +1,4 @@
-# Legal Notice: (C)2019 Altera Corporation. All rights reserved.  Your
+# Legal Notice: (C)2025 Altera Corporation. All rights reserved.  Your
 # use of Altera Corporation's design tools, logic functions and other
 # software and tools, and its AMPP partner logic functions, and any
 # output files any of the foregoing (including device programming or
@@ -39,13 +39,6 @@ set 	Computer_System_Nios2_2nd_Core_cpu_jtag_tck_path 	 [format "%s|%s|%s" $Comp
 set 	Computer_System_Nios2_2nd_Core_cpu_jtag_sysclk_path 	 [format "%s|%s|%s" $Computer_System_Nios2_2nd_Core_cpu_oci_path $Computer_System_Nios2_2nd_Core_cpu_wrapper $Computer_System_Nios2_2nd_Core_cpu_jtag_sysclk]
 set 	Computer_System_Nios2_2nd_Core_cpu_jtag_sr 	 [format "%s|*sr" $Computer_System_Nios2_2nd_Core_cpu_jtag_tck_path]
 
-set 	Computer_System_Nios2_2nd_Core_cpu_oci_im 	Computer_System_Nios2_2nd_Core_cpu_nios2_oci_im:the_Computer_System_Nios2_2nd_Core_cpu_nios2_oci_im
-set 	Computer_System_Nios2_2nd_Core_cpu_oci_traceram 	Computer_System_Nios2_2nd_Core_cpu_traceram_lpm_dram_bdp_component_module:Computer_System_Nios2_2nd_Core_cpu_traceram_lpm_dram_bdp_component
-set 	Computer_System_Nios2_2nd_Core_cpu_oci_itrace 	Computer_System_Nios2_2nd_Core_cpu_nios2_oci_itrace:the_Computer_System_Nios2_2nd_Core_cpu_nios2_oci_itrace
-set 	Computer_System_Nios2_2nd_Core_cpu_oci_im_path 	 [format "%s|%s" $Computer_System_Nios2_2nd_Core_cpu_oci_path $Computer_System_Nios2_2nd_Core_cpu_oci_im]
-set 	Computer_System_Nios2_2nd_Core_cpu_oci_itrace_path 	 [format "%s|%s" $Computer_System_Nios2_2nd_Core_cpu_oci_path $Computer_System_Nios2_2nd_Core_cpu_oci_itrace]
-set 	Computer_System_Nios2_2nd_Core_cpu_traceram_path 	 [format "%s|%s" $Computer_System_Nios2_2nd_Core_cpu_oci_im_path $Computer_System_Nios2_2nd_Core_cpu_oci_traceram]
-
 #**************************************************************
 # Set False Paths
 #**************************************************************
@@ -58,13 +51,3 @@ set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_ocimem_pa
 set_false_path -from *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*    -to *$Computer_System_Nios2_2nd_Core_cpu_jtag_sysclk_path|*jdo*
 set_false_path -from sld_hub:*|irf_reg* -to *$Computer_System_Nios2_2nd_Core_cpu_jtag_sysclk_path|ir*
 set_false_path -from sld_hub:*|sld_shadow_jsm:shadow_jsm|state[1] -to *$Computer_System_Nios2_2nd_Core_cpu_oci_debug_path|monitor_go
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_break_path|dbrk_hit?_latch] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_break_path|trigbrktype] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_break_path|trigger_state] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_traceram_path*address*] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_traceram_path*we_reg*] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_im_path|*trc_im_addr*] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_im_path|*trc_wrap] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_itrace_path|trc_ctrl_reg*] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
-set_false_path -from [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_oci_itrace_path|debugack] -to [get_keepers *$Computer_System_Nios2_2nd_Core_cpu_jtag_sr*]
