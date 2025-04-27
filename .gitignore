@@ -1,2 +1,21 @@
+# Generic paths
 build/*
 .vscode/*
+
+# Quartus-generated paths
+de1_soc_computer/verilog/db/*
+de1_soc_computer/verilog/incremental_db/*
+de1_soc_computer/verilog/hps_isw_handoff/*
+
+# Quartus-generated log & irrelevant files
+*.tdf
+*.rpt
+*.summary
+*.jdi
+*.pin
+*.qws
+*.sld
+*.smsg
+*.done
+*dump.txt
+*time_limited.sof
