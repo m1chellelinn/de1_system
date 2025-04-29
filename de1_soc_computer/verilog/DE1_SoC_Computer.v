@@ -360,13 +360,12 @@ output					HPS_USB_STP;
 wire			[31: 0]	hex3_hex0;
 wire			[15: 0]	hex5_hex4;
 
-// assign HEX0 = ~hex3_hex0[ 6: 0];
-assign HEX0 = 7'b0101010;
-assign HEX1 = ~hex3_hex0[14: 8];
-assign HEX2 = ~hex3_hex0[22:16];
-assign HEX3 = ~hex3_hex0[30:24];
-assign HEX4 = ~hex5_hex4[ 6: 0];
-assign HEX5 = ~hex5_hex4[14: 8];
+assign HEX0 = KEY[0] ? 7'b0100100 : ~hex3_hex0[ 6: 0];
+assign HEX1 = KEY[0] ? 7'b1110001 : ~hex3_hex0[14: 8];
+assign HEX2 = KEY[0] ? 7'b1110001 : ~hex3_hex0[22:16];
+assign HEX3 = KEY[0] ? 7'b0001001 : ~hex3_hex0[30:24];
+assign HEX4 = KEY[0] ? 7'b1100000 : ~hex5_hex4[ 6: 0];
+assign HEX5 = KEY[0] ? 7'b1111111 : ~hex5_hex4[14: 8];
 
 //=======================================================
 //  Structural coding
