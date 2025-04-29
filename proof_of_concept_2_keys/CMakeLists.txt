@@ -3,8 +3,8 @@ project(de1_system C)
 
 include_directories(inc)
 
-# add_library(name path)
+add_library(peripherals src/peripherals.c)
 
 add_executable(process_keyboard src/process_keyboard.c)
 
-# target_link_libraries(increment_led peripherals)
+target_link_libraries(process_keyboard peripherals)
