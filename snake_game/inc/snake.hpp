@@ -10,3 +10,8 @@
 #define MSG_X_OFFSET 0
 #define MSG_Y_OFFSET 12
 #define MSG_CMD_OFFSET 24
+
+#define KEYCODE_UP 103
+#define KEYCODE_DOWN 108
+#define KEYCODE_LEFT 105
+#define KEYCODE_RIGHT 106

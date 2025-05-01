@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-project(de1_system C)
+project(de1_system CXX)
 
 include_directories(inc)
 
 add_library(peripherals src/peripherals.cpp)
 
-add_executable(process_keyboard src/process_keyboard.cpp)
+add_executable(snake_game src/snake_game.cpp)
 
-target_link_libraries(process_keyboard peripherals)
+target_link_libraries(snake_game peripherals)

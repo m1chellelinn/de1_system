@@ -8,6 +8,7 @@
 
 #include "address_map_arm.h"
 #include "peripherals.h"
+#include <snake.hpp>
 
 
 static const char *const action_mappings[3] = {
@@ -16,24 +17,25 @@ static const char *const action_mappings[3] = {
     "REPEATED"
 };
 
+
 int main(void)
 {
     const char *dev = "/dev/input/event0";
     struct input_event event_;
     ssize_t num_bytes_read;
     int keys_fd;
-
-    volatile int * LEDR_ptr; // virtual address pointer to red LEDs
+    volatile int * snake_ptr; // virtual address pointer to red LEDs
     int fd = -1; // used to open /dev/mem
     void *LW_virtual; // physical addresses for light-weight bridge
+    int x = 100;
+    int y = 100;
+
 
     // Create virtual memory access to the FPGA light-weight bridge
     if ((fd = open_physical (fd)) == -1)
     return (-1);
     if (!(LW_virtual = map_physical (fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (-1);
-
-
 
     keys_fd = open(dev, O_RDONLY);
     if (keys_fd == -1) {
@@ -54,12 +56,31 @@ int main(void)
             break;
         }
 
-        if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2) {
-
+        if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value == 1) {
+            switch (event_.code) {
+                case KEYCODE_UP:
+                    y -= 1;
+                    break;
+            
+                case KEYCODE_DOWN:
+                    y += 1;
+                    break;
+            
+                case KEYCODE_LEFT:
+                    x -= 1;
+                    break;
+            
+                case KEYCODE_RIGHT:
+                    x += 1;
+                    break;
+            
+                default:
+                    break;
+            }
             // Set virtual address pointer to I/O port
-            LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
+            snake_ptr = (int *) (LW_virtual + SNAKE_GAME_BASE);
             if (event_.value) 
-                *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
+                *snake_ptr = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
             
             // Print a message
             printf("Action = %s. Key.code = 0x%04x (%d)\n", action_mappings[event_.value], (int)event_.code, (int)event_.code);
