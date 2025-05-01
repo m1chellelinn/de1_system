@@ -93,10 +93,6 @@
 			memory_mem_odt                  : out   std_logic;                                        -- mem_odt
 			memory_mem_dm                   : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			memory_oct_rzqin                : in    std_logic                     := 'X';             -- oct_rzqin
-			ps2_port_CLK                    : inout std_logic                     := 'X';             -- CLK
-			ps2_port_DAT                    : inout std_logic                     := 'X';             -- DAT
-			ps2_port_dual_CLK               : inout std_logic                     := 'X';             -- CLK
-			ps2_port_dual_DAT               : inout std_logic                     := 'X';             -- DAT
 			pushbuttons_export              : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			sdram_addr                      : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_ba                        : out   std_logic_vector(1 downto 0);                     -- ba
@@ -119,13 +115,6 @@
 			vga_R                           : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                           : out   std_logic_vector(7 downto 0);                     -- G
 			vga_B                           : out   std_logic_vector(7 downto 0);                     -- B
-			video_in_TD_CLK27               : in    std_logic                     := 'X';             -- TD_CLK27
-			video_in_TD_DATA                : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- TD_DATA
-			video_in_TD_HS                  : in    std_logic                     := 'X';             -- TD_HS
-			video_in_TD_VS                  : in    std_logic                     := 'X';             -- TD_VS
-			video_in_clk27_reset            : in    std_logic                     := 'X';             -- clk27_reset
-			video_in_TD_RESET               : out   std_logic;                                        -- TD_RESET
-			video_in_overflow_flag          : out   std_logic;                                        -- overflow_flag
 			video_pll_ref_clk_clk           : in    std_logic                     := 'X';             -- clk
 			video_pll_ref_reset_reset       : in    std_logic                     := 'X'              -- reset
 		);
@@ -226,10 +215,6 @@
 			memory_mem_odt                  => CONNECTED_TO_memory_mem_odt,                  --                     .mem_odt
 			memory_mem_dm                   => CONNECTED_TO_memory_mem_dm,                   --                     .mem_dm
 			memory_oct_rzqin                => CONNECTED_TO_memory_oct_rzqin,                --                     .oct_rzqin
-			ps2_port_CLK                    => CONNECTED_TO_ps2_port_CLK,                    --             ps2_port.CLK
-			ps2_port_DAT                    => CONNECTED_TO_ps2_port_DAT,                    --                     .DAT
-			ps2_port_dual_CLK               => CONNECTED_TO_ps2_port_dual_CLK,               --        ps2_port_dual.CLK
-			ps2_port_dual_DAT               => CONNECTED_TO_ps2_port_dual_DAT,               --                     .DAT
 			pushbuttons_export              => CONNECTED_TO_pushbuttons_export,              --          pushbuttons.export
 			sdram_addr                      => CONNECTED_TO_sdram_addr,                      --                sdram.addr
 			sdram_ba                        => CONNECTED_TO_sdram_ba,                        --                     .ba
@@ -252,13 +237,6 @@
 			vga_R                           => CONNECTED_TO_vga_R,                           --                     .R
 			vga_G                           => CONNECTED_TO_vga_G,                           --                     .G
 			vga_B                           => CONNECTED_TO_vga_B,                           --                     .B
-			video_in_TD_CLK27               => CONNECTED_TO_video_in_TD_CLK27,               --             video_in.TD_CLK27
-			video_in_TD_DATA                => CONNECTED_TO_video_in_TD_DATA,                --                     .TD_DATA
-			video_in_TD_HS                  => CONNECTED_TO_video_in_TD_HS,                  --                     .TD_HS
-			video_in_TD_VS                  => CONNECTED_TO_video_in_TD_VS,                  --                     .TD_VS
-			video_in_clk27_reset            => CONNECTED_TO_video_in_clk27_reset,            --                     .clk27_reset
-			video_in_TD_RESET               => CONNECTED_TO_video_in_TD_RESET,               --                     .TD_RESET
-			video_in_overflow_flag          => CONNECTED_TO_video_in_overflow_flag,          --                     .overflow_flag
 			video_pll_ref_clk_clk           => CONNECTED_TO_video_pll_ref_clk_clk,           --    video_pll_ref_clk.clk
 			video_pll_ref_reset_reset       => CONNECTED_TO_video_pll_ref_reset_reset        --  video_pll_ref_reset.reset
 		);

@@ -92,10 +92,6 @@
 		.memory_mem_odt                  (<connected-to-memory_mem_odt>),                  //                     .mem_odt
 		.memory_mem_dm                   (<connected-to-memory_mem_dm>),                   //                     .mem_dm
 		.memory_oct_rzqin                (<connected-to-memory_oct_rzqin>),                //                     .oct_rzqin
-		.ps2_port_CLK                    (<connected-to-ps2_port_CLK>),                    //             ps2_port.CLK
-		.ps2_port_DAT                    (<connected-to-ps2_port_DAT>),                    //                     .DAT
-		.ps2_port_dual_CLK               (<connected-to-ps2_port_dual_CLK>),               //        ps2_port_dual.CLK
-		.ps2_port_dual_DAT               (<connected-to-ps2_port_dual_DAT>),               //                     .DAT
 		.pushbuttons_export              (<connected-to-pushbuttons_export>),              //          pushbuttons.export
 		.sdram_addr                      (<connected-to-sdram_addr>),                      //                sdram.addr
 		.sdram_ba                        (<connected-to-sdram_ba>),                        //                     .ba
@@ -118,13 +114,6 @@
 		.vga_R                           (<connected-to-vga_R>),                           //                     .R
 		.vga_G                           (<connected-to-vga_G>),                           //                     .G
 		.vga_B                           (<connected-to-vga_B>),                           //                     .B
-		.video_in_TD_CLK27               (<connected-to-video_in_TD_CLK27>),               //             video_in.TD_CLK27
-		.video_in_TD_DATA                (<connected-to-video_in_TD_DATA>),                //                     .TD_DATA
-		.video_in_TD_HS                  (<connected-to-video_in_TD_HS>),                  //                     .TD_HS
-		.video_in_TD_VS                  (<connected-to-video_in_TD_VS>),                  //                     .TD_VS
-		.video_in_clk27_reset            (<connected-to-video_in_clk27_reset>),            //                     .clk27_reset
-		.video_in_TD_RESET               (<connected-to-video_in_TD_RESET>),               //                     .TD_RESET
-		.video_in_overflow_flag          (<connected-to-video_in_overflow_flag>),          //                     .overflow_flag
 		.video_pll_ref_clk_clk           (<connected-to-video_pll_ref_clk_clk>),           //    video_pll_ref_clk.clk
 		.video_pll_ref_reset_reset       (<connected-to-video_pll_ref_reset_reset>)        //  video_pll_ref_reset.reset
 	);

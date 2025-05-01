@@ -93,10 +93,6 @@ module Computer_System (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	ps2_port_CLK,
-	ps2_port_DAT,
-	ps2_port_dual_CLK,
-	ps2_port_dual_DAT,
 	pushbuttons_export,
 	sdram_addr,
 	sdram_ba,
@@ -119,13 +115,6 @@ module Computer_System (
 	vga_R,
 	vga_G,
 	vga_B,
-	video_in_TD_CLK27,
-	video_in_TD_DATA,
-	video_in_TD_HS,
-	video_in_TD_VS,
-	video_in_clk27_reset,
-	video_in_TD_RESET,
-	video_in_overflow_flag,
 	video_pll_ref_clk_clk,
 	video_pll_ref_reset_reset);	
 
@@ -222,10 +211,6 @@ module Computer_System (
 	output		memory_mem_odt;
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
-	inout		ps2_port_CLK;
-	inout		ps2_port_DAT;
-	inout		ps2_port_dual_CLK;
-	inout		ps2_port_dual_DAT;
 	input	[3:0]	pushbuttons_export;
 	output	[12:0]	sdram_addr;
 	output	[1:0]	sdram_ba;
@@ -248,13 +233,6 @@ module Computer_System (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	input		video_in_TD_CLK27;
-	input	[7:0]	video_in_TD_DATA;
-	input		video_in_TD_HS;
-	input		video_in_TD_VS;
-	input		video_in_clk27_reset;
-	output		video_in_TD_RESET;
-	output		video_in_overflow_flag;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
 endmodule

@@ -245,21 +245,21 @@ input			[ 3: 0]	KEY;
 output		[ 9: 0]	LEDR;
 
 // PS2 Ports
-inout						PS2_CLK;
-inout						PS2_DAT;
+// inout						PS2_CLK;
+// inout						PS2_DAT;
 
-inout						PS2_CLK2;
-inout						PS2_DAT2;
+// inout						PS2_CLK2;
+// inout						PS2_DAT2;
 
 // Slider Switches
 input			[ 9: 0]	SW;
 
 // Video-In
-input						TD_CLK27;
-input			[ 7: 0]	TD_DATA;
-input						TD_HS;
-output					TD_RESET_N;
-input						TD_VS;
+// input						TD_CLK27;
+// input			[ 7: 0]	TD_DATA;
+// input						TD_HS;
+// output					TD_RESET_N;
+// input						TD_VS;
 
 // VGA
 output		[ 7: 0]	VGA_B;
@@ -416,10 +416,10 @@ Computer_System The_System (
 	.hex5_hex4_export							(hex5_hex4),
 	
 	// PS2 Ports
-	.ps2_port_CLK								(PS2_CLK),
-	.ps2_port_DAT								(PS2_DAT),
-	.ps2_port_dual_CLK						(PS2_CLK2),
-	.ps2_port_dual_DAT						(PS2_DAT2),
+	// .ps2_port_CLK								(PS2_CLK),
+	// .ps2_port_DAT								(PS2_DAT),
+	// .ps2_port_dual_CLK						(PS2_CLK2),
+	// .ps2_port_dual_DAT						(PS2_DAT2),
 
 	// IrDA
 	.irda_RXD									(IRDA_RXD),
@@ -436,13 +436,13 @@ Computer_System The_System (
 	.vga_B										(VGA_B),
 	
 	// Video In Subsystem
-	.video_in_TD_CLK27 						(TD_CLK27),
-	.video_in_TD_DATA							(TD_DATA),
-	.video_in_TD_HS							(TD_HS),
-	.video_in_TD_VS							(TD_VS),
-	.video_in_clk27_reset					(),
-	.video_in_TD_RESET						(TD_RESET_N),
-	.video_in_overflow_flag					(),
+	// .video_in_TD_CLK27 						(TD_CLK27),
+	// .video_in_TD_DATA							(TD_DATA),
+	// .video_in_TD_HS							(TD_HS),
+	// .video_in_TD_VS							(TD_VS),
+	// .video_in_clk27_reset					(),
+	// .video_in_TD_RESET						(TD_RESET_N),
+	// .video_in_overflow_flag					(),
 	
 	// SDRAM
 	.sdram_clk_clk								(DRAM_CLK),
