@@ -78,12 +78,12 @@ int main(void)
                     break;
             }
             // Set virtual address pointer to I/O port
-            snake_ptr = (int *) (LW_virtual + SNAKE_GAME_BASE);
+            snake_ptr = (int *) ((int)LW_virtual + SNAKE_GAME_BASE);
             if (event_.value) 
                 *snake_ptr = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
             
             // Print a message
-            printf("Action = %s. Key.code = 0x%04x (%d)\n", action_mappings[event_.value], (int)event_.code, (int)event_.code);
+            printf("Action = %s. Key.code = 0x%04x (%d). Wrote to 0x%10x\n", action_mappings[event_.value], (int)event_.code, (int)event_.code, snake_ptr);
         }
     }
 
