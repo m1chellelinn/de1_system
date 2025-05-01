@@ -6,8 +6,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "address_map_arm.h"
-#include "peripherals.h"
+#include "address_map_arm.hpp"
+#include "peripherals.hpp"
 #include <snake.hpp>
 
 
