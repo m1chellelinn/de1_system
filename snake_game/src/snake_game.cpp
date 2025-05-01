@@ -93,7 +93,6 @@ int main(void)
             printf("Key.code = 0x%04x (%d). Wrote to 0x%8x with value 0x%8x\n", 
                 action_mappings[event_.value], 
                 (int)event_.code, 
-                (int)event_.code, 
                 (int)snake_ptr, 
                 cmd
             );
