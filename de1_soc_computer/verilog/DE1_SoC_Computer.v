@@ -65,21 +65,21 @@ module DE1_SoC_Computer (
 	LEDR,
 
 	// PS2 Ports
-	PS2_CLK,
-	PS2_DAT,
+	// PS2_CLK,
+	// PS2_DAT,
 	
-	PS2_CLK2,
-	PS2_DAT2,
+	// PS2_CLK2,
+	// PS2_DAT2,
 
 	// Slider Switches
 	SW,
 
 	// Video-In
-	TD_CLK27,
-	TD_DATA,
-	TD_HS,
-	TD_RESET_N,
-	TD_VS,
+	// TD_CLK27,
+	// TD_DATA,
+	// TD_HS,
+	// TD_RESET_N,
+	// TD_VS,
 
 	// VGA
 	VGA_B,

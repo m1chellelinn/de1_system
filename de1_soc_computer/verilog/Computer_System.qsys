@@ -97,6 +97,14 @@
          type = "String";
       }
    }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Expansion_JP1
    {
       datum _sortIndex
@@ -2257,19 +2265,10 @@
  <connection
    kind="avalon"
    version="18.1"
-   start="snake_fpga_0.colour_master"
-   end="SDRAM.s1">
+   start="snake_fpga_0.character_master"
+   end="VGA_Subsystem.char_buffer_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="snake_fpga_0.colour_master"
-   end="Onchip_SRAM.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08000000" />
+  <parameter name="baseAddress" value="0x09000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3420,9 +3419,18 @@
    kind="avalon"
    version="18.1"
    start="snake_fpga_0.pixel_master"
-   end="VGA_Subsystem.char_buffer_slave">
+   end="SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x09000000" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="snake_fpga_0.pixel_master"
+   end="Onchip_SRAM.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
