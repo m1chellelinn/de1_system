@@ -983,7 +983,7 @@ refer to the applicable agreement for further details.
 		(text "clk" (rect 197 2051 412 4112)(font "Arial" (color 0 0 0)))
 		(text "video_pll_ref_reset" (rect 79 2067 272 4147)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset" (rect 197 2091 424 4192)(font "Arial" (color 0 0 0)))
-		(text " system " (rect 557 2112 1162 4234)(font "Arial" ))
+		(text " Computer_System " (rect 508 2112 1118 4234)(font "Arial" ))
 		(line (pt 192 32)(pt 400 32)(line_width 1))
 		(line (pt 400 32)(pt 400 2112)(line_width 1))
 		(line (pt 192 2112)(pt 400 2112)(line_width 1))
