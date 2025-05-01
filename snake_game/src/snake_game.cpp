@@ -25,6 +25,7 @@ int main(void)
     ssize_t num_bytes_read;
     int keys_fd;
     volatile int * snake_ptr; // virtual address pointer to red LEDs
+    volatile int * LEDR_ptr; // virtual address pointer to red LEDs
     int fd = -1; // used to open /dev/mem
     void *LW_virtual; // physical addresses for light-weight bridge
     int x = 100;
@@ -80,9 +81,13 @@ int main(void)
             // Set virtual address pointer to I/O port
             snake_ptr = (int *) ((int)LW_virtual + SNAKE_GAME_BASE);
             int cmd;
-            if (event_.value) 
-                cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
-                *snake_ptr = cmd;
+
+            cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
+            *snake_ptr = cmd;
+            
+            // Set virtual address pointer to I/O port
+            LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
+            *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
             
             // Print a message
             printf("Key.code = 0x%04x (%d). Wrote to 0x%8x with value 0x%8x\n", 
