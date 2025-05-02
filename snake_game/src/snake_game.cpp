@@ -93,27 +93,24 @@ int main(void)
                 default:
                     break;
             }
-            // Set virtual address pointer to I/O port
             snake_ptr = (int *) ((int)LW_virtual + SNAKE_GAME_BASE);
-            int cmd;
-
-            cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
-            *snake_ptr = cmd;
+            int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET);
             
-            // Set virtual address pointer to I/O port
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
-            *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
-
+            
             vga_ptr = (uint16_t *) ((int)SRAM_virtual + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET));
-            *vga_ptr = 0xFF00;
             
             // Print a message
-            printf("Key.code = 0x%04x (%d). Wrote to 0x%8x with value 0x%8x\n", 
+            printf("Key.code = 0x%04x (%d).\n Wrote to 0x%8x with value 0x%8x\n Wrote to 0x%8x with colour value\n", 
                 action_mappings[event_.value], 
                 (int)event_.code, 
                 (int)snake_ptr, 
-                cmd
+                (int)cmd,
+                (int)snake_ptr
             );
+            *snake_ptr = cmd;
+            *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
+            *vga_ptr = 0xFF00;
         }
     }
 
