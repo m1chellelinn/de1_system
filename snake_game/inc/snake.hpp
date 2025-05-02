@@ -7,6 +7,9 @@
 #define CMD_SNAKE_DEL 3
 #define CMD_NEW_SCORE 4
 
+#define ADDR_X_OFFSET 1
+#define ADDR_Y_OFFSET 10
+
 #define MSG_X_OFFSET 0
 #define MSG_Y_OFFSET 12
 #define MSG_CMD_OFFSET 24
