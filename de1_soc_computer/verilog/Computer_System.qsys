@@ -2274,6 +2274,24 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="snake_fpga_0.character_master"
+   end="HEX3_HEX0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff200020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="snake_fpga_0.character_master"
+   end="HEX5_HEX4.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff200030" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="Nios2.data_master"
    end="ADC.adc_slave">
   <parameter name="arbitrationPriority" value="1" />

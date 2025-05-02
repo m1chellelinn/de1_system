@@ -214,19 +214,19 @@ module Computer_System_mm_interconnect_0_router_010
 
     // ( 0x0 .. 0x10 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 15'h0   ) begin
-            src_channel = 35'b00000000000001000000;
+            src_channel = 35'b00000000000100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 20;
     end
 
     // ( 0x20 .. 0x30 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 15'h20   ) begin
-            src_channel = 35'b00000000000010000000;
+            src_channel = 35'b00000000000000000001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
     // ( 0x30 .. 0x40 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 15'h30   ) begin
-            src_channel = 35'b00000000000100000000;
+            src_channel = 35'b00000000000000000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
@@ -274,7 +274,7 @@ module Computer_System_mm_interconnect_0_router_010
 
     // ( 0x1020 .. 0x1028 )
     if ( {address[RG:PAD10],{PAD10{1'b0}}} == 15'h1020   ) begin
-            src_channel = 35'b00000000000000001000;
+            src_channel = 35'b00000000000000100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 15;
     end
 
@@ -292,19 +292,19 @@ module Computer_System_mm_interconnect_0_router_010
 
     // ( 0x2040 .. 0x2048 )
     if ( {address[RG:PAD13],{PAD13{1'b0}}} == 15'h2040  && read_transaction  ) begin
-            src_channel = 35'b00000000000000010000;
+            src_channel = 35'b00000000000001000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 29;
     end
 
     // ( 0x3000 .. 0x3010 )
     if ( {address[RG:PAD14],{PAD14{1'b0}}} == 15'h3000   ) begin
-            src_channel = 35'b00000000000000000100;
+            src_channel = 35'b00000000000000010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x3010 .. 0x3014 )
     if ( {address[RG:PAD15],{PAD15{1'b0}}} == 15'h3010  && read_transaction  ) begin
-            src_channel = 35'b00000000000000100000;
+            src_channel = 35'b00000000000010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 33;
     end
 
@@ -322,13 +322,13 @@ module Computer_System_mm_interconnect_0_router_010
 
     // ( 0x3040 .. 0x3050 )
     if ( {address[RG:PAD18],{PAD18{1'b0}}} == 15'h3040   ) begin
-            src_channel = 35'b00000000000000000010;
+            src_channel = 35'b00000000000000001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
     // ( 0x4000 .. 0x4020 )
     if ( {address[RG:PAD19],{PAD19{1'b0}}} == 15'h4000   ) begin
-            src_channel = 35'b00000000000000000001;
+            src_channel = 35'b00000000000000000100;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 

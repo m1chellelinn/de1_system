@@ -135,21 +135,28 @@ module Computer_System_mm_interconnect_0_router_002
     // during address decoding
     // -------------------------------------------------------
     localparam PAD0 = log2ceil(64'h9002000 - 64'h9000000); 
+    localparam PAD1 = log2ceil(64'hff200030 - 64'hff200020); 
+    localparam PAD2 = log2ceil(64'hff200040 - 64'hff200030); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h9002000;
+    localparam ADDR_RANGE = 64'hff200040;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
                                         PKT_ADDR_H :
                                         PKT_ADDR_L + RANGE_ADDR_WIDTH - 1;
 
-    localparam RG = RANGE_ADDR_WIDTH;
+    localparam RG = RANGE_ADDR_WIDTH-1;
     localparam REAL_ADDRESS_RANGE = OPTIMIZED_ADDR_H - PKT_ADDR_L;
 
+      reg [PKT_ADDR_W-1 : 0] address;
+      always @* begin
+        address = {PKT_ADDR_W{1'b0}};
+        address [REAL_ADDRESS_RANGE:0] = sink_data[OPTIMIZED_ADDR_H : PKT_ADDR_L];
+      end   
 
     // -------------------------------------------------------
     // Pass almost everything through, untouched
@@ -182,13 +189,24 @@ module Computer_System_mm_interconnect_0_router_002
         // Address Decoder
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
-           
-         
-          // ( 9000000 .. 9002000 )
-          src_channel = 35'b1;
-          src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 31;
-	     
-        
+
+    // ( 0x9000000 .. 0x9002000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 32'h9000000   ) begin
+            src_channel = 35'b001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 31;
+    end
+
+    // ( 0xff200020 .. 0xff200030 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 32'hff200020   ) begin
+            src_channel = 35'b010;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
+    end
+
+    // ( 0xff200030 .. 0xff200040 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 32'hff200030   ) begin
+            src_channel = 35'b100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
+    end
 
 end
 

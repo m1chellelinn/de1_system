@@ -2,7 +2,7 @@
 `timescale 1 ps / 1 ps
 
 
-`define VGA_PX_BASE 32'hC8000000
+`define VGA_PX_BASE 32'h08000000
 `define VGA_CH_BASE 32'h09000000
 
 // `include "snake_fpga.svh"
@@ -138,9 +138,6 @@ always_comb begin
 
 
 
-  vga_ch_address = 8'b00000000;
-  vga_ch_read = 1'b0;
-  vga_ch_write = 1'b0;
   // vga_writedata = 32'b00000000000000000000000000000000;
   hps_readdata = 32'b00000000000000000000000000000000;
   hps_waitrequest = 1'b0;

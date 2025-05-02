@@ -98,7 +98,7 @@ int main(void)
             
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
             
-            vga_ptr = (uint16_t *) ((int)SRAM_virtual + (x << ADDR_X_OFFSET) + (y << ADDR_Y_OFFSET));
+            // vga_ptr = (uint16_t *) ((int)SRAM_virtual + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET));
             
             // Print a message
             printf("Key.code = 0x%04x (%d).\n Wrote to 0x%8x with value 0x%8x\n Wrote to 0x%8x with colour value\n", 

@@ -47,7 +47,7 @@ module Computer_System_mm_interconnect_0_router_017_default_decode
      parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 6 
+               DEFAULT_DESTID = 10 
    )
   (output [112 - 107 : 0] default_destination_id,
    output [35-1 : 0] default_wr_channel,
@@ -191,24 +191,28 @@ module Computer_System_mm_interconnect_0_router_017
 
 
 
+        if (destid == 10 ) begin
+            src_channel = 35'b000001;
+        end
+
         if (destid == 6 ) begin
-            src_channel = 35'b00001;
+            src_channel = 35'b000010;
         end
 
         if (destid == 4 ) begin
-            src_channel = 35'b00010;
+            src_channel = 35'b000100;
         end
 
         if (destid == 3 ) begin
-            src_channel = 35'b00100;
+            src_channel = 35'b001000;
         end
 
         if (destid == 1  && write_transaction) begin
-            src_channel = 35'b01000;
+            src_channel = 35'b010000;
         end
 
         if (destid == 1  && read_transaction) begin
-            src_channel = 35'b10000;
+            src_channel = 35'b100000;
         end
 
 

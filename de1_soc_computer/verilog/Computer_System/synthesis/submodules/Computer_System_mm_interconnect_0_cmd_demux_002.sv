@@ -30,7 +30,7 @@
 //   output_name:         Computer_System_mm_interconnect_0_cmd_demux_002
 //   ST_DATA_W:           119
 //   ST_CHANNEL_W:        35
-//   NUM_OUTPUTS:         1
+//   NUM_OUTPUTS:         3
 //   VALID_WIDTH:         1
 // ------------------------------------------
 
@@ -62,6 +62,20 @@ module Computer_System_mm_interconnect_0_cmd_demux_002
     output reg                      src0_endofpacket,
     input                           src0_ready,
 
+    output reg                      src1_valid,
+    output reg [119-1    : 0] src1_data, // ST_DATA_W=119
+    output reg [35-1 : 0] src1_channel, // ST_CHANNEL_W=35
+    output reg                      src1_startofpacket,
+    output reg                      src1_endofpacket,
+    input                           src1_ready,
+
+    output reg                      src2_valid,
+    output reg [119-1    : 0] src2_data, // ST_DATA_W=119
+    output reg [35-1 : 0] src2_channel, // ST_CHANNEL_W=35
+    output reg                      src2_startofpacket,
+    output reg                      src2_endofpacket,
+    input                           src2_ready,
+
 
     // -------------------
     // Clock & Reset
@@ -73,7 +87,7 @@ module Computer_System_mm_interconnect_0_cmd_demux_002
 
 );
 
-    localparam NUM_OUTPUTS = 1;
+    localparam NUM_OUTPUTS = 3;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -87,14 +101,30 @@ module Computer_System_mm_interconnect_0_cmd_demux_002
 
         src0_valid         = sink_channel[0] && sink_valid;
 
+        src1_data          = sink_data;
+        src1_startofpacket = sink_startofpacket;
+        src1_endofpacket   = sink_endofpacket;
+        src1_channel       = sink_channel >> NUM_OUTPUTS;
+
+        src1_valid         = sink_channel[1] && sink_valid;
+
+        src2_data          = sink_data;
+        src2_startofpacket = sink_startofpacket;
+        src2_endofpacket   = sink_endofpacket;
+        src2_channel       = sink_channel >> NUM_OUTPUTS;
+
+        src2_valid         = sink_channel[2] && sink_valid;
+
     end
 
     // -------------------
     // Backpressure
     // -------------------
     assign ready_vector[0] = src0_ready;
+    assign ready_vector[1] = src1_ready;
+    assign ready_vector[2] = src2_ready;
 
-    assign sink_ready = |(sink_channel & {{34{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{32{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

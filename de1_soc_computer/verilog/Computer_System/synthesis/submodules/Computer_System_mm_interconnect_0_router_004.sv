@@ -249,19 +249,19 @@ module Computer_System_mm_interconnect_0_router_004
 
     // ( 0xff200000 .. 0xff200010 )
     if ( {address[RG:PAD5],{PAD5{1'b0}}} == 32'hff200000   ) begin
-            src_channel = 35'b0000000000000100000000000;
+            src_channel = 35'b0000000000010000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 20;
     end
 
     // ( 0xff200020 .. 0xff200030 )
     if ( {address[RG:PAD6],{PAD6{1'b0}}} == 32'hff200020   ) begin
-            src_channel = 35'b0000000000001000000000000;
+            src_channel = 35'b0000000000000000000001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
     // ( 0xff200030 .. 0xff200040 )
     if ( {address[RG:PAD7],{PAD7{1'b0}}} == 32'hff200030   ) begin
-            src_channel = 35'b0000000000010000000000000;
+            src_channel = 35'b0000000000000000000010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
@@ -297,7 +297,7 @@ module Computer_System_mm_interconnect_0_router_004
 
     // ( 0xff201020 .. 0xff201028 )
     if ( {address[RG:PAD13],{PAD13{1'b0}}} == 32'hff201020   ) begin
-            src_channel = 35'b0000000000000000001000000;
+            src_channel = 35'b0000000000000000100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 15;
     end
 
@@ -315,43 +315,43 @@ module Computer_System_mm_interconnect_0_router_004
 
     // ( 0xff202040 .. 0xff202048 )
     if ( {address[RG:PAD16],{PAD16{1'b0}}} == 32'hff202040  && read_transaction  ) begin
-            src_channel = 35'b0000000000000000100000000;
+            src_channel = 35'b0000000000000010000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 29;
     end
 
     // ( 0xff203000 .. 0xff203010 )
     if ( {address[RG:PAD17],{PAD17{1'b0}}} == 32'hff203000   ) begin
-            src_channel = 35'b0000000000000000000100000;
+            src_channel = 35'b0000000000000000010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0xff203010 .. 0xff203014 )
     if ( {address[RG:PAD18],{PAD18{1'b0}}} == 32'hff203010  && read_transaction  ) begin
-            src_channel = 35'b0000000000000010000000000;
+            src_channel = 35'b0000000000001000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 33;
     end
 
     // ( 0xff203020 .. 0xff203030 )
     if ( {address[RG:PAD19],{PAD19{1'b0}}} == 32'hff203020   ) begin
-            src_channel = 35'b0000000000000001000000000;
+            src_channel = 35'b0000000000000100000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 32;
     end
 
     // ( 0xff203030 .. 0xff203040 )
     if ( {address[RG:PAD20],{PAD20{1'b0}}} == 32'hff203030   ) begin
-            src_channel = 35'b0000000000000000010000000;
+            src_channel = 35'b0000000000000001000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 30;
     end
 
     // ( 0xff203040 .. 0xff203050 )
     if ( {address[RG:PAD21],{PAD21{1'b0}}} == 32'hff203040   ) begin
-            src_channel = 35'b0000000000000000000010000;
+            src_channel = 35'b0000000000000000001000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
     // ( 0xff204000 .. 0xff204020 )
     if ( {address[RG:PAD22],{PAD22{1'b0}}} == 32'hff204000   ) begin
-            src_channel = 35'b0000000000000000000001000;
+            src_channel = 35'b0000000000000000000100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 

@@ -196,7 +196,7 @@ module Computer_System_mm_interconnect_0_router_024
             src_channel = 35'b0100;
         end
 
-        if (destid == 8 ) begin
+        if (destid == 2 ) begin
             src_channel = 35'b1000;
         end
 

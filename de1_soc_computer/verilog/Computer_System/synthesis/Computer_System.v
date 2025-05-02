@@ -391,6 +391,16 @@ module Computer_System (
 	wire          mm_interconnect_0_vga_subsystem_char_buffer_slave_write;                           // mm_interconnect_0:VGA_Subsystem_char_buffer_slave_write -> VGA_Subsystem:char_buffer_slave_write
 	wire   [31:0] mm_interconnect_0_vga_subsystem_char_buffer_slave_writedata;                       // mm_interconnect_0:VGA_Subsystem_char_buffer_slave_writedata -> VGA_Subsystem:char_buffer_slave_writedata
 	wire          mm_interconnect_0_vga_subsystem_char_buffer_slave_clken;                           // mm_interconnect_0:VGA_Subsystem_char_buffer_slave_clken -> VGA_Subsystem:char_buffer_slave_clken
+	wire          mm_interconnect_0_hex3_hex0_s1_chipselect;                                         // mm_interconnect_0:HEX3_HEX0_s1_chipselect -> HEX3_HEX0:chipselect
+	wire   [31:0] mm_interconnect_0_hex3_hex0_s1_readdata;                                           // HEX3_HEX0:readdata -> mm_interconnect_0:HEX3_HEX0_s1_readdata
+	wire    [1:0] mm_interconnect_0_hex3_hex0_s1_address;                                            // mm_interconnect_0:HEX3_HEX0_s1_address -> HEX3_HEX0:address
+	wire          mm_interconnect_0_hex3_hex0_s1_write;                                              // mm_interconnect_0:HEX3_HEX0_s1_write -> HEX3_HEX0:write_n
+	wire   [31:0] mm_interconnect_0_hex3_hex0_s1_writedata;                                          // mm_interconnect_0:HEX3_HEX0_s1_writedata -> HEX3_HEX0:writedata
+	wire          mm_interconnect_0_hex5_hex4_s1_chipselect;                                         // mm_interconnect_0:HEX5_HEX4_s1_chipselect -> HEX5_HEX4:chipselect
+	wire   [31:0] mm_interconnect_0_hex5_hex4_s1_readdata;                                           // HEX5_HEX4:readdata -> mm_interconnect_0:HEX5_HEX4_s1_readdata
+	wire    [1:0] mm_interconnect_0_hex5_hex4_s1_address;                                            // mm_interconnect_0:HEX5_HEX4_s1_address -> HEX5_HEX4:address
+	wire          mm_interconnect_0_hex5_hex4_s1_write;                                              // mm_interconnect_0:HEX5_HEX4_s1_write -> HEX5_HEX4:write_n
+	wire   [31:0] mm_interconnect_0_hex5_hex4_s1_writedata;                                          // mm_interconnect_0:HEX5_HEX4_s1_writedata -> HEX5_HEX4:writedata
 	wire   [31:0] mm_interconnect_0_adc_adc_slave_readdata;                                          // ADC:readdata -> mm_interconnect_0:ADC_adc_slave_readdata
 	wire          mm_interconnect_0_adc_adc_slave_waitrequest;                                       // ADC:waitrequest -> mm_interconnect_0:ADC_adc_slave_waitrequest
 	wire    [2:0] mm_interconnect_0_adc_adc_slave_address;                                           // mm_interconnect_0:ADC_adc_slave_address -> ADC:address
@@ -461,16 +471,6 @@ module Computer_System (
 	wire    [1:0] mm_interconnect_0_leds_s1_address;                                                 // mm_interconnect_0:LEDs_s1_address -> LEDs:address
 	wire          mm_interconnect_0_leds_s1_write;                                                   // mm_interconnect_0:LEDs_s1_write -> LEDs:write_n
 	wire   [31:0] mm_interconnect_0_leds_s1_writedata;                                               // mm_interconnect_0:LEDs_s1_writedata -> LEDs:writedata
-	wire          mm_interconnect_0_hex3_hex0_s1_chipselect;                                         // mm_interconnect_0:HEX3_HEX0_s1_chipselect -> HEX3_HEX0:chipselect
-	wire   [31:0] mm_interconnect_0_hex3_hex0_s1_readdata;                                           // HEX3_HEX0:readdata -> mm_interconnect_0:HEX3_HEX0_s1_readdata
-	wire    [1:0] mm_interconnect_0_hex3_hex0_s1_address;                                            // mm_interconnect_0:HEX3_HEX0_s1_address -> HEX3_HEX0:address
-	wire          mm_interconnect_0_hex3_hex0_s1_write;                                              // mm_interconnect_0:HEX3_HEX0_s1_write -> HEX3_HEX0:write_n
-	wire   [31:0] mm_interconnect_0_hex3_hex0_s1_writedata;                                          // mm_interconnect_0:HEX3_HEX0_s1_writedata -> HEX3_HEX0:writedata
-	wire          mm_interconnect_0_hex5_hex4_s1_chipselect;                                         // mm_interconnect_0:HEX5_HEX4_s1_chipselect -> HEX5_HEX4:chipselect
-	wire   [31:0] mm_interconnect_0_hex5_hex4_s1_readdata;                                           // HEX5_HEX4:readdata -> mm_interconnect_0:HEX5_HEX4_s1_readdata
-	wire    [1:0] mm_interconnect_0_hex5_hex4_s1_address;                                            // mm_interconnect_0:HEX5_HEX4_s1_address -> HEX5_HEX4:address
-	wire          mm_interconnect_0_hex5_hex4_s1_write;                                              // mm_interconnect_0:HEX5_HEX4_s1_write -> HEX5_HEX4:write_n
-	wire   [31:0] mm_interconnect_0_hex5_hex4_s1_writedata;                                          // mm_interconnect_0:HEX5_HEX4_s1_writedata -> HEX5_HEX4:writedata
 	wire   [31:0] mm_interconnect_0_slider_switches_s1_readdata;                                     // Slider_Switches:readdata -> mm_interconnect_0:Slider_Switches_s1_readdata
 	wire    [1:0] mm_interconnect_0_slider_switches_s1_address;                                      // mm_interconnect_0:Slider_Switches_s1_address -> Slider_Switches:address
 	wire          mm_interconnect_0_pushbuttons_s1_chipselect;                                       // mm_interconnect_0:Pushbuttons_s1_chipselect -> Pushbuttons:chipselect
