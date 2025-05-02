@@ -5,6 +5,7 @@
 #include <linux/input.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #include "address_map_arm.hpp"
 #include "peripherals.hpp"
@@ -20,22 +21,36 @@ static const char *const action_mappings[3] = {
 
 int main(void)
 {
+    // Keyboard inputs
+    int keys_fd;
     const char *dev = "/dev/input/event0";
     struct input_event event_;
     ssize_t num_bytes_read;
-    int keys_fd;
+
+    // Snake game and LEDs
+    int snake_fd = -1; // used to open /dev/mem
+    void *LW_virtual; // physical addresses for light-weight bridge
     volatile int * snake_ptr; // virtual address pointer to red LEDs
     volatile int * LEDR_ptr; // virtual address pointer to red LEDs
-    int fd = -1; // used to open /dev/mem
-    void *LW_virtual; // physical addresses for light-weight bridge
     int x = 100;
     int y = 100;
 
+    // VGA screen (debug only)
+    int vga_fd = -1;
+    void *SRAM_virtual;
+    volatile uint16_t * vga_ptr;
+
 
     // Create virtual memory access to the FPGA light-weight bridge
-    if ((fd = open_physical (fd)) == -1)
+    if ((snake_fd = open_physical (snake_fd)) == -1)
     return (-1);
-    if (!(LW_virtual = map_physical (fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
+    if (!(LW_virtual = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
+    return (-1);
+
+    // Create virtual memory access to the FPGA heavy-weight bridge
+    if ((vga_fd = open_physical (vga_fd)) == -1)
+    return (-1);
+    if (!(SRAM_virtual = map_physical (snake_fd, FPGA_ONCHIP_BASE, FPGA_ONCHIP_SPAN)))
     return (-1);
 
     keys_fd = open(dev, O_RDONLY);
@@ -88,6 +103,9 @@ int main(void)
             // Set virtual address pointer to I/O port
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
             *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
+
+            vga_ptr = (uint16_t *) ((int)SRAM_virtual + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET));
+            *vga_ptr = 0xFF00;
             
             // Print a message
             printf("Key.code = 0x%04x (%d). Wrote to 0x%8x with value 0x%8x\n", 
@@ -100,7 +118,9 @@ int main(void)
     }
 
     unmap_physical (LW_virtual, LW_BRIDGE_SPAN);
-    close_physical (fd);
+    close_physical (snake_fd);
+    unmap_physical (SRAM_virtual, FPGA_ONCHIP_SPAN);
+    close_physical (vga_fd);
     fflush(stdout);
     fprintf(stderr, "Error state: %s.\n", strerror(errno));
     return EXIT_FAILURE;
