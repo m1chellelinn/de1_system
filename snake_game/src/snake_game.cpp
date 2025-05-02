@@ -102,11 +102,11 @@ int main(void)
             
             // Print a message
             printf("Key.code = 0x%04x (%d).\n Wrote to 0x%8x with value 0x%8x\n Wrote to 0x%8x with colour value\n", 
-                action_mappings[event_.value], 
+                (int)action_mappings[event_.value], 
                 (int)event_.code, 
                 (int)snake_ptr, 
                 (int)cmd,
-                (int)snake_ptr
+                (int)vga_ptr
             );
             *snake_ptr = cmd;
             *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
