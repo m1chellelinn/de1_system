@@ -38,7 +38,7 @@ int main(void)
     // VGA screen (debug only)
     int vga_fd = -1;
     void *SRAM_virtual;
-    volatile int * vga_ptr;
+    volatile uint16_t * vga_ptr;
 
 
     // Create virtual memory access to the FPGA light-weight bridge
@@ -98,7 +98,7 @@ int main(void)
             
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
             
-            vga_ptr = (int *) ((int)SRAM_virtual + (x << ADDR_X_OFFSET) + (y << ADDR_Y_OFFSET));
+            vga_ptr = (uint16_t *) ((int)SRAM_virtual + (x << ADDR_X_OFFSET) + (y << ADDR_Y_OFFSET));
             
             // Print a message
             printf("Key.code = 0x%04x (%d).\n Wrote to 0x%8x with value 0x%8x\n Wrote to 0x%8x with colour value\n", 
