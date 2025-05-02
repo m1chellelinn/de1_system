@@ -72,7 +72,7 @@ int main(void)
             break;
         }
 
-        if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value == 1) {
+        if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value > 0) {
             switch (event_.code) {
                 case KEYCODE_UP:
                     y -= 1;
