@@ -4,7 +4,8 @@ project(de1_system CXX)
 include_directories(inc)
 
 add_library(peripherals src/peripherals.cpp)
+add_library(snake src/snake.cpp)
 
-add_executable(snake_game src/snake_game.cpp)
+add_executable(snake_game src/game.cpp)
 
-target_link_libraries(snake_game peripherals)
+target_link_libraries(snake_game peripherals snake)

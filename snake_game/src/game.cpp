@@ -9,7 +9,9 @@
 
 #include "address_map_arm.hpp"
 #include "peripherals.hpp"
+#include <snake_consts.hpp>
 #include <snake.hpp>
+#include <game.hpp>
 
 
 static const char *const action_mappings[3] = {
@@ -73,26 +75,8 @@ int main(void)
         }
 
         if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value > 0) {
-            switch (event_.code) {
-                case KEYCODE_UP:
-                    y -= 1;
-                    break;
-            
-                case KEYCODE_DOWN:
-                    y += 1;
-                    break;
-            
-                case KEYCODE_LEFT:
-                    x -= 1;
-                    break;
-            
-                case KEYCODE_RIGHT:
-                    x += 1;
-                    break;
-            
-                default:
-                    break;
-            }
+            // call snake.move(event_.code)
+
             snake_ptr = (int *) ((int)LW_virtual + SNAKE_GAME_BASE);
             int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
             

@@ -1,0 +1,7 @@
+class SnakeGame {
+
+    public:
+
+    private:
+
+};
