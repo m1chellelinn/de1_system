@@ -1,4 +1,4 @@
-#include <stdlib.h>
+// #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -6,6 +6,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
 
 #include "address_map_arm.hpp"
 #include "peripherals.hpp"
@@ -13,6 +16,7 @@
 #include <snake.hpp>
 #include <game.hpp>
 
+namespace std {  // only used for "cout" and "endl"
 
 static const char *const action_mappings[3] = {
     "RELEASED",
@@ -21,47 +25,41 @@ static const char *const action_mappings[3] = {
 };
 
 
-int main(void)
-{
-    // Keyboard inputs
+void SnakeGame::gen_apples(int num_apples) {
+    for (int i = 0; i < num_apples; i++) {
+        apples.push_back( std::pair<int,int>(
+            (std::rand() % 50) + 100, (std::rand() % 50) + 100
+        ));
+    }
+}
+
+
+void SnakeGame::step_game() {
+    if (snake.move(newest_input_code) != 0) {
+        // Collision found
+        shutdown = true;
+        snake.end_game();
+    }
+}
+
+
+void input_thread(std::shared_ptr<SnakeGame> game) {
+    // Setup keyboard input reading
     int keys_fd;
-    const char *dev = "/dev/input/event0";
+    const char *dev = KEYBOARD_EVENT_PATH;
     struct input_event event_;
     ssize_t num_bytes_read;
-
-    // Snake game and LEDs
-    int snake_fd = -1; // used to open /dev/mem
-    void *LW_virtual; // physical addresses for light-weight bridge
-    volatile int * snake_ptr; // virtual address pointer to red LEDs
-    volatile int * LEDR_ptr; // virtual address pointer to red LEDs
-    int x = 100;
-    int y = 100;
-
-    // VGA screen (debug only)
-    int vga_fd = -1;
-    void *SRAM_virtual;
-    volatile uint16_t * vga_ptr;
-
-
-    // Create virtual memory access to the FPGA light-weight bridge
-    if ((snake_fd = open_physical (snake_fd)) == -1)
-    return (-1);
-    if (!(LW_virtual = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
-    return (-1);
-
-    // Create virtual memory access to the FPGA heavy-weight bridge
-    if ((vga_fd = open_physical (vga_fd)) == -1)
-    return (-1);
-    if (!(SRAM_virtual = map_physical (snake_fd, FPGA_ONCHIP_BASE, FPGA_ONCHIP_SPAN)))
-    return (-1);
-
     keys_fd = open(dev, O_RDONLY);
     if (keys_fd == -1) {
         fprintf(stderr, "Cannot open %s: %s.\n", dev, strerror(errno));
-        return EXIT_FAILURE;
+        return;
     }
 
-    while (1) {
+    while (true) {
+        if (game->shutdown) {
+            break;
+        }
+
         num_bytes_read = read(keys_fd, &event_, sizeof event_);
         if (num_bytes_read == (ssize_t)-1) {
             if (errno == EINTR)
@@ -74,35 +72,34 @@ int main(void)
             break;
         }
 
-        if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value > 0) {
-            // call snake.move(event_.code)
-
-            snake_ptr = (int *) ((int)LW_virtual + SNAKE_GAME_BASE);
-            int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
+        if (event_.type == EV_KEY && 
+            event_.value >  0 && 
+            event_.value <= 2) {
             
-            LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
-            
-            vga_ptr = (uint16_t *) ((int)SRAM_virtual + ((x+5) << MSG_X_OFFSET) + ((y+5) << MSG_Y_OFFSET));
-            
-            // Print a message
-            printf("Key.code = 0x%04x (%d).\n Wrote to 0x%8x with value 0x%8x\n Wrote to 0x%8x with colour value\n", 
-                (int)action_mappings[event_.value], 
-                (int)event_.code, 
-                (int)snake_ptr - (int) LW_virtual, 
-                (int)cmd,
-                (int)vga_ptr - (int)SRAM_virtual
-            );
-            *snake_ptr = cmd;
-            *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
-            *vga_ptr = 0xFF00;
+            game->newest_input_code = event_.code;
         }
     }
-
-    unmap_physical (LW_virtual, LW_BRIDGE_SPAN);
-    close_physical (snake_fd);
-    unmap_physical (SRAM_virtual, FPGA_ONCHIP_SPAN);
-    close_physical (vga_fd);
-    fflush(stdout);
-    fprintf(stderr, "Error state: %s.\n", strerror(errno));
-    return EXIT_FAILURE;
 }
+
+
+int main(void) {
+    std::shared_ptr<SnakeGame> game = std::make_shared<SnakeGame>();
+    game->gen_apples(NUM_APPLES);
+    game->snake.start_game();
+
+    std::thread in_thread(input_thread, game);
+    in_thread.detach();
+
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(GAME_UPDATE_PERIOD_MS));
+        game->step_game();
+
+        if (game->shutdown) {
+            in_thread.join();
+            break;
+        }
+    }
+    return 0;
+}
+
+} /* namespace std */
