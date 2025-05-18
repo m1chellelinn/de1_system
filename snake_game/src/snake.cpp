@@ -81,6 +81,8 @@ void Snake::eat() {
 
 
 int Snake::move(int keycode) {
+    cout << "--Begin move step: " << endl;
+
     int x = snake_head->x;
     int y = snake_head->y;
 
@@ -106,11 +108,12 @@ int Snake::move(int keycode) {
     }
 
     // Check for collision
-    cout << "Checking snek for collision" << endl;
+    cout << "  Checking snek for collision" << endl;
     bool if_collision = false;
     SnakeBody *current = snake_head;
     while (current != nullptr) {
         if (current->x == x && current->y == y) {
+            cout << "    Collision at (" << x << ", " << y << ") " << endl;
             return 1;
         }
         current = current->next;
@@ -120,6 +123,7 @@ int Snake::move(int keycode) {
     }
 
     // Move to new head
+    cout << "  Manipulating new head" << endl;
     SnakeBody *new_head = new SnakeBody;
     new_head->x = x;
     new_head->y = y;
@@ -131,15 +135,18 @@ int Snake::move(int keycode) {
     update_snake(snake_head, true);
 
     // Check for food, and move the tail if we're out of food
+    cout << "  Checking food" << endl;
     std::pair<int,int> snake_pos = get_current_head_position();
     for (auto apple_pos : apples) {
         if (apple_pos.first == snake_pos.first &&
             apple_pos.second == snake_pos.second) {
 
             eat();
+            cout << "    Ate food at (" << apple_pos.first << ", " << apple_pos.second << ") " << endl;
         }
     }
-    
+
+    cout << "  Manipulating tail" << endl;
     if (num_apples_consumed > 0) {
         num_apples_consumed -= 1;
     }
@@ -157,15 +164,18 @@ int Snake::move(int keycode) {
 
 
 void Snake::gen_apples(int num_apples) {
+    cout << "Start generating apples: " << num_apples << endl;
     for (int i = 0; i < num_apples; i++) {
         apples.push_back( std::pair<int,int>(
             (std::rand() % 50) + 100, (std::rand() % 50) + 100
         ));
+        cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;
     }
 }
 
 
 std::pair<int, int> Snake::get_current_head_position() {
+    cout << "Getting snake head pos" << endl;
     if (snake_head != nullptr) {
         return std::pair<int,int>(snake_head->x,snake_head->y);
     }
@@ -180,12 +190,14 @@ int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
               (snake_section->x << MSG_X_OFFSET) | 
               (snake_section->y << MSG_Y_OFFSET);
     *snake_v_addr = cmd;
+    cout << "Sent update snake cmd" << endl;
 }
 
 int Snake::update_score(int score) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (CMD_NEW_SCORE << MSG_CMD_OFFSET) | score;
+    cout << "Sent update score cmd" << endl;
 }
 
 
@@ -193,6 +205,7 @@ int Snake::update_game_state(bool if_start) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET;
+    cout << "Sent update game cmd" << endl;
 }
 
 
@@ -202,6 +215,7 @@ int Snake::update_apple(std::pair<int,int> apple, bool if_add) {
     *snake_v_addr = (if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL) << MSG_CMD_OFFSET| 
               (apple.first << MSG_X_OFFSET) | 
               (apple.second << MSG_Y_OFFSET);
+    cout << "Sent update apple cmd" << endl;
 }
 
 
