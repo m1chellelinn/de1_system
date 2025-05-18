@@ -10,8 +10,10 @@
 namespace std {
 
 int Snake::start_game() {
+    cout << "Starting game" << endl;
     if (snake_head || snake_tail || snake_fd >= 0) {
         // Assume that there is an ongoing game
+        cout << "  nah" << endl;
         return 1;
     }
 
@@ -27,13 +29,14 @@ int Snake::start_game() {
     initial_snake->x = 100;
     initial_snake->y = 100;
     initial_snake->next = nullptr;
-    
+
     snake_head = initial_snake;
     snake_tail = initial_snake;
-    
+
     score = 0;
     num_apples_consumed = 0;
     apples.clear();
+    gen_apples(NUM_APPLES);
 
     // FPGA start game screen
     update_game_state(true);
@@ -43,8 +46,6 @@ int Snake::start_game() {
 
 int Snake::end_game() {
     cout << "Ending the game" << endl;
-
-    // FPGA VGA clear and display end game screen
 
     // Unmap FPGA virtual address ranges
     unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
@@ -64,8 +65,10 @@ int Snake::end_game() {
 
     for (auto apple : apples) {
         update_apple(apple, false);
-        //log?
+        cout << "  Removing apple at pixel (" << apple.first << ", " << apple.second << ")" << endl;
     }
+
+    // FPGA VGA clear and display end game screen
 
     snake_head = nullptr;
     snake_tail = nullptr;

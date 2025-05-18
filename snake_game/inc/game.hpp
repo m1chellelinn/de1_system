@@ -5,8 +5,6 @@ struct SnakeGame {
     public:
     SnakeGame();
 
-    void gen_apples(int num_apples);
-
     void step_game();
 
     std::vector<std::pair<int,int>> apples;

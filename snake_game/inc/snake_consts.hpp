@@ -24,3 +24,4 @@
 /* Game logic */
 #define GAME_UPDATE_PERIOD_MS 100
 #define NUM_APPLES 5
+#define SNAKE_LEN 5  /* Not implemented */

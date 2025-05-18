@@ -23,15 +23,6 @@ static const char *const action_mappings[3] = {
 };
 
 
-void SnakeGame::gen_apples(int num_apples) {
-    for (int i = 0; i < num_apples; i++) {
-        apples.push_back( std::pair<int,int>(
-            (std::rand() % 50) + 100, (std::rand() % 50) + 100
-        ));
-    }
-}
-
-
 void SnakeGame::step_game() {
     if (snake.move(newest_input_code) != 0) {
         // Collision found
@@ -87,7 +78,6 @@ void input_thread(std::shared_ptr<SnakeGame> game) {
 
 int main(void) {
     std::shared_ptr<SnakeGame> game = std::make_shared<SnakeGame>();
-    game->gen_apples(NUM_APPLES);
     game->snake.start_game();
 
     std::thread in_thread(input_thread, game);
