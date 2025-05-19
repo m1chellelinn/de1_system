@@ -16,5 +16,3 @@ struct SnakeGame {
 };
 
 void input_thread(SnakeGame *game);
-
-// int main();

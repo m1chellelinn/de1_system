@@ -14,6 +14,10 @@
 #define MSG_Y_OFFSET 10
 #define MSG_CMD_OFFSET 24
 
+/* VGA screen */
+#define NUM_X_PIXELS 320
+#define NUM_Y_PIXELS 240
+
 /* Linux keyboard events */
 #define KEYCODE_UP 103
 #define KEYCODE_DOWN 108

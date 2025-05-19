@@ -24,23 +24,34 @@ int Snake::start_game() {
     return (1);
     snake_v_addr = ((uint32_t *) fpga_v_addr) + SNAKE_GAME_BASE;
 
+    // FPGA start game screen
+    update_game_state(true);
     // Init locals
-    SnakeBody *initial_snake = new SnakeBody;
-    initial_snake->x = 100;
-    initial_snake->y = 100;
-    initial_snake->next = nullptr;
+    SnakeBody *new_snake = new SnakeBody;
+    snake_tail = new_snake;
+    for (int y = 0; y > SNAKE_LEN; y--) {
+        new_snake->x = 100;
+        new_snake->y = 100 + y;
+        new_snake->next = new SnakeBody();
+        update_snake(new_snake, true);
+        snake_head = new_snake;
+        new_snake = new_snake->next;
+    }
+    delete new_snake;
 
-    snake_head = initial_snake;
-    snake_tail = initial_snake;
+    /* For logs */
+    cout << "  Initialized snake: ";
+    SnakeBody *current = snake_tail;
+    while (current != nullptr) {
+        cout << "{" << current->x << "," << current->y << "}  --> ";
+    }
+    cout << "X" << endl;
+    cout << "    Head == last section? " << (snake_head == current) << endl;
 
     score = 0;
     num_apples_consumed = 0;
     apples.clear();
     gen_apples(NUM_APPLES);
-
-    // FPGA start game screen
-    update_game_state(true);
-    update_snake(initial_snake, true);
 }
 
 
@@ -52,7 +63,7 @@ int Snake::end_game() {
     close_physical (snake_fd);
 
     // FREE the snake
-    SnakeBody *current = snake_head;
+    SnakeBody *current = snake_tail;
 
     while (current != nullptr) {
         update_snake(current, false);
@@ -91,19 +102,19 @@ int Snake::move(int keycode) {
 
     switch (keycode) {
         case KEYCODE_UP:
-            y -= 1;
+            y = (y - 1) % NUM_Y_PIXELS;
             break;
     
         case KEYCODE_DOWN:
-            y += 1;
+            y = (y + 1) % NUM_Y_PIXELS;
             break;
     
         case KEYCODE_LEFT:
-            x -= 1;
+            x = (x - 1) % NUM_X_PIXELS;
             break;
     
         case KEYCODE_RIGHT:
-            x += 1;
+            x = (x + 1) % NUM_X_PIXELS;
             break;
     
         default:
@@ -113,7 +124,7 @@ int Snake::move(int keycode) {
     // Check for collision
     cout << "  Checking snek for collision" << endl;
     bool if_collision = false;
-    SnakeBody *current = snake_head;
+    SnakeBody *current = snake_tail;
     while (current != nullptr) {
         if (current->x == x && current->y == y) {
             cout << "    Collision at (" << x << ", " << y << ") " << endl;
@@ -130,7 +141,8 @@ int Snake::move(int keycode) {
     SnakeBody *new_head = new SnakeBody;
     new_head->x = x;
     new_head->y = y;
-    new_head->next = snake_head;
+    new_head->next = nullptr;
+    snake_head->next = new_head;
 
     snake_head = new_head;
     
