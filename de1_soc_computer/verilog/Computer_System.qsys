@@ -784,6 +784,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="snake_fpga_0_reset_conduit"
+   internal="snake_fpga_0.reset_conduit"
+   type="conduit"
+   dir="end" />
+ <interface
    name="system_pll_ref_clk"
    internal="System_PLL.ref_clk"
    type="clock"
