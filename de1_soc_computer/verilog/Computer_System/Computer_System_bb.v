@@ -116,7 +116,8 @@ module Computer_System (
 	vga_G,
 	vga_B,
 	video_pll_ref_clk_clk,
-	video_pll_ref_reset_reset);	
+	video_pll_ref_reset_reset,
+	snake_fpga_0_reset_conduit_reset_n);	
 
 	output		adc_sclk;
 	output		adc_cs_n;
@@ -235,4 +236,5 @@ module Computer_System (
 	output	[7:0]	vga_B;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
+	input		snake_fpga_0_reset_conduit_reset_n;
 endmodule

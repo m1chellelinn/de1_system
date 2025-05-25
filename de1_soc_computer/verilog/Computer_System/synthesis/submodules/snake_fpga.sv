@@ -20,6 +20,7 @@
 module snake_fpga (
   input  logic        clk,       //      clock.clk
   input  logic        reset_n,         //      reset.reset_n
+  input  logic        dbg_rst_n,
 
   output logic [31:0]  vga_ch_address,     // vga_master.address
   output logic        vga_ch_read,        //           .read
@@ -52,11 +53,13 @@ logic [15:0] hps_score;
 
 
 always_ff @( posedge clk ) begin
-  if (~reset_n) begin
-    state <= WAITING;
+  if ((~reset_n) | (~dbg_rst_n)) begin
+    state <= PLAYING;
 
     vga_px_read = 1'b0;
-    vga_px_write = 1'b0;
+
+    vga_px_write = 1'b1;
+    vga_px_writedata = 16'hFF00;
   end
 
   else begin
@@ -84,13 +87,18 @@ always_ff @( posedge clk ) begin
         end
         else begin
           vga_px_write = 1'b0;
+          vga_px_read = 1'b0;
         end   
       end
 
       PLAYING: begin
-        state <= WAITING;
+        // state <= WAITING;
+
         // todo: remove this
-        vga_px_write = 1'b0;
+        if (~vga_px_waitrequest) begin
+          vga_px_write = 1'b0;
+          state <= WAITING;
+        end
         
         if (hps_write) begin
           case (hps_cmd)
@@ -112,8 +120,6 @@ always_ff @( posedge clk ) begin
           endcase
         end
         else begin
-          vga_px_read = 1'b0;
-          vga_px_write = 1'b0;
         end   
       end
 
@@ -134,7 +140,7 @@ always_comb begin
   hps_y =     hps_writedata[`MSG_CMD_OFFSET-1:`MSG_Y_OFFSET];
   hps_x =     hps_writedata[`MSG_Y_OFFSET-1:`MSG_X_OFFSET];
   hps_score = hps_writedata[15:0];
-  vga_px_address = `VGA_PX_BASE | {hps_y, hps_x, 1'b0};
+  vga_px_address = `VGA_PX_BASE | (hps_y << `MSG_Y_OFFSET) | (hps_x << `MSG_X_OFFSET);
 
 
 
