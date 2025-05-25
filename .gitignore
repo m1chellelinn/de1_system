@@ -1,6 +1,7 @@
 # Generic paths
-build/*
+*/build/*
 .vscode/*
+*/simulation/*
 
 # Quartus-generated paths
 de1_soc_computer/verilog/db/*
