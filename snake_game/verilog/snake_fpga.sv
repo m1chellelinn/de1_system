@@ -89,7 +89,7 @@ always_ff @( posedge clk ) begin
 
       PLAYING: begin
         state <= WAITING;
-        // todo: remove this
+
         vga_px_write = 1'b0;
         
         if (hps_write) begin
