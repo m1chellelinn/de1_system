@@ -51,7 +51,7 @@ private:
 
     int score;
     int num_apples_consumed;
-    std::vector<std::pair<int,int>> apples;
+    std::vector< std::pair<int,int> > apples;
 
     SnakeBody *snake_head;
     SnakeBody *snake_tail;

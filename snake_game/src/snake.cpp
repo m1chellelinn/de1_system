@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdint.h>
-#include <cstddef>
+#include <stdlib.h>
+
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
 #include <snake_consts.hpp>
@@ -84,7 +85,7 @@ int Snake::end_game() {
         current = next;
     }
 
-    for (auto apple : apples) {
+    for (std::pair<int,int> apple : apples) {
         update_apple(apple, false);
         cout << "  Removing apple at pixel (" << apple.first << ", " << apple.second << ")" << endl;
     }
