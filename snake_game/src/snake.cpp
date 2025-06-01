@@ -7,7 +7,7 @@
 #include <snake.hpp>
 
 
-namespace std {
+using namespace std;
 
 Snake::Snake() {
     snake_fd = -1;
@@ -15,9 +15,8 @@ Snake::Snake() {
     snake_v_addr = 0x0;
     score = 0;
     num_apples_consumed = 0;
-    snake_head = nullptr;
-    snake_tail = nullptr;
-    
+    snake_head = NULL;
+    snake_tail = NULL;
 }
 
 int Snake::start_game() {
@@ -53,7 +52,7 @@ int Snake::start_game() {
     /* For logs */
     cout << "  Initialized snake: ";
     SnakeBody *current = snake_tail;
-    while (current != nullptr) {
+    while (current != NULL) {
         cout << "{" << current->x << "," << current->y << "}  --> ";
     }
     cout << "X" << endl;
@@ -76,7 +75,7 @@ int Snake::end_game() {
     // FREE the snake
     SnakeBody *current = snake_tail;
 
-    while (current != nullptr) {
+    while (current != NULL) {
         update_snake(current, false);
 
         SnakeBody *next = current->next;
@@ -92,8 +91,8 @@ int Snake::end_game() {
 
     // FPGA VGA clear and display end game screen
 
-    snake_head = nullptr;
-    snake_tail = nullptr;
+    snake_head = NULL;
+    snake_tail = NULL;
 
     return score;
 }
@@ -136,7 +135,7 @@ int Snake::move(int keycode) {
     cout << "  Checking snek for collision" << endl;
     bool if_collision = false;
     SnakeBody *current = snake_tail;
-    while (current != nullptr) {
+    while (current != NULL) {
         if (current->x == x && current->y == y) {
             cout << "    Collision at (" << x << ", " << y << ") " << endl;
             return 1;
@@ -152,7 +151,7 @@ int Snake::move(int keycode) {
     SnakeBody *new_head = new SnakeBody;
     new_head->x = x;
     new_head->y = y;
-    new_head->next = nullptr;
+    new_head->next = NULL;
     snake_head->next = new_head;
 
     snake_head = new_head;
@@ -202,7 +201,7 @@ void Snake::gen_apples(int num_apples) {
 
 std::pair<int, int> Snake::get_current_head_position() {
     cout << "Getting snake head pos" << endl;
-    if (snake_head != nullptr) {
+    if (snake_head != NULL) {
         return std::pair<int,int>(snake_head->x,snake_head->y);
     }
     return std::pair<int,int>(-1,-1);
@@ -248,5 +247,3 @@ int Snake::update_apple(std::pair<int,int> apple, bool if_add) {
 inline int Snake::check_fpga_is_live() {
     return snake_v_addr && snake_fd;
 }
-
-} /* namespace std*/

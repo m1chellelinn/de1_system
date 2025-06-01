@@ -4,7 +4,7 @@
 struct SnakeBody {
     int x;
     int y;
-    SnakeBody *next = nullptr;
+    SnakeBody *next;
 };
 
 class Snake {
@@ -53,8 +53,8 @@ private:
     int num_apples_consumed;
     std::vector<std::pair<int,int>> apples;
 
-    SnakeBody *snake_head = nullptr;
-    SnakeBody *snake_tail = nullptr;
+    SnakeBody *snake_head;
+    SnakeBody *snake_tail;
 
     /* Tell FPGA to either add or delete a section of snake */
     int update_snake(SnakeBody *snake_section, bool if_add);

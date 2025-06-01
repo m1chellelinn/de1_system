@@ -15,7 +15,7 @@
 #include <snake.hpp>
 #include <game.hpp>
 
-namespace std {  // only used for "cout" and "endl"
+using namespace std;
 
 static const char *const action_mappings[3] = {
     "RELEASED",
@@ -103,5 +103,3 @@ int main(void) {
     }
     return 0;
 }
-
-} /* namespace std */
