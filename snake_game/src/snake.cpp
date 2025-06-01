@@ -40,7 +40,7 @@ int Snake::start_game() {
     // Init locals
     SnakeBody *new_snake = new SnakeBody;
     snake_tail = new_snake;
-    for (int y = 0; y > SNAKE_LEN; y--) {
+    for (int y = 0; y > SNAKE_LEN; y++) {
         new_snake->x = 100;
         new_snake->y = 100 + y;
         new_snake->next = new SnakeBody();
@@ -193,9 +193,10 @@ int Snake::move(int keycode) {
 void Snake::gen_apples(int num_apples) {
     cout << "Start generating apples: " << num_apples << endl;
     for (int i = 0; i < num_apples; i++) {
-        apples.push_back( std::pair<int,int>(
-            (rand() % 50) + 100, (rand() % 50) + 100
-        ));
+        std::pair<int,int> apple = 
+            std::pair<int,int>((rand() % 50) + 100, (rand() % 50) + 100);
+        apples.push_back( apple );
+        update_apple(apple, true);
         cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;
     }
 }

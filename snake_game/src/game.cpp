@@ -30,6 +30,7 @@ SnakeGame::SnakeGame() {
 }
 
 void SnakeGame::step_game() {
+    cout << "Game step invoke" << endl;
     if (snake.move(newest_input_code) != 0) {
         // Collision found
         shutdown = true;
@@ -87,9 +88,11 @@ int main(void) {
     std::shared_ptr<SnakeGame> game = std::make_shared<SnakeGame>();
     game->snake.start_game();
 
+    cout << "Initializing thread" << endl;
     std::thread in_thread(input_thread, game);
     in_thread.detach();
 
+    cout << "Main thread entering main loop" << endl;
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(GAME_UPDATE_PERIOD_MS));
         game->step_game();
