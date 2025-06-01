@@ -6,7 +6,12 @@
 `define CMD_SNAKE_ADD 2
 `define CMD_SNAKE_DEL 3
 `define CMD_NEW_SCORE 4
+`define CMD_APPLE_ADD 5
+`define CMD_APPLE_DEL 6
 
 `define MSG_X_OFFSET 1
 `define MSG_Y_OFFSET 10
-`define MSG_CMD_OFFSET 18
+`define MSG_CMD_OFFSET 24
+
+`define NUM_X_PIXELS 320
+`define NUM_Y_PIXELS 240

@@ -33,17 +33,19 @@ module tb_snake();
 
   logic [8:0] x;
   logic [7:0] y;
+  logic [31:0] test_num = 0;
+  enum { WAITING, PLAYING } state;
   
   initial begin
-    x = 1; y = 1;
     hps_writedata = (`CMD_SNAKE_ADD << `MSG_CMD_OFFSET) | (x << `MSG_X_OFFSET) | (y << `MSG_Y_OFFSET);
     hps_address = 0;
     hps_write = 1;
-
-    #10;
+    vga_px_waitrequest = 1;
+    x = 1; y = 1; test_num += 1;
     #10;
     hps_write = 0;
     #10;
+    vga_px_waitrequest = 0;
     #10;
 
     x = 10; y = 10;
