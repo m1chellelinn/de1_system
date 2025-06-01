@@ -6,7 +6,6 @@
 #include <linux/input.h>
 #include <string.h>
 #include <thread>
-#include <unistd.h>
 
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
@@ -21,6 +20,8 @@ static const char *const action_mappings[3] = {
     "PRESSED ",
     "REPEATED"
 };
+
+void input_thread(std::shared_ptr<SnakeGame> /* game */);
 
 SnakeGame::SnakeGame() {
     shutdown = false;

@@ -13,6 +13,3 @@ struct SnakeGame {
     int newest_input_code ;
 
 };
-
-void input_thread(std::shared_ptr<SnakeGame> /* game */);
-
