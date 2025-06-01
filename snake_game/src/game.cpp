@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <iostream>
-#include <memory>
 #include <linux/input.h>
 #include <string.h>
 #include <thread>

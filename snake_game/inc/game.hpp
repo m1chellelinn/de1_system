@@ -1,4 +1,5 @@
 #include <vector>
+#include <memory>
 
 struct SnakeGame {
 
@@ -6,12 +7,12 @@ struct SnakeGame {
     SnakeGame();
     void step_game();
 
-    std::vector<std::pair<int,int>> apples;
+    std::vector<std::pair<int,int> > apples;
     bool shutdown;
     Snake snake;
     int newest_input_code ;
 
 };
 
-void input_thread(std::shared_ptr<SnakeGame> game);
+void input_thread(std::shared_ptr<SnakeGame> /* game */);
 
