@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdint.h>
-
+#include <cstddef>
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
 #include <snake_consts.hpp>
@@ -8,6 +8,17 @@
 
 
 namespace std {
+
+Snake::Snake() {
+    snake_fd = -1;
+    fpga_v_addr = 0x0;
+    snake_v_addr = 0x0;
+    score = 0;
+    num_apples_consumed = 0;
+    snake_head = nullptr;
+    snake_tail = nullptr;
+    
+}
 
 int Snake::start_game() {
     cout << "Starting game" << endl;

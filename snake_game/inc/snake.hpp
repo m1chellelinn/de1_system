@@ -1,8 +1,9 @@
 #include <vector>
 
+
 struct SnakeBody {
-    int x = -1;
-    int y = -1;
+    int x;
+    int y;
     SnakeBody *next = nullptr;
 };
 
@@ -44,12 +45,12 @@ public:
     std::pair<int, int> get_current_head_position();
 
 private:
-    int snake_fd = -1;
-    void *fpga_v_addr = 0x0;
-    volatile uint32_t *snake_v_addr = 0x0;
+    int snake_fd;
+    void *fpga_v_addr;
+    volatile uint32_t *snake_v_addr;
 
-    int score = 0;
-    int num_apples_consumed = 0;
+    int score;
+    int num_apples_consumed;
     std::vector<std::pair<int,int>> apples;
 
     SnakeBody *snake_head = nullptr;

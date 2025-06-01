@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <iostream>
+#include <memory>
 #include <linux/input.h>
 #include <string.h>
 #include <thread>
@@ -22,12 +23,18 @@ static const char *const action_mappings[3] = {
     "REPEATED"
 };
 
+SnakeGame::SnakeGame() {
+    shutdown = false;
+    snake = Snake();
+    newest_input_code = -1;
+}
 
 void SnakeGame::step_game() {
     if (snake.move(newest_input_code) != 0) {
         // Collision found
         shutdown = true;
         snake.end_game();
+
     }
 }
 
