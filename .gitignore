@@ -1,4 +1,5 @@
 # Generic paths
+build/*
 */build/*
 .vscode/*
 */simulation/*

@@ -55,6 +55,7 @@ int Snake::start_game() {
     SnakeBody *current = snake_tail;
     while (current != NULL) {
         cout << "{" << current->x << "," << current->y << "}  --> ";
+        current = current->next;
     }
     cout << "X" << endl;
     cout << "    Head == last section? " << (snake_head == current) << endl;

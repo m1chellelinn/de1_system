@@ -1,5 +1,6 @@
-#include <vector>
+#include <stdint.h>
 #include <unistd.h>
+#include <vector>
 
 
 struct SnakeBody {
