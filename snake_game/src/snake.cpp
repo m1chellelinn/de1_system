@@ -85,9 +85,9 @@ int Snake::end_game() {
         current = next;
     }
 
-    for (std::pair<int,int> apple : apples) {
-        update_apple(apple, false);
-        cout << "  Removing apple at pixel (" << apple.first << ", " << apple.second << ")" << endl;
+    for (int i = 0; i < apples.size(); i++) {
+        update_apple(apples[i], false);
+        cout << "  Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
     }
 
     // FPGA VGA clear and display end game screen
@@ -163,12 +163,12 @@ int Snake::move(int keycode) {
     // Check for food, and move the tail if we're out of food
     cout << "  Checking food" << endl;
     std::pair<int,int> snake_pos = get_current_head_position();
-    for (auto apple_pos : apples) {
-        if (apple_pos.first == snake_pos.first &&
-            apple_pos.second == snake_pos.second) {
+    for (int i = 0; i < apples.size(); i++) {
+        if (apples[i].first == snake_pos.first &&
+            apples[i].second == snake_pos.second) {
 
             eat();
-            cout << "    Ate food at (" << apple_pos.first << ", " << apple_pos.second << ") " << endl;
+            cout << "    Ate food at (" << apples[i].first << ", " << apples[i].second << ") " << endl;
         }
     }
 
@@ -193,7 +193,7 @@ void Snake::gen_apples(int num_apples) {
     cout << "Start generating apples: " << num_apples << endl;
     for (int i = 0; i < num_apples; i++) {
         apples.push_back( std::pair<int,int>(
-            (std::rand() % 50) + 100, (std::rand() % 50) + 100
+            (rand() % 50) + 100, (rand() % 50) + 100
         ));
         cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;
     }
