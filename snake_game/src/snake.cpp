@@ -228,6 +228,7 @@ std::pair<int, int> Snake::get_current_head_position() {
 
 
 int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
+    if (!if_add) return 0;
     if (!check_fpga_is_live()) return 1;
     
     int cmd = ((if_add ? CMD_SNAKE_ADD : CMD_SNAKE_DEL) << MSG_CMD_OFFSET) +
