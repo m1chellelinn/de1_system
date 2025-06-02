@@ -1,4 +1,3 @@
-#include <stdint.h>
 #include <unistd.h>
 #include <vector>
 
@@ -49,7 +48,7 @@ public:
 private:
     int snake_fd;
     void *fpga_v_addr;
-    volatile uint32_t *snake_v_addr;
+    volatile int *snake_v_addr;
 
     int score;
     int num_apples_consumed;

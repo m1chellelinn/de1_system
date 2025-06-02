@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <stdint.h>
 #include <stdlib.h>
 
 #include <address_map_arm.hpp>
@@ -32,12 +31,12 @@ int Snake::start_game() {
     // Map FPGA virtual address ranges
     if ((snake_fd = open_physical (snake_fd)) == -1)
     return (1);
-    if (!(fpga_v_addr = (uint32_t *) map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
+    if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (1);
-    snake_v_addr = (uint32_t *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
     cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
     cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
-    cout << "Legacy snake v addr is " << hex << (int) ((uint32_t *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
+    cout << "Legacy snake v addr is " << hex << (int) ((int *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
 
     // FPGA start game screen
     update_game_state(true);
@@ -230,18 +229,18 @@ std::pair<int, int> Snake::get_current_head_position() {
 int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
     if (!check_fpga_is_live()) return 1;
     
-    int cmd = ((if_add ? CMD_SNAKE_ADD : CMD_SNAKE_DEL) << MSG_CMD_OFFSET) | 
-              (snake_section->x << MSG_X_OFFSET) | 
+    int cmd = ((if_add ? CMD_SNAKE_ADD : CMD_SNAKE_DEL) << MSG_CMD_OFFSET) +
+              (snake_section->x << MSG_X_OFFSET) +
               (snake_section->y << MSG_Y_OFFSET);
     *snake_v_addr = cmd;
-    cout << "Sent update snake cmd" << endl;
+    cout << "    Sent update snake cmd: " << hex << cmd << endl;
 }
 
 int Snake::update_score(int score) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (CMD_NEW_SCORE << MSG_CMD_OFFSET) | score;
-    cout << "Sent update score cmd" << endl;
+    cout << "    Sent update score cmd" << endl;
 }
 
 
@@ -249,7 +248,7 @@ int Snake::update_game_state(bool if_start) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET;
-    cout << "Sent update game cmd" << endl;
+    cout << "    Sent update game cmd" << endl;
 }
 
 
@@ -259,7 +258,7 @@ int Snake::update_apple(std::pair<int,int> apple, bool if_add) {
     *snake_v_addr = (if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL) << MSG_CMD_OFFSET| 
               (apple.first << MSG_X_OFFSET) | 
               (apple.second << MSG_Y_OFFSET);
-    cout << "Sent update apple cmd" << endl;
+    cout << "    Sent update apple cmd" << endl;
 }
 
 
