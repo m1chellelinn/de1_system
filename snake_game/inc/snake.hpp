@@ -16,7 +16,7 @@ public:
      * Starts the game at a random location, initially pointing up
      * @return 0 if successful
      */
-    int start_game();
+    int start_game(volatile int *snake_v_addr_in, volatile int *LEDR_ptr_in);
 
     /**
      * End game prematurely

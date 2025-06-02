@@ -14,13 +14,14 @@ Snake::Snake() {
     snake_fd = -1;
     fpga_v_addr = 0x0;
     snake_v_addr = 0x0;
+    LEDR_ptr = 0x0;
     score = 0;
     num_apples_consumed = 0;
     snake_head = NULL;
     snake_tail = NULL;
 }
 
-int Snake::start_game() {
+int Snake::start_game(volatile int *snake_v_addr_in, volatile int *LEDR_ptr_in) {
     cout << "Starting game" << endl;
     if (snake_head || snake_tail || snake_fd >= 0) {
         // Assume that there is an ongoing game
@@ -29,12 +30,14 @@ int Snake::start_game() {
     }
 
     // Map FPGA virtual address ranges
-    if ((snake_fd = open_physical (snake_fd)) == -1)
-    return (1);
-    if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
-    return (1);
-    snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
-    LEDR_ptr = (int *) ( (int)fpga_v_addr + LEDR_BASE);
+    // if ((snake_fd = open_physical (snake_fd)) == -1)
+    // return (1);
+    // if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
+    // return (1);
+    // snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    // LEDR_ptr = (int *) ( (int)fpga_v_addr + LEDR_BASE);
+    snake_v_addr = snake_v_addr_in;
+    LEDR_ptr = LEDR_ptr_in;
     
     int x = 1; int y = 1;
     int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);

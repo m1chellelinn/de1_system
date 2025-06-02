@@ -3,10 +3,13 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <iostream>
+#include <iomanip>
 #include <linux/input.h>
 #include <string.h>
 #include <thread>
 
+#include <address_map_arm.hpp>
+#include <peripherals.hpp>
 #include <snake_consts.hpp>
 #include <snake.hpp>
 #include <game.hpp>
@@ -83,8 +86,22 @@ void input_thread(std::shared_ptr<SnakeGame> game) {
 
 
 int main(void) {
+    int snake_fd = -1;
+    void *fpga_v_addr = 0x0;
+    volatile int *snake_v_addr = 0x0;
+    volatile int *LEDR_ptr = 0x0;
+
+    if ((snake_fd = open_physical (snake_fd)) == -1)
+    return (1);
+    if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
+    return (1);
+    snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    LEDR_ptr = (int *) ( (int)fpga_v_addr + LEDR_BASE);
+    cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
+    cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
+
     std::shared_ptr<SnakeGame> game = std::make_shared<SnakeGame>();
-    game->snake.start_game();
+    game->snake.start_game(snake_v_addr, LEDR_ptr);
     
 
     cout << "Initializing thread" << endl;
