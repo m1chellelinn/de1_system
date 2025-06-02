@@ -34,6 +34,7 @@ int Snake::start_game() {
     if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (1);
     snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    LEDR_ptr = (int *) (fpga_v_addr + LEDR_BASE);
     cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
     cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
     cout << "Legacy snake v addr is " << hex << (int) ((int *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
@@ -234,6 +235,7 @@ int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
               (snake_section->y << MSG_Y_OFFSET);
     *snake_v_addr = cmd;
     cout << "    Sent update snake cmd: " << hex << cmd << endl;
+    *LEDR_ptr = (*LEDR_ptr + 1) % 256;
 }
 
 int Snake::update_score(int score) {
@@ -241,6 +243,7 @@ int Snake::update_score(int score) {
 
     *snake_v_addr = (CMD_NEW_SCORE << MSG_CMD_OFFSET) | score;
     cout << "    Sent update score cmd" << endl;
+    *LEDR_ptr = (*LEDR_ptr + 1) % 256;
 }
 
 
@@ -249,6 +252,7 @@ int Snake::update_game_state(bool if_start) {
 
     *snake_v_addr = (if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET;
     cout << "    Sent update game cmd" << endl;
+    *LEDR_ptr = (*LEDR_ptr + 1) % 256;
 }
 
 
@@ -259,6 +263,7 @@ int Snake::update_apple(std::pair<int,int> apple, bool if_add) {
               (apple.first << MSG_X_OFFSET) | 
               (apple.second << MSG_Y_OFFSET);
     cout << "    Sent update apple cmd" << endl;
+    *LEDR_ptr = (*LEDR_ptr + 1) % 256;
 }
 
 

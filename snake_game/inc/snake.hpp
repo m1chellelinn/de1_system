@@ -49,6 +49,7 @@ private:
     int snake_fd;
     void *fpga_v_addr;
     volatile int *snake_v_addr;
+    volatile int *LEDR_ptr;
 
     int score;
     int num_apples_consumed;
