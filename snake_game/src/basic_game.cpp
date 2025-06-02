@@ -126,7 +126,7 @@ int main(void)
             );
             *snake_ptr = cmd;
             *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
-            *vga_ptr = 0xFF00;
+            // *vga_ptr = 0xFF00;
         }
     }
 

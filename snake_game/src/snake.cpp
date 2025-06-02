@@ -39,7 +39,7 @@ int Snake::start_game(volatile int *snake_v_addr_in, volatile int *LEDR_ptr_in) 
     snake_v_addr = snake_v_addr_in;
     LEDR_ptr = LEDR_ptr_in;
     
-    int x = 1; int y = 1;
+    int x = 5; int y = 5;
     int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
     *snake_v_addr = cmd;
 
