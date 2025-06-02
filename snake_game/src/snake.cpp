@@ -40,7 +40,7 @@ int Snake::start_game() {
     cout << "Legacy snake v addr is " << hex << (int) ((int *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
 
     // FPGA start game screen
-    update_game_state(true);
+    // update_game_state(true);
     // Init locals
     SnakeBody *new_snake = new SnakeBody;
     snake_tail = new_snake;
@@ -228,7 +228,6 @@ std::pair<int, int> Snake::get_current_head_position() {
 
 
 int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
-    if (!if_add) return 0;
     if (!check_fpga_is_live()) return 1;
     
     int cmd = ((if_add ? CMD_SNAKE_ADD : CMD_SNAKE_DEL) << MSG_CMD_OFFSET) +
