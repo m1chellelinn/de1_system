@@ -34,23 +34,27 @@ int Snake::start_game() {
     return (1);
     if (!(fpga_v_addr = (uint32_t *) map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (1);
-    snake_v_addr = ((uint32_t *) fpga_v_addr) + SNAKE_GAME_BASE;
+    snake_v_addr = (uint32_t *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
     cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
+    cout << "Legacy snake v addr is " << hex << (int) ((uint32_t *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
 
     // FPGA start game screen
     update_game_state(true);
     // Init locals
     SnakeBody *new_snake = new SnakeBody;
     snake_tail = new_snake;
-    for (int y = 0; y < SNAKE_LEN; y++) {
+    for (int i = 0; i < SNAKE_LEN; i++) {
         new_snake->x = 100;
-        new_snake->y = 100 + y;
-        new_snake->next = new SnakeBody();
-        update_snake(new_snake, true);
+        new_snake->y = 100 + i;
         snake_head = new_snake;
-        new_snake = new_snake->next;
+        update_snake(new_snake, true);
+
+        if (i < SNAKE_LEN - 1) {
+            new_snake->next = new SnakeBody();
+            new_snake = new_snake->next;
+        }
     }
-    delete new_snake;
 
     /* For logs */
     cout << "  Initialized snake: (tail) ";
@@ -84,20 +88,21 @@ int Snake::end_game() {
     close_physical (snake_fd);
 
     // FREE the snake
+    cout << "  Freeing the snake" << endl;
     SnakeBody *current = snake_tail;
 
     while (current != NULL) {
         update_snake(current, false);
 
         SnakeBody *next = current->next;
-        cout << "  Removing snake body at pixel (" << current->x << ", " << current->y << ")" << endl;
+        cout << "    Removing snake body at pixel (" << current->x << ", " << current->y << ")" << endl;
         delete current;
         current = next;
     }
 
     for (int i = 0; i < apples.size(); i++) {
         update_apple(apples[i], false);
-        cout << "  Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
+        cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
     }
 
     // FPGA VGA clear and display end game screen
@@ -139,6 +144,8 @@ int Snake::move(int keycode) {
             break;
     
         default:
+            cout << "  No input / invalid input. Skipping this step. " << endl;
+            return 0;
             break;
     }
 
@@ -212,7 +219,7 @@ void Snake::gen_apples(int num_apples) {
 
 
 std::pair<int, int> Snake::get_current_head_position() {
-    cout << "Getting snake head pos" << endl;
+    cout << "    Getting snake head pos" << endl;
     if (snake_head != NULL) {
         return std::pair<int,int>(snake_head->x,snake_head->y);
     }
