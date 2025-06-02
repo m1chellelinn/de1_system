@@ -10,4 +10,8 @@ add_library(snake src/snake.cpp)
 
 add_executable(snake_game src/game.cpp)
 
+add_executable(basic_snake_game src/basic_game.cpp)
+
 target_link_libraries(snake_game snake peripherals)
+
+target_link_libraries(basic_snake_game peripherals)
