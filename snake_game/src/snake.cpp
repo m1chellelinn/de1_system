@@ -37,10 +37,10 @@ int Snake::start_game() {
     LEDR_ptr = (int *) (fpga_v_addr + LEDR_BASE);
     cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
     cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
-    cout << "Legacy snake v addr is " << hex << (int) ((int *) fpga_v_addr) + SNAKE_GAME_BASE << endl;
+    cout << "LEDR virtual addr is " << hex << (int) LEDR_ptr << endl;
 
     // FPGA start game screen
-    // update_game_state(true);
+    update_game_state(true);
     // Init locals
     SnakeBody *new_snake = new SnakeBody;
     snake_tail = new_snake;
@@ -235,6 +235,7 @@ int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
               (snake_section->y << MSG_Y_OFFSET);
     *snake_v_addr = cmd;
     cout << "    Sent update snake cmd: " << hex << cmd << endl;
+    cout << "      Addr: " << hex << (long) snake_v_addr << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
 }
 

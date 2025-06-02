@@ -7,8 +7,6 @@
 #include <string.h>
 #include <thread>
 
-#include <address_map_arm.hpp>
-#include <peripherals.hpp>
 #include <snake_consts.hpp>
 #include <snake.hpp>
 #include <game.hpp>
@@ -87,6 +85,7 @@ void input_thread(std::shared_ptr<SnakeGame> game) {
 int main(void) {
     std::shared_ptr<SnakeGame> game = std::make_shared<SnakeGame>();
     game->snake.start_game();
+    
 
     cout << "Initializing thread" << endl;
     std::thread in_thread(input_thread, game);
