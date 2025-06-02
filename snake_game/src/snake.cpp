@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -34,13 +35,14 @@ int Snake::start_game() {
     if (!(fpga_v_addr = (uint32_t *) map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (1);
     snake_v_addr = ((uint32_t *) fpga_v_addr) + SNAKE_GAME_BASE;
+    cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
 
     // FPGA start game screen
     update_game_state(true);
     // Init locals
     SnakeBody *new_snake = new SnakeBody;
     snake_tail = new_snake;
-    for (int y = 0; y > SNAKE_LEN; y++) {
+    for (int y = 0; y < SNAKE_LEN; y++) {
         new_snake->x = 100;
         new_snake->y = 100 + y;
         new_snake->next = new SnakeBody();
@@ -51,9 +53,16 @@ int Snake::start_game() {
     delete new_snake;
 
     /* For logs */
-    cout << "  Initialized snake: ";
+    cout << "  Initialized snake: (tail) ";
     SnakeBody *current = snake_tail;
-    while (current != NULL) {
+    while (true) {
+        if (snake_head == current) {
+            cout << "(head) ";
+        }
+        if (current == NULL) {
+            cout << "X" << endl;
+            break;
+        }
         cout << "{" << current->x << "," << current->y << "}  --> ";
         current = current->next;
     }

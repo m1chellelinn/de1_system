@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(de1_system CXX)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -pthread")
 
 include_directories(inc)
 
