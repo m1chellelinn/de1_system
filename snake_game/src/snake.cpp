@@ -33,8 +33,13 @@ int Snake::start_game() {
     return (1);
     if (!(fpga_v_addr = map_physical (snake_fd, LW_BRIDGE_BASE, LW_BRIDGE_SPAN)))
     return (1);
-    snake_v_addr = (int *) ( fpga_v_addr + SNAKE_GAME_BASE);
-    LEDR_ptr = (int *) (fpga_v_addr + LEDR_BASE);
+    snake_v_addr = (int *) ( (int)fpga_v_addr + SNAKE_GAME_BASE);
+    LEDR_ptr = (int *) ( (int)fpga_v_addr + LEDR_BASE);
+    
+    int x = 1; int y = 1;
+    int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
+    *snake_v_addr = cmd;
+
     cout << "FPGA virtual addr is " << hex << (int) fpga_v_addr << endl;
     cout << "Snake virtual addr is " << hex << (int) snake_v_addr << endl;
     cout << "LEDR virtual addr is " << hex << (int) LEDR_ptr << endl;
