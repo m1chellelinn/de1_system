@@ -107,6 +107,7 @@ int Snake::end_game() {
     }
 
     // FPGA VGA clear and display end game screen
+    update_game_state(false);
 
     snake_head = NULL;
     snake_tail = NULL;
@@ -187,6 +188,7 @@ int Snake::move(int keycode) {
 
             eat();
             cout << "    Ate food at (" << apples[i].first << ", " << apples[i].second << ") " << endl;
+            gen_apples(1);
         }
     }
 
@@ -211,7 +213,7 @@ void Snake::gen_apples(int num_apples) {
     cout << "Start generating apples: " << num_apples << endl;
     for (int i = 0; i < num_apples; i++) {
         std::pair<int,int> apple = 
-            std::pair<int,int>((rand() % 50) + 100, (rand() % 50) + 100);
+            std::pair<int,int>((rand() % 260) + 30, (rand() % 180) + 30);
         apples.push_back( apple );
         update_apple(apple, true);
         cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;
