@@ -87,10 +87,6 @@ int Snake::start_game() {
 int Snake::end_game() {
     cout << "Ending the game" << endl;
 
-    // Unmap FPGA virtual address ranges
-    unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
-    close_physical (snake_fd);
-
     /* FOR LOGS BEGIN*/
     cout << "    Current snake snake: (tail) ";
     SnakeBody *current = snake_tail;
@@ -120,6 +116,10 @@ int Snake::end_game() {
 
     // FPGA VGA clear and display end game screen
     update_game_state(false);
+
+    // Unmap FPGA virtual address ranges
+    unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
+    close_physical (snake_fd);
 
     snake_head = NULL;
     snake_tail = NULL;
