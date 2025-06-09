@@ -101,7 +101,7 @@ int Snake::end_game() {
     cout << "  Freeing the snake" << endl;
     current = snake_tail;
     while (current != NULL) {
-        update_snake(current, false);
+        // update_snake(current, false);
 
         SnakeBody *next = current->next;
         cout << "    Removing snake body at pixel (" << current->x << ", " << current->y << ")" << endl;
@@ -109,10 +109,11 @@ int Snake::end_game() {
         current = next;
     }
 
-    for (int i = 0; i < apples.size(); i++) {
-        update_apple(apples[i], false);
-        cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
-    }
+    apples.clear();
+    // for (int i = 0; i < apples.size(); i++) {
+    //     update_apple(apples[i], false);
+    //     cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
+    // }
 
     // FPGA VGA clear and display end game screen
     update_game_state(false);
