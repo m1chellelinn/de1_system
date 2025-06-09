@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
+#include <time.h>
 
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
@@ -18,6 +19,8 @@ Snake::Snake() {
     num_apples_consumed = 0;
     snake_head = NULL;
     snake_tail = NULL;
+
+    srand((unsigned int) std::time(NULL));
 }
 
 int Snake::start_game() {
@@ -119,6 +122,7 @@ int Snake::end_game() {
 void Snake::eat() {
     num_apples_consumed++;
     score++;
+    update_score(score);
 }
 
 
