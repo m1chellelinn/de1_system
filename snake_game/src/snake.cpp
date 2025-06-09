@@ -91,10 +91,19 @@ int Snake::end_game() {
     unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
     close_physical (snake_fd);
 
+    /* FOR LOGS BEGIN*/
+    cout << "    Current snake snake: (tail) ";
+    SnakeBody *current = snake_tail;
+    while (true) {
+        if (snake_head == current) { cout << "(head) "; } if (current == NULL) { cout << "X" << endl; break; } cout << "{" << current->x << "," << current->y << "}  --> "; 
+        current = current->next;
+    }
+    cout << "X" << endl << "    Head == last section? " << (snake_head == current) << endl;
+    /* FOR LOGS END*/
+
     // FREE the snake
     cout << "  Freeing the snake" << endl;
-    SnakeBody *current = snake_tail;
-
+    current = snake_tail;
     while (current != NULL) {
         update_snake(current, false);
 
