@@ -2,7 +2,7 @@
 build/*
 */build/*
 .vscode/*
-*/simulation/*
+snake_game/verilog/simulation/*
 
 # Quartus-generated paths
 de1_soc_computer/verilog/db/*

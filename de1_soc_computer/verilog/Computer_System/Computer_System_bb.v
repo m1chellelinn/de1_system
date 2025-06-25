@@ -105,6 +105,8 @@ module Computer_System (
 	sdram_we_n,
 	sdram_clk_clk,
 	slider_switches_export,
+	snake_fpga_0_reset_conduit_reset_n,
+	snake_fpga_0_state_export_conduit_readdata,
 	system_pll_ref_clk_clk,
 	system_pll_ref_reset_reset,
 	vga_CLK,
@@ -117,7 +119,7 @@ module Computer_System (
 	vga_B,
 	video_pll_ref_clk_clk,
 	video_pll_ref_reset_reset,
-	snake_fpga_0_reset_conduit_reset_n);	
+	snake_fpga_0_cmd_conduit_readdata);	
 
 	output		adc_sclk;
 	output		adc_cs_n;
@@ -224,6 +226,8 @@ module Computer_System (
 	output		sdram_we_n;
 	output		sdram_clk_clk;
 	input	[9:0]	slider_switches_export;
+	input		snake_fpga_0_reset_conduit_reset_n;
+	output	[6:0]	snake_fpga_0_state_export_conduit_readdata;
 	input		system_pll_ref_clk_clk;
 	input		system_pll_ref_reset_reset;
 	output		vga_CLK;
@@ -236,5 +240,5 @@ module Computer_System (
 	output	[7:0]	vga_B;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
-	input		snake_fpga_0_reset_conduit_reset_n;
+	output	[6:0]	snake_fpga_0_cmd_conduit_readdata;
 endmodule
