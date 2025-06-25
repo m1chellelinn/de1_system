@@ -28,7 +28,7 @@ Snake::Snake() {
 
 int Snake::start_game() {
     cout << "Starting game" << endl;
-    if (snake_head || snake_tail || snake_fd >= 0) {
+    if ( snake_head || snake_tail || snake_fd ) {
         // Assume that there is an ongoing game
         cout << "  nah" << endl;
         return 1;
@@ -128,6 +128,8 @@ int Snake::end_game() {
 
     snake_head = NULL;
     snake_tail = NULL;
+    fpga_v_addr = NULL;
+    snake_fd = 0;
 
     return score;
 }
