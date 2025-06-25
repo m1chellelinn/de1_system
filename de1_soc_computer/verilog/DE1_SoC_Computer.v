@@ -360,12 +360,19 @@ output					HPS_USB_STP;
 wire			[31: 0]	hex3_hex0;
 wire			[15: 0]	hex5_hex4;
 
+wire snake_fpga_0_reset_conduit_reset_n;
+wire [6:0] snake_fpga_0_cmd_conduit_readdata;
+wire [6:0] snake_fpga_0_state_export_conduit_readdata;
+assign snake_fpga_0_reset_conduit_reset_n = KEY[0];
+
 assign HEX0 = (~KEY[0]) ? 7'b0010010 : ~hex3_hex0[ 6: 0];
 assign HEX1 = (~KEY[0]) ? 7'b1000111 : ~hex3_hex0[14: 8];
 assign HEX2 = (~KEY[0]) ? 7'b1000111 : ~hex3_hex0[22:16];
 assign HEX3 = (~KEY[0]) ? 7'b1001000 : ~hex3_hex0[30:24];
-assign HEX4 = (~KEY[0]) ? 7'b0000011 : ~hex5_hex4[ 6: 0];
-assign HEX5 = (~KEY[0]) ? 7'b1111111 : ~hex5_hex4[14: 8];
+// assign HEX4 = (~KEY[0]) ? 7'b0000011 : ~hex5_hex4[ 6: 0];
+assign HEX4 = snake_fpga_0_cmd_conduit_readdata;
+// assign HEX5 = (~KEY[0]) ? 7'b1111111 : ~hex5_hex4[14: 8];
+assign HEX5 = snake_fpga_0_state_export_conduit_readdata;
 
 //=======================================================
 //  Structural coding
@@ -558,7 +565,11 @@ Computer_System The_System (
 	.hps_io_hps_io_usb1_inst_CLK		(HPS_USB_CLKOUT),
 	.hps_io_hps_io_usb1_inst_STP		(HPS_USB_STP),
 	.hps_io_hps_io_usb1_inst_DIR		(HPS_USB_DIR),
-	.hps_io_hps_io_usb1_inst_NXT		(HPS_USB_NXT)
+	.hps_io_hps_io_usb1_inst_NXT		(HPS_USB_NXT),
+
+	.snake_fpga_0_reset_conduit_reset_n (snake_fpga_0_reset_conduit_reset_n),
+	.snake_fpga_0_state_export_conduit_readdata (snake_fpga_0_state_export_conduit_readdata),
+	.snake_fpga_0_cmd_conduit_readdata (snake_fpga_0_cmd_conduit_readdata)
 );
 
 

@@ -7,55 +7,57 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/intelFPGA_lite/18.1
+Z0 dC:/intelFPGA_lite/18.1
 <<<<<<< HEAD
 =======
+R0
+>>>>>>> 51533d5b3b78a89b9f697ff825431fbcca869b60
+R0
 vsnake_fpga
-Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z1 !s110 1746224915
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1748145629
 !i10b 1
-!s100 1:dDcMBR>61;WAIgdWh=W0
-I>a1ajbzeO1ikVomNIdIcN0
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s100 >UVH>jV`94AUDn74H^bI60
+IQOT>Phg]cV2BOe<7i7[9f1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 snake_fpga_sv_unit
 S1
-Z3 dC:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/simulation
-w1746224821
-8C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/snake_fpga.sv
-FC:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/snake_fpga.sv
-L0 20
-Z4 OV;L;10.5b;63
+Z4 dC:/Users/micha/code/de1_system/snake_game/verilog/simulation
+w1748144807
+8C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv
+FC:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv
+L0 5
+Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1746224915.000000
-!s107 C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/snake_fpga.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/snake_fpga.sv|
+Z6 !s108 1748145629.000000
+!s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_fpga.svh|C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv|
 !i113 1
-Z6 o-work work -sv
-Z7 tCvgOpt 0
+Z7 o-work work -sv
+Z8 tCvgOpt 0
 vtb_snake
-R0
 R1
-!i10b 1
-!s100 >;Mdo2I>_8M4Wo=EZlK1]1
-IL3E_9OgQRS]Uh2>eaiah82
 R2
+!i10b 1
+!s100 ?ddbd[[QjDnzfk=[Bcf6Q2
+IIBokH7ba=haVb7nKB3mQ;2
+R3
 !s105 tb_snake_fpga_sv_unit
 S1
-R3
-w1746224911
-8C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/tb_snake_fpga.sv
-FC:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/tb_snake_fpga.sv
-L0 6
 R4
+w1748145624
+8C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv
+FC:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv
+L0 6
+R5
 r1
 !s85 0
 31
-R5
-!s107 C:\Users\micha\code\DE1-SoC\de1_system\snake_game\verilog\snake_fpga.svh|C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/tb_snake_fpga.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/DE1-SoC/de1_system/snake_game/verilog/tb_snake_fpga.sv|
-!i113 1
 R6
+!s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_fpga.svh|C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv|
+!i113 1
 R7
->>>>>>> 51533d5b3b78a89b9f697ff825431fbcca869b60
+R8

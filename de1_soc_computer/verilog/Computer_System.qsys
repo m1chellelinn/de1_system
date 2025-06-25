@@ -105,6 +105,14 @@
          type = "String";
       }
    }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Expansion_JP1
    {
       datum _sortIndex
@@ -784,8 +792,18 @@
    type="conduit"
    dir="end" />
  <interface
+   name="snake_fpga_0_cmd_conduit"
+   internal="snake_fpga_0.cmd_conduit"
+   type="conduit"
+   dir="end" />
+ <interface
    name="snake_fpga_0_reset_conduit"
    internal="snake_fpga_0.reset_conduit"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="snake_fpga_0_state_export_conduit"
+   internal="snake_fpga_0.state_export_conduit"
    type="conduit"
    dir="end" />
  <interface
