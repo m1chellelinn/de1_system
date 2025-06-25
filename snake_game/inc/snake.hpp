@@ -27,7 +27,7 @@ public:
     /**
      * To eat an apple. +1 score
      */
-    void eat();
+    void eat(ItemType type);
 
     /**
      * To move
@@ -53,7 +53,7 @@ private:
 
     int score;
     int num_apples_consumed;
-    std::vector< std::pair<int,int> > apples;
+    std::vector< Item > apples;
 
     SnakeBody *snake_head;
     SnakeBody *snake_tail;
@@ -67,7 +67,7 @@ private:
     /* Tell FPGA to start/end games */
     int update_game_state(bool if_start);
 
-    int update_apple(std::pair<int,int> apple, bool if_add);
+    int update_apple(int x, int y, ItemType type, bool if_add);
 
     /* Check if the FPGA bridge is up, and we can (probably) send commands*/
     inline int check_fpga_is_live();

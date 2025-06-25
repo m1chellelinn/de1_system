@@ -246,7 +246,7 @@ int Snake::move(int keycode) {
 void Snake::gen_apples(int num_apples_to_generate) {
     cout << "Start generating apples: " << num_apples_to_generate << endl;
     for (int i = 0; i < num_apples_to_generate; ++i) {
-        Apple new_apple;
+        Item new_apple;
         new_apple.x = (rand() % (NUM_X_PIXELS - 60)) + 30;
         new_apple.y = (rand() % (NUM_Y_PIXELS - 60)) + 30;
 
