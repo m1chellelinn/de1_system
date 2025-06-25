@@ -9,6 +9,7 @@ struct SnakeGame {
 
     std::vector<std::pair<int,int> > apples;
     bool shutdown;
+    bool game_running;
     Snake snake;
     int newest_input_code ;
 

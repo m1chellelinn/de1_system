@@ -33,7 +33,7 @@ public:
      * To move
      * @return 0 if move is valid. 1 if move results in collision
      */
-    int move(int keycode);
+    int move(int KEY);
     
     /**
      * Generates the specified number of apples on screen

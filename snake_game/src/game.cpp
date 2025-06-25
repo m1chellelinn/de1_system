@@ -23,17 +23,31 @@ void input_thread(std::shared_ptr<SnakeGame> /* game */);
 
 SnakeGame::SnakeGame() {
     shutdown = false;
+    game_running = false;
     snake = Snake();
     newest_input_code = -1;
 }
 
 void SnakeGame::step_game() {
     cout << "Game step invoke" << endl;
-    if (snake.move(newest_input_code) != 0) {
-        // Collision found
-        shutdown = true;
-        snake.end_game();
 
+    try {
+        if (game_running) {
+            if (snake.move(newest_input_code) != 0) {
+                // Collision found
+                snake.end_game();
+                game_running = false;
+            }
+        }
+        else if (newest_input_code == KEY_ENTER) {
+            cout << "User pressed ENTER while game was ended. Starting game." << endl;
+            snake.start_game();
+            game_running = true;
+            newest_input_code = KEY_DOWN;
+        }
+    }
+    catch (std::exception e) {
+        cout << "Error occured. Shutting down game. Original error: " << e.what() << endl;
     }
 }
 
@@ -77,8 +91,8 @@ void input_thread(std::shared_ptr<SnakeGame> game) {
 
             // If new input is directly opposite of prev input, ignore it. 
             // Otherwise the snake will die immediately, and that's no fun
-            if (KEYCODE_UP + KEYCODE_DOWN == game->newest_input_code + event_.code ||
-                KEYCODE_LEFT + KEYCODE_RIGHT == game->newest_input_code + event_.code) 
+            if (KEY_UP + KEY_DOWN == game->newest_input_code + event_.code ||
+                KEY_LEFT + KEY_RIGHT == game->newest_input_code + event_.code) 
             {
                 cout << "Opposite input as previous. Ignoring." << endl;
             }

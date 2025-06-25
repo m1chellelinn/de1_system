@@ -22,10 +22,10 @@
 #define MSG_Y_OFFSET 10
 #define MSG_CMD_OFFSET 24
 
-#define KEYCODE_UP 103
-#define KEYCODE_DOWN 108
-#define KEYCODE_LEFT 105
-#define KEYCODE_RIGHT 106
+#define KEY_UP 103
+#define KEY_DOWN 108
+#define KEY_LEFT 105
+#define KEY_RIGHT 106
 
 
 static const char *const action_mappings[3] = {
@@ -90,19 +90,19 @@ int main(void)
 
         if (event_.type == EV_KEY && event_.value >= 0 && event_.value <= 2 && event_.value && event_.value > 0) {
             switch (event_.code) {
-                case KEYCODE_UP:
+                case KEY_UP:
                     y -= 1;
                     break;
             
-                case KEYCODE_DOWN:
+                case KEY_DOWN:
                     y += 1;
                     break;
             
-                case KEYCODE_LEFT:
+                case KEY_LEFT:
                     x -= 1;
                     break;
             
-                case KEYCODE_RIGHT:
+                case KEY_RIGHT:
                     x += 1;
                     break;
             

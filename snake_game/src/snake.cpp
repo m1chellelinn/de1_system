@@ -143,19 +143,19 @@ int Snake::move(int keycode) {
     int y = snake_head->y;
 
     switch (keycode) {
-        case KEYCODE_UP:
+        case KEY_UP:
             y = (y - 1) % NUM_Y_PIXELS;
             break;
     
-        case KEYCODE_DOWN:
+        case KEY_DOWN:
             y = (y + 1) % NUM_Y_PIXELS;
             break;
     
-        case KEYCODE_LEFT:
+        case KEY_LEFT:
             x = (x - 1) % NUM_X_PIXELS;
             break;
     
-        case KEYCODE_RIGHT:
+        case KEY_RIGHT:
             x = (x + 1) % NUM_X_PIXELS;
             break;
     

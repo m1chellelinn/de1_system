@@ -19,10 +19,10 @@
 #define NUM_Y_PIXELS 240
 
 /* Linux keyboard events */
-#define KEYCODE_UP 103
-#define KEYCODE_DOWN 108
-#define KEYCODE_LEFT 105
-#define KEYCODE_RIGHT 106
+#define KEY_UP 103
+#define KEY_DOWN 108
+#define KEY_LEFT 105
+#define KEY_RIGHT 106
 #define KEYBOARD_EVENT_PATH "/dev/input/event0"
 
 /* Game logic */
