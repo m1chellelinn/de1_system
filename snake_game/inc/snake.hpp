@@ -2,6 +2,17 @@
 #include <vector>
 
 
+enum ItemType {
+    REGULAR_APPLE,
+    GOLDEN_APPLE
+};
+
+struct Item {
+    int x;
+    int y;
+    ItemType type;
+};
+
 struct SnakeBody {
     int x;
     int y;

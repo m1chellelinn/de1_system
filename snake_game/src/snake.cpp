@@ -13,17 +13,6 @@
 
 using namespace std;
 
-enum ItemType {
-    REGULAR_APPLE,
-    GOLDEN_APPLE
-};
-
-struct Item {
-    int x;
-    int y;
-    ItemType type;
-};
-
 
 Snake::Snake() {
     snake_fd = -1;
