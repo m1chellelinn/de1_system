@@ -129,7 +129,7 @@ int Snake::end_game() {
     snake_head = NULL;
     snake_tail = NULL;
     fpga_v_addr = NULL;
-    snake_fd = 0;
+    snake_fd = -1;
 
     return score;
 }
