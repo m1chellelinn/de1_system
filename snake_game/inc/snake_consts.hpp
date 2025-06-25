@@ -26,6 +26,6 @@
 #define KEYBOARD_EVENT_PATH "/dev/input/event0"
 
 /* Game logic */
-#define GAME_UPDATE_PERIOD_MS 100
+#define GAME_UPDATE_PERIOD_MS 75
 #define NUM_APPLES 5
 #define SNAKE_LEN 5

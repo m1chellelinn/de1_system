@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
+#include <time.h>
 
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
@@ -18,6 +19,8 @@ Snake::Snake() {
     num_apples_consumed = 0;
     snake_head = NULL;
     snake_tail = NULL;
+
+    srand((unsigned int) std::time(NULL));
 }
 
 int Snake::start_game() {
@@ -84,16 +87,21 @@ int Snake::start_game() {
 int Snake::end_game() {
     cout << "Ending the game" << endl;
 
-    // Unmap FPGA virtual address ranges
-    unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
-    close_physical (snake_fd);
+    /* FOR LOGS BEGIN*/
+    cout << "    Current snake snake: (tail) ";
+    SnakeBody *current = snake_tail;
+    while (true) {
+        if (snake_head == current) { cout << "(head) "; } if (current == NULL) { cout << "X" << endl; break; } cout << "{" << current->x << "," << current->y << "}  --> "; 
+        current = current->next;
+    }
+    cout << "X" << endl << "    Head == last section? " << (snake_head == current) << endl;
+    /* FOR LOGS END*/
 
     // FREE the snake
     cout << "  Freeing the snake" << endl;
-    SnakeBody *current = snake_tail;
-
+    current = snake_tail;
     while (current != NULL) {
-        update_snake(current, false);
+        // update_snake(current, false);
 
         SnakeBody *next = current->next;
         cout << "    Removing snake body at pixel (" << current->x << ", " << current->y << ")" << endl;
@@ -101,12 +109,18 @@ int Snake::end_game() {
         current = next;
     }
 
-    for (int i = 0; i < apples.size(); i++) {
-        update_apple(apples[i], false);
-        cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
-    }
+    apples.clear();
+    // for (int i = 0; i < apples.size(); i++) {
+    //     update_apple(apples[i], false);
+    //     cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
+    // }
 
     // FPGA VGA clear and display end game screen
+    update_game_state(false);
+
+    // Unmap FPGA virtual address ranges
+    unmap_physical (fpga_v_addr, LW_BRIDGE_SPAN);
+    close_physical (snake_fd);
 
     snake_head = NULL;
     snake_tail = NULL;
@@ -118,6 +132,7 @@ int Snake::end_game() {
 void Snake::eat() {
     num_apples_consumed++;
     score++;
+    update_score(score);
 }
 
 
@@ -187,6 +202,7 @@ int Snake::move(int keycode) {
 
             eat();
             cout << "    Ate food at (" << apples[i].first << ", " << apples[i].second << ") " << endl;
+            gen_apples(1);
         }
     }
 
@@ -211,7 +227,7 @@ void Snake::gen_apples(int num_apples) {
     cout << "Start generating apples: " << num_apples << endl;
     for (int i = 0; i < num_apples; i++) {
         std::pair<int,int> apple = 
-            std::pair<int,int>((rand() % 50) + 100, (rand() % 50) + 100);
+            std::pair<int,int>((rand() % 260) + 30, (rand() % 180) + 30);
         apples.push_back( apple );
         update_apple(apple, true);
         cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;

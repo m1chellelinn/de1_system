@@ -72,10 +72,20 @@ void input_thread(std::shared_ptr<SnakeGame> game) {
 
         if (event_.type == EV_KEY && 
             event_.value >  0 && 
-            event_.value <= 2) {
-            
-            game->newest_input_code = event_.code;
-            cout << "New input with code: " << event_.code << endl;
+            event_.value <= 2) 
+        {
+
+            // If new input is directly opposite of prev input, ignore it. 
+            // Otherwise the snake will die immediately, and that's no fun
+            if (KEYCODE_UP + KEYCODE_DOWN == game->newest_input_code + event_.code ||
+                KEYCODE_LEFT + KEYCODE_RIGHT == game->newest_input_code + event_.code) 
+            {
+                cout << "Opposite input as previous. Ignoring." << endl;
+            }
+            else {
+                game->newest_input_code = event_.code;
+                cout << "New input with code: " << event_.code << endl;
+            }
         }
     }
     game->shutdown = true;
