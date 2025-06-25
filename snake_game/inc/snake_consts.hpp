@@ -9,6 +9,8 @@
 #define CMD_NEW_SCORE 4
 #define CMD_APPLE_ADD 5
 #define CMD_APPLE_DEL 6
+#define CMD_GAPPLE_ADD 7
+#define CMD_GAPPLE_DEL 8
 
 #define MSG_X_OFFSET 1
 #define MSG_Y_OFFSET 10

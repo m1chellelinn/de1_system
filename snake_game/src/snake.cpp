@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+#include <utility>
 
 #include <address_map_arm.hpp>
 #include <peripherals.hpp>
@@ -10,6 +12,18 @@
 
 
 using namespace std;
+
+enum ItemType {
+    REGULAR_APPLE,
+    GOLDEN_APPLE
+};
+
+struct Item {
+    int x;
+    int y;
+    ItemType type;
+};
+
 
 Snake::Snake() {
     snake_fd = -1;
@@ -81,6 +95,7 @@ int Snake::start_game() {
     num_apples_consumed = 0;
     apples.clear();
     gen_apples(NUM_APPLES);
+    return 0;
 }
 
 
@@ -102,18 +117,18 @@ int Snake::end_game() {
     current = snake_tail;
     while (current != NULL) {
         // update_snake(current, false);
-
         SnakeBody *next = current->next;
         cout << "    Removing snake body at pixel (" << current->x << ", " << current->y << ")" << endl;
         delete current;
         current = next;
     }
 
-    apples.clear();
-    // for (int i = 0; i < apples.size(); i++) {
-    //     update_apple(apples[i], false);
-    //     cout << "    Removing apple at pixel (" << apples[i].first << ", " << apples[i].second << ")" << endl;
+   // idk if we need this
+    // for (const auto& apple : apples) {
+    //     update_apple(apple.x, apple.y, apple.type, false);
+    //     cout << "    Removing apple at pixel (" << apple.x << ", " << apple.y << ") " << (apple.type == GOLDEN_APPLE ? "(Golden)" : "") << endl;
     // }
+    apples.clear();
 
     // FPGA VGA clear and display end game screen
     update_game_state(false);
@@ -129,9 +144,15 @@ int Snake::end_game() {
 }
 
 
-void Snake::eat() {
+void Snake::eat(ItemType type) {
     num_apples_consumed++;
-    score++;
+    if (type == GOLDEN_APPLE) {
+        score += 10;
+        cout << "  Ate a GOLDEN apple! +10 points!" << endl;
+    } else {
+        score += 1;
+        cout << "  Ate a REGULAR apple! +1 point!" << endl;
+    }
     update_score(score);
 }
 
@@ -167,17 +188,13 @@ int Snake::move(int keycode) {
 
     // Check for collision
     cout << "  Checking snek for collision" << endl;
-    bool if_collision = false;
     SnakeBody *current = snake_tail;
     while (current != NULL) {
         if (current->x == x && current->y == y) {
-            cout << "    Collision at (" << x << ", " << y << ") " << endl;
-            return 1;
+            cout << "    Collision with self at (" << x << ", " << y << ") " << endl;
+            return 1; // Collision detected
         }
         current = current->next;
-    }
-    if (if_collision) {
-        return 1;
     }
 
     // Move to new head
@@ -196,21 +213,24 @@ int Snake::move(int keycode) {
     // Check for food, and move the tail if we're out of food
     cout << "  Checking food" << endl;
     std::pair<int,int> snake_pos = get_current_head_position();
-    for (int i = 0; i < apples.size(); i++) {
-        if (apples[i].first == snake_pos.first &&
-            apples[i].second == snake_pos.second) {
-
-            eat();
-            cout << "    Ate food at (" << apples[i].first << ", " << apples[i].second << ") " << endl;
-            gen_apples(1);
+    int eaten_apple_idx = -1;
+    for (int i = 0; i < apples.size(); ++i) {
+        if (apples[i].x == snake_pos.first &&
+            apples[i].y == snake_pos.second) {
+            eat(apples[i].type); // Pass the type of apple eaten
+            update_apple(apples[i].x, apples[i].y, apples[i].type, false); // Remove eaten apple from FPGA
+            eaten_apple_idx = i;
+            break; 
         }
     }
 
-    cout << "  Manipulating tail" << endl;
-    if (num_apples_consumed > 0) {
-        num_apples_consumed -= 1;
-    }
-    else {
+    // Remove the eaten apple from the vector and generate a new one
+    if (eaten_apple_idx != -1) {
+        apples.erase(apples.begin() + eaten_apple_idx);
+        gen_apples(1); // Generate one new apple
+    } else {
+        cout << "  Manipulating tail (no apple eaten)" << endl;
+        // If no apple was eaten, move the tail
         SnakeBody *old_tail = snake_tail;
         snake_tail = snake_tail->next;
 
@@ -223,14 +243,23 @@ int Snake::move(int keycode) {
 }
 
 
-void Snake::gen_apples(int num_apples) {
-    cout << "Start generating apples: " << num_apples << endl;
-    for (int i = 0; i < num_apples; i++) {
-        std::pair<int,int> apple = 
-            std::pair<int,int>((rand() % 260) + 30, (rand() % 180) + 30);
-        apples.push_back( apple );
-        update_apple(apple, true);
-        cout << "  + apple @ " << apples[i].first << ", " << apples[i].second << endl;
+void Snake::gen_apples(int num_apples_to_generate) {
+    cout << "Start generating apples: " << num_apples_to_generate << endl;
+    for (int i = 0; i < num_apples_to_generate; ++i) {
+        Apple new_apple;
+        new_apple.x = (rand() % (NUM_X_PIXELS - 60)) + 30;
+        new_apple.y = (rand() % (NUM_Y_PIXELS - 60)) + 30;
+
+        if ((rand() % 10) == 0) { // 1 in 10 chance for a golden apple
+            new_apple.type = GOLDEN_APPLE;
+            cout << "  + GOLDEN apple @ " << new_apple.x << ", " << new_apple.y << endl;
+        } else {
+            new_apple.type = REGULAR_APPLE;
+            cout << "  + REGULAR apple @ " << new_apple.x << ", " << new_apple.y << endl;
+        }
+        
+        apples.push_back(new_apple);
+        update_apple(new_apple.x, new_apple.y, new_apple.type, true); // Send to FPGA
     }
 }
 
@@ -254,14 +283,16 @@ int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
     cout << "    Sent update snake cmd: " << hex << cmd << endl;
     cout << "      Addr: " << hex << (long) snake_v_addr << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
+    return 0; // Added return statement
 }
 
 int Snake::update_score(int score) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (CMD_NEW_SCORE << MSG_CMD_OFFSET) | score;
-    cout << "    Sent update score cmd" << endl;
+    cout << "    Sent update score cmd: " << hex << ((CMD_NEW_SCORE << MSG_CMD_OFFSET) | score) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
+    return 0; // Added return statement
 }
 
 
@@ -269,19 +300,31 @@ int Snake::update_game_state(bool if_start) {
     if (!check_fpga_is_live()) return 1;
 
     *snake_v_addr = (if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET;
-    cout << "    Sent update game cmd" << endl;
+    cout << "    Sent update game cmd: " << hex << ((if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
+    return 0; // Added return statement
 }
 
 
-int Snake::update_apple(std::pair<int,int> apple, bool if_add) {
+// Modified update_apple function to take apple type
+int Snake::update_apple(int x, int y, ItemType type, bool if_add) {
     if (!check_fpga_is_live()) return 1;
     
-    *snake_v_addr = (if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL) << MSG_CMD_OFFSET| 
-              (apple.first << MSG_X_OFFSET) | 
-              (apple.second << MSG_Y_OFFSET);
-    cout << "    Sent update apple cmd" << endl;
+    int cmd_base;
+    if (type == GOLDEN_APPLE) {
+        cmd_base = if_add ? CMD_GOLDEN_APPLE_ADD : CMD_GOLDEN_APPLE_DEL;
+        cout << "    Updating GOLDEN apple" << endl;
+    } else {
+        cmd_base = if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL;
+        cout << "    Updating REGULAR apple" << endl;
+    }
+
+    *snake_v_addr = (cmd_base << MSG_CMD_OFFSET) | 
+                    (x << MSG_X_OFFSET) | 
+                    (y << MSG_Y_OFFSET);
+    cout << "    Sent update apple cmd: " << hex << ((cmd_base << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET)) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
+    return 0; // Added return statement
 }
 
 
