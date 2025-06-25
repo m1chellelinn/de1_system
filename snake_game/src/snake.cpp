@@ -30,7 +30,7 @@ int Snake::start_game() {
     cout << "Starting game" << endl;
     if ( snake_head || snake_tail || snake_fd >= 0 ) {
         // Assume that there is an ongoing game
-        cout << "  nah" << endl;
+        cout << "  Not starting game because snake_head=" << snake_head << ", snake_tail=" << snake_tail <<  ", snake_fd=" << snake_fd << endl;
         return 1;
     }
 
