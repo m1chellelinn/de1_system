@@ -28,11 +28,11 @@
 #define JTAG_UART_BASE      0x00001000
 #define JTAG_UART_2_BASE    0x00001008
 #define IrDA_BASE           0x00001020
-#define TIMER0_BASE         0x00002000
-#define TIMER1_BASE         0x00002020
+// #define TIMER0_BASE         0x00002000
+// #define TIMER1_BASE         0x00002020
 #define AV_CONFIG_BASE      0x00003000
 #define PIXEL_BUF_CTRL_BASE 0x00003020
 #define CHAR_BUF_CTRL_BASE  0x00003030
-#define AUDIO_BASE          0x00003040
+// #define AUDIO_BASE          0x00003040
 // #define VIDEO_IN_BASE       0x00003060
-#define ADC_BASE            0x00004000
+// #define ADC_BASE            0x00004000

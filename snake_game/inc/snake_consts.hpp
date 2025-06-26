@@ -1,5 +1,6 @@
 /* Address Mapping */
 #define SNAKE_GAME_BASE     0x00000100
+#define GPIO_DRIVER_BASE    0x00000140
 
 /* HPS --> FPGA messages */
 #define CMD_START_GAME 0
