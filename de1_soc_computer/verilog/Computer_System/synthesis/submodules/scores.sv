@@ -1,5 +1,5 @@
 `timescale 1 ps / 1 ps
-`include "snake_fpga.svh"
+`include "snake_consts.svh"
 
 module score_handler (
   input  logic        clk,                //      clock.clk               // 
@@ -75,13 +75,13 @@ always_comb begin
       UPDATING1: begin
         vga_ch_write = 1;
         vga_ch_writedata = digit1;
-        vga_ch_address = `VGA_PX_BASE | (1 << 7) | (2);
+        vga_ch_address = `VGA_PX_BASE | (2 << 7) | (4);
       end
       
       UPDATING2: begin
         vga_ch_write = 1;
         vga_ch_writedata = digit2;
-        vga_ch_address = `VGA_PX_BASE | (1 << 7) | (1);
+        vga_ch_address = `VGA_PX_BASE | (2 << 7) | (3);
       end
   endcase
 end

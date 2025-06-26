@@ -1,5 +1,5 @@
 `timescale 1 ps / 1 ps
-`include "snake_fpga.svh"
+`include "snake_consts.svh"
 
 module snake_fpga (
   input  logic        clk,                //      clock.clk               // 
@@ -99,7 +99,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_SNAKE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= `BLACK;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -117,7 +117,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= `BLACK;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -131,7 +131,21 @@ always_ff @( posedge clk ) begin
 
             `CMD_GOLDEN_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= `BLACK;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              state <= REQUESTING_PX;
+              next_state <= PLAYING;
+            end
+
+            `CMD_SPEED_UP_ADD: begin
+              vga_px_write <= 1;
+              vga_px_writedata <= `SPEED_UP_COLOUR;
+              state <= REQUESTING_PX;
+              next_state <= PLAYING;
+            end
+
+            `CMD_SPEED_UP_DEL: begin
+              vga_px_write <= 1;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -154,17 +168,14 @@ always_ff @( posedge clk ) begin
         cls_x <= 0;
         cls_y <= 0;
         vga_px_write <= 1'b1;
-        vga_px_writedata <= `BLACK;
+        vga_px_writedata <= (cls_y[0] ^ cls_y[0]) ? `BLACK : `GRAY;
         state <= CLEAR_SCREEN;
 
         // cmd_export <= cmd_export + 1;
       end
 
       CLEAR_SCREEN: begin
-        if (hps_x[0] ^ hps_y[0]) 
-          vga_px_writedata <= `BLACK;
-        else 
-          vga_px_writedata <= `GRAY;
+        vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
 
         if (vga_px_waitrequest) ;// do nothing
         else if ( cls_x == `NUM_X_PIXELS && cls_y == `NUM_Y_PIXELS) begin

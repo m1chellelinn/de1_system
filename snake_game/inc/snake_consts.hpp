@@ -11,8 +11,8 @@
 #define CMD_APPLE_DEL 6
 #define CMD_GOLDEN_APPLE_ADD 7
 #define CMD_GOLDEN_APPLE_DEL 8
-#define CMD_SPEED_UP_ADD 7
-#define CMD_SPEED_UP_DEL 8
+#define CMD_SPEED_UP_ADD 9
+#define CMD_SPEED_UP_DEL 10
 
 #define MSG_X_OFFSET 1
 #define MSG_Y_OFFSET 10

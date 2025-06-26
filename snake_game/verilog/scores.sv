@@ -1,5 +1,5 @@
 `timescale 1 ps / 1 ps
-`include "snake_fpga.svh"
+`include "snake_consts.svh"
 
 module score_handler (
   input  logic        clk,                //      clock.clk               // 

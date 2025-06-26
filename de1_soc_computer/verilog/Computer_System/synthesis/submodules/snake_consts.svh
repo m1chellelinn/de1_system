@@ -32,4 +32,4 @@
 `define GAPPLE_COLOUR       16'b1111110111100111
 `define SPEED_UP_COLOUR     16'b0000000000011111
 `define BLACK               16'b0000000000000000
-`define GRAY                16'b0011100011100111
+`define GRAY                16'b0001100001100011
