@@ -4,7 +4,8 @@
 
 enum ItemType {
     REGULAR_APPLE,
-    GOLDEN_APPLE
+    GOLDEN_APPLE,
+    SPEED_UP,
 };
 
 struct Item {
@@ -56,8 +57,12 @@ public:
      */
     std::pair<int, int> get_current_head_position();
 
+    bool is_speed_boosted();
+    void update_speed_status();
+
 private:
     int snake_fd;
+    int speed_boost_remaining;
     void *fpga_v_addr;
     volatile int *snake_v_addr;
     volatile int *LEDR_ptr;

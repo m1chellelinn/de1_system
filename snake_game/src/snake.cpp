@@ -22,6 +22,7 @@ Snake::Snake() {
     num_apples_consumed = 0;
     snake_head = NULL;
     snake_tail = NULL;
+    speed_boost_remaining = 0;
 
     srand((unsigned int) std::time(NULL));
 }
@@ -82,6 +83,7 @@ int Snake::start_game() {
 
     score = 0;
     num_apples_consumed = 0;
+    speed_boost_remaining = 0;
     apples.clear();
     gen_apples(NUM_APPLES);
     return 0;
@@ -139,10 +141,15 @@ void Snake::eat(ItemType type) {
     num_apples_consumed++;
     if (type == GOLDEN_APPLE) {
         score += 10;
-        cout << "  Ate a GOLDEN apple! +10 points!" << endl;
-    } else {
+        cout << "Ate a GOLDEN apple! +10 points!" << endl;
+    } else if (type == SPEED_UP) {
+        score += 5; 
+        speed_boost_remaining = 20;
+        cout << "GOTTA GO FAST!" << endl;
+    } 
+    else {
         score += 1;
-        cout << "  Ate a REGULAR apple! +1 point!" << endl;
+        cout << "Ate a REGULAR apple! +1 point!" << endl;
     }
     update_score(score);
 }
@@ -154,25 +161,28 @@ int Snake::move(int keycode) {
     int x = snake_head->x;
     int y = snake_head->y;
 
+    int move_distance = is_speed_boosted() ? 3 : 1;
+    cout << "Movement distance: " << move_distance << "pixels" <<endl;
+
     switch (keycode) {
         case KEY_UP:
-            if (y - 1 < 0) return 1;
-            y = (y - 1) % NUM_Y_PIXELS;
+            if (y - move_distance < 0) return 1;
+            y = (y - move_distance) % NUM_Y_PIXELS;
             break;
     
         case KEY_DOWN:
-            if (y + 1 >= NUM_Y_PIXELS ) return 1;
-            y = (y + 1) % NUM_Y_PIXELS;
+            if (y + move_distance >= NUM_Y_PIXELS ) return 1;
+            y = (y + move_distance) % NUM_Y_PIXELS;
             break;
 
         case KEY_LEFT:
-            if (x - 1 < 0) return 1;
-            x = (x - 1) % NUM_Y_PIXELS;
+            if (x - move_distance < 0) return 1;
+            x = (x - move_distance) % NUM_X_PIXELS;
             break;
             
         case KEY_RIGHT:
-            if (x + 1 >= NUM_X_PIXELS ) return 1;
-            x = (x + 1) % NUM_X_PIXELS;
+            if (x + move_distance >= NUM_X_PIXELS ) return 1;
+            x = (x + move_distance) % NUM_X_PIXELS;
             break;
     
         default:
@@ -245,9 +255,13 @@ void Snake::gen_apples(int num_apples_to_generate) {
         new_apple.x = (rand() % (NUM_X_PIXELS - 60)) + 30;
         new_apple.y = (rand() % (NUM_Y_PIXELS - 60)) + 30;
 
-        if ((rand() % 10) == 0) { // 1 in 10 chance for a golden apple
+        int random_value = rand() % 10;
+        if (random_val == 0) {
             new_apple.type = GOLDEN_APPLE;
             cout << "  + GOLDEN apple @ " << new_apple.x << ", " << new_apple.y << endl;
+        } else if (random_val == 1) {
+            new_apple.type = SPEED_POTION;
+            cout << "  + SPEED POTION @ " << new_apple.x << ", " << new_apple.y << endl;
         } else {
             new_apple.type = REGULAR_APPLE;
             cout << "  + REGULAR apple @ " << new_apple.x << ", " << new_apple.y << endl;
@@ -278,7 +292,7 @@ int Snake::update_snake(SnakeBody *snake_section, bool if_add) {
     cout << "    Sent update snake cmd: " << hex << cmd << endl;
     cout << "      Addr: " << hex << (long) snake_v_addr << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
-    return 0; // Added return statement
+    return 0;
 }
 
 int Snake::update_score(int score) {
@@ -287,7 +301,7 @@ int Snake::update_score(int score) {
     *snake_v_addr = (CMD_NEW_SCORE << MSG_CMD_OFFSET) | score;
     cout << "    Sent update score cmd: " << hex << ((CMD_NEW_SCORE << MSG_CMD_OFFSET) | score) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
-    return 0; // Added return statement
+    return 0;
 }
 
 
@@ -297,7 +311,7 @@ int Snake::update_game_state(bool if_start) {
     *snake_v_addr = (if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET;
     cout << "    Sent update game cmd: " << hex << ((if_start ? CMD_START_GAME : CMD_END_GAME) << MSG_CMD_OFFSET) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
-    return 0; // Added return statement
+    return 0;
 }
 
 
@@ -309,6 +323,9 @@ int Snake::update_apple(int x, int y, ItemType type, bool if_add) {
     if (type == GOLDEN_APPLE) {
         cmd_base = if_add ? CMD_GOLDEN_APPLE_ADD : CMD_GOLDEN_APPLE_DEL;
         cout << "    Updating GOLDEN apple" << endl;
+    } else if (type == SPEED_POTION) {
+        cmd_base = if_add ? CMD_SPEED_POTION_ADD : CMD_SPEED_POTION_DEL;
+        cout << "    Updating SPEED POTION" << endl;
     } else {
         cmd_base = if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL;
         cout << "    Updating REGULAR apple" << endl;
@@ -319,7 +336,7 @@ int Snake::update_apple(int x, int y, ItemType type, bool if_add) {
                     (y << MSG_Y_OFFSET);
     cout << "    Sent update apple cmd: " << hex << ((cmd_base << MSG_CMD_OFFSET) | (x << MSG_X_OFFSET) | (y << MSG_Y_OFFSET)) << endl;
     *LEDR_ptr = (*LEDR_ptr + 1) % 256;
-    return 0; // Added return statement
+    return 0;
 }
 
 
