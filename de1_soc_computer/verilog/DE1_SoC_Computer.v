@@ -394,14 +394,14 @@ Computer_System The_System (
 	.av_config_SDAT							(FPGA_I2C_SDAT),
 
 	// Audio Subsystem
-	.audio_pll_ref_clk_clk					(CLOCK3_50),
-	.audio_pll_ref_reset_reset				(1'b0),
-	.audio_pll_clk_clk						(AUD_XCK),
-	.audio_ADCDAT							(AUD_ADCDAT),
-	.audio_ADCLRCK							(AUD_ADCLRCK),
-	.audio_BCLK								(AUD_BCLK),
-	.audio_DACDAT							(AUD_DACDAT),
-	.audio_DACLRCK							(AUD_DACLRCK),
+	// .audio_pll_ref_clk_clk					(CLOCK3_50),
+	// .audio_pll_ref_reset_reset				(1'b0),
+	// .audio_pll_clk_clk						(AUD_XCK),
+	// .audio_ADCDAT							(AUD_ADCDAT),
+	// .audio_ADCLRCK							(AUD_ADCLRCK),
+	// .audio_BCLK								(AUD_BCLK),
+	// .audio_DACDAT							(AUD_DACDAT),
+	// .audio_DACLRCK							(AUD_DACLRCK),
 
 	// Slider Switches
 	.slider_switches_export					(SW),
@@ -512,10 +512,10 @@ Computer_System The_System (
 	// Accelerometer
 	.hps_io_hps_io_gpio_inst_GPIO61	(HPS_GSENSOR_INT),
 
-	.adc_sclk                        (ADC_SCLK),
-	.adc_cs_n                        (ADC_CS_N),
-	.adc_dout                        (ADC_DOUT),
-	.adc_din                         (ADC_DIN),
+	// .adc_sclk                        (ADC_SCLK),
+	// .adc_cs_n                        (ADC_CS_N),
+	// .adc_dout                        (ADC_DOUT),
+	// .adc_din                         (ADC_DIN),
 
 	// General Purpose I/O
 	.hps_io_hps_io_gpio_inst_GPIO40	(HPS_GPIO[0]),
@@ -569,7 +569,7 @@ Computer_System The_System (
 
 	.snake_fpga_0_reset_conduit_reset_n (snake_fpga_0_reset_conduit_reset_n),
 	.snake_fpga_0_state_export_conduit_readdata (snake_fpga_0_state_export_conduit_readdata),
-	.snake_fpga_0_cmd_conduit_readdata (snake_fpga_0_cmd_conduit_readdata)
+	// .snake_fpga_0_cmd_conduit_readdata (snake_fpga_0_cmd_conduit_readdata)
 );
 
 

@@ -1,17 +1,5 @@
 	component Computer_System is
 		port (
-			adc_sclk                                   : out   std_logic;                                        -- sclk
-			adc_cs_n                                   : out   std_logic;                                        -- cs_n
-			adc_dout                                   : in    std_logic                     := 'X';             -- dout
-			adc_din                                    : out   std_logic;                                        -- din
-			audio_ADCDAT                               : in    std_logic                     := 'X';             -- ADCDAT
-			audio_ADCLRCK                              : in    std_logic                     := 'X';             -- ADCLRCK
-			audio_BCLK                                 : in    std_logic                     := 'X';             -- BCLK
-			audio_DACDAT                               : out   std_logic;                                        -- DACDAT
-			audio_DACLRCK                              : in    std_logic                     := 'X';             -- DACLRCK
-			audio_pll_clk_clk                          : out   std_logic;                                        -- clk
-			audio_pll_ref_clk_clk                      : in    std_logic                     := 'X';             -- clk
-			audio_pll_ref_reset_reset                  : in    std_logic                     := 'X';             -- reset
 			av_config_SDAT                             : inout std_logic                     := 'X';             -- SDAT
 			av_config_SCLK                             : out   std_logic;                                        -- SCLK
 			expansion_jp1_export                       : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
@@ -105,6 +93,7 @@
 			sdram_we_n                                 : out   std_logic;                                        -- we_n
 			sdram_clk_clk                              : out   std_logic;                                        -- clk
 			slider_switches_export                     : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
+			snake_fpga_0_cmd_conduit_readdata          : out   std_logic_vector(6 downto 0);                     -- readdata
 			snake_fpga_0_reset_conduit_reset_n         : in    std_logic                     := 'X';             -- reset_n
 			snake_fpga_0_state_export_conduit_readdata : out   std_logic_vector(6 downto 0);                     -- readdata
 			system_pll_ref_clk_clk                     : in    std_logic                     := 'X';             -- clk
@@ -118,25 +107,12 @@
 			vga_G                                      : out   std_logic_vector(7 downto 0);                     -- G
 			vga_B                                      : out   std_logic_vector(7 downto 0);                     -- B
 			video_pll_ref_clk_clk                      : in    std_logic                     := 'X';             -- clk
-			video_pll_ref_reset_reset                  : in    std_logic                     := 'X';             -- reset
-			snake_fpga_0_cmd_conduit_readdata          : out   std_logic_vector(6 downto 0)                      -- readdata
+			video_pll_ref_reset_reset                  : in    std_logic                     := 'X'              -- reset
 		);
 	end component Computer_System;
 
 	u0 : component Computer_System
 		port map (
-			adc_sclk                                   => CONNECTED_TO_adc_sclk,                                   --                               adc.sclk
-			adc_cs_n                                   => CONNECTED_TO_adc_cs_n,                                   --                                  .cs_n
-			adc_dout                                   => CONNECTED_TO_adc_dout,                                   --                                  .dout
-			adc_din                                    => CONNECTED_TO_adc_din,                                    --                                  .din
-			audio_ADCDAT                               => CONNECTED_TO_audio_ADCDAT,                               --                             audio.ADCDAT
-			audio_ADCLRCK                              => CONNECTED_TO_audio_ADCLRCK,                              --                                  .ADCLRCK
-			audio_BCLK                                 => CONNECTED_TO_audio_BCLK,                                 --                                  .BCLK
-			audio_DACDAT                               => CONNECTED_TO_audio_DACDAT,                               --                                  .DACDAT
-			audio_DACLRCK                              => CONNECTED_TO_audio_DACLRCK,                              --                                  .DACLRCK
-			audio_pll_clk_clk                          => CONNECTED_TO_audio_pll_clk_clk,                          --                     audio_pll_clk.clk
-			audio_pll_ref_clk_clk                      => CONNECTED_TO_audio_pll_ref_clk_clk,                      --                 audio_pll_ref_clk.clk
-			audio_pll_ref_reset_reset                  => CONNECTED_TO_audio_pll_ref_reset_reset,                  --               audio_pll_ref_reset.reset
 			av_config_SDAT                             => CONNECTED_TO_av_config_SDAT,                             --                         av_config.SDAT
 			av_config_SCLK                             => CONNECTED_TO_av_config_SCLK,                             --                                  .SCLK
 			expansion_jp1_export                       => CONNECTED_TO_expansion_jp1_export,                       --                     expansion_jp1.export
@@ -230,6 +206,7 @@
 			sdram_we_n                                 => CONNECTED_TO_sdram_we_n,                                 --                                  .we_n
 			sdram_clk_clk                              => CONNECTED_TO_sdram_clk_clk,                              --                         sdram_clk.clk
 			slider_switches_export                     => CONNECTED_TO_slider_switches_export,                     --                   slider_switches.export
+			snake_fpga_0_cmd_conduit_readdata          => CONNECTED_TO_snake_fpga_0_cmd_conduit_readdata,          --          snake_fpga_0_cmd_conduit.readdata
 			snake_fpga_0_reset_conduit_reset_n         => CONNECTED_TO_snake_fpga_0_reset_conduit_reset_n,         --        snake_fpga_0_reset_conduit.reset_n
 			snake_fpga_0_state_export_conduit_readdata => CONNECTED_TO_snake_fpga_0_state_export_conduit_readdata, -- snake_fpga_0_state_export_conduit.readdata
 			system_pll_ref_clk_clk                     => CONNECTED_TO_system_pll_ref_clk_clk,                     --                system_pll_ref_clk.clk
@@ -243,7 +220,6 @@
 			vga_G                                      => CONNECTED_TO_vga_G,                                      --                                  .G
 			vga_B                                      => CONNECTED_TO_vga_B,                                      --                                  .B
 			video_pll_ref_clk_clk                      => CONNECTED_TO_video_pll_ref_clk_clk,                      --                 video_pll_ref_clk.clk
-			video_pll_ref_reset_reset                  => CONNECTED_TO_video_pll_ref_reset_reset,                  --               video_pll_ref_reset.reset
-			snake_fpga_0_cmd_conduit_readdata          => CONNECTED_TO_snake_fpga_0_cmd_conduit_readdata           --          snake_fpga_0_cmd_conduit.readdata
+			video_pll_ref_reset_reset                  => CONNECTED_TO_video_pll_ref_reset_reset                   --               video_pll_ref_reset.reset
 		);
 

@@ -1,17 +1,5 @@
 	component Computer_System is
 		port (
-			adc_sclk                                   : out   std_logic;                                        -- sclk
-			adc_cs_n                                   : out   std_logic;                                        -- cs_n
-			adc_dout                                   : in    std_logic                     := 'X';             -- dout
-			adc_din                                    : out   std_logic;                                        -- din
-			audio_ADCDAT                               : in    std_logic                     := 'X';             -- ADCDAT
-			audio_ADCLRCK                              : in    std_logic                     := 'X';             -- ADCLRCK
-			audio_BCLK                                 : in    std_logic                     := 'X';             -- BCLK
-			audio_DACDAT                               : out   std_logic;                                        -- DACDAT
-			audio_DACLRCK                              : in    std_logic                     := 'X';             -- DACLRCK
-			audio_pll_clk_clk                          : out   std_logic;                                        -- clk
-			audio_pll_ref_clk_clk                      : in    std_logic                     := 'X';             -- clk
-			audio_pll_ref_reset_reset                  : in    std_logic                     := 'X';             -- reset
 			av_config_SDAT                             : inout std_logic                     := 'X';             -- SDAT
 			av_config_SCLK                             : out   std_logic;                                        -- SCLK
 			expansion_jp1_export                       : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export

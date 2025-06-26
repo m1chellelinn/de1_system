@@ -122,6 +122,20 @@ always_ff @( posedge clk ) begin
               next_state <= PLAYING;
             end
 
+            `CMD_GOLDEN_APPLE_ADD: begin
+              vga_px_write <= 1;
+              vga_px_writedata <= `GAPPLE_COLOUR;
+              state <= REQUESTING_PX;
+              next_state <= PLAYING;
+            end
+
+            `CMD_GOLDEN_APPLE_DEL: begin
+              vga_px_write <= 1;
+              vga_px_writedata <= `BLACK;
+              state <= REQUESTING_PX;
+              next_state <= PLAYING;
+            end
+
           endcase
         end
         else begin

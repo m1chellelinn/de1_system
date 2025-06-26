@@ -1,17 +1,5 @@
 
 module Computer_System (
-	adc_sclk,
-	adc_cs_n,
-	adc_dout,
-	adc_din,
-	audio_ADCDAT,
-	audio_ADCLRCK,
-	audio_BCLK,
-	audio_DACDAT,
-	audio_DACLRCK,
-	audio_pll_clk_clk,
-	audio_pll_ref_clk_clk,
-	audio_pll_ref_reset_reset,
 	av_config_SDAT,
 	av_config_SCLK,
 	expansion_jp1_export,
@@ -105,6 +93,7 @@ module Computer_System (
 	sdram_we_n,
 	sdram_clk_clk,
 	slider_switches_export,
+	snake_fpga_0_cmd_conduit_readdata,
 	snake_fpga_0_reset_conduit_reset_n,
 	snake_fpga_0_state_export_conduit_readdata,
 	system_pll_ref_clk_clk,
@@ -118,21 +107,8 @@ module Computer_System (
 	vga_G,
 	vga_B,
 	video_pll_ref_clk_clk,
-	video_pll_ref_reset_reset,
-	snake_fpga_0_cmd_conduit_readdata);	
+	video_pll_ref_reset_reset);	
 
-	output		adc_sclk;
-	output		adc_cs_n;
-	input		adc_dout;
-	output		adc_din;
-	input		audio_ADCDAT;
-	input		audio_ADCLRCK;
-	input		audio_BCLK;
-	output		audio_DACDAT;
-	input		audio_DACLRCK;
-	output		audio_pll_clk_clk;
-	input		audio_pll_ref_clk_clk;
-	input		audio_pll_ref_reset_reset;
 	inout		av_config_SDAT;
 	output		av_config_SCLK;
 	inout	[31:0]	expansion_jp1_export;
@@ -226,6 +202,7 @@ module Computer_System (
 	output		sdram_we_n;
 	output		sdram_clk_clk;
 	input	[9:0]	slider_switches_export;
+	output	[6:0]	snake_fpga_0_cmd_conduit_readdata;
 	input		snake_fpga_0_reset_conduit_reset_n;
 	output	[6:0]	snake_fpga_0_state_export_conduit_readdata;
 	input		system_pll_ref_clk_clk;
@@ -240,5 +217,4 @@ module Computer_System (
 	output	[7:0]	vga_B;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
-	output	[6:0]	snake_fpga_0_cmd_conduit_readdata;
 endmodule

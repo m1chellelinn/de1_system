@@ -1,16 +1,4 @@
 	Computer_System u0 (
-		.adc_sclk                                   (<connected-to-adc_sclk>),                                   //                               adc.sclk
-		.adc_cs_n                                   (<connected-to-adc_cs_n>),                                   //                                  .cs_n
-		.adc_dout                                   (<connected-to-adc_dout>),                                   //                                  .dout
-		.adc_din                                    (<connected-to-adc_din>),                                    //                                  .din
-		.audio_ADCDAT                               (<connected-to-audio_ADCDAT>),                               //                             audio.ADCDAT
-		.audio_ADCLRCK                              (<connected-to-audio_ADCLRCK>),                              //                                  .ADCLRCK
-		.audio_BCLK                                 (<connected-to-audio_BCLK>),                                 //                                  .BCLK
-		.audio_DACDAT                               (<connected-to-audio_DACDAT>),                               //                                  .DACDAT
-		.audio_DACLRCK                              (<connected-to-audio_DACLRCK>),                              //                                  .DACLRCK
-		.audio_pll_clk_clk                          (<connected-to-audio_pll_clk_clk>),                          //                     audio_pll_clk.clk
-		.audio_pll_ref_clk_clk                      (<connected-to-audio_pll_ref_clk_clk>),                      //                 audio_pll_ref_clk.clk
-		.audio_pll_ref_reset_reset                  (<connected-to-audio_pll_ref_reset_reset>),                  //               audio_pll_ref_reset.reset
 		.av_config_SDAT                             (<connected-to-av_config_SDAT>),                             //                         av_config.SDAT
 		.av_config_SCLK                             (<connected-to-av_config_SCLK>),                             //                                  .SCLK
 		.expansion_jp1_export                       (<connected-to-expansion_jp1_export>),                       //                     expansion_jp1.export
@@ -104,6 +92,7 @@
 		.sdram_we_n                                 (<connected-to-sdram_we_n>),                                 //                                  .we_n
 		.sdram_clk_clk                              (<connected-to-sdram_clk_clk>),                              //                         sdram_clk.clk
 		.slider_switches_export                     (<connected-to-slider_switches_export>),                     //                   slider_switches.export
+		.snake_fpga_0_cmd_conduit_readdata          (<connected-to-snake_fpga_0_cmd_conduit_readdata>),          //          snake_fpga_0_cmd_conduit.readdata
 		.snake_fpga_0_reset_conduit_reset_n         (<connected-to-snake_fpga_0_reset_conduit_reset_n>),         //        snake_fpga_0_reset_conduit.reset_n
 		.snake_fpga_0_state_export_conduit_readdata (<connected-to-snake_fpga_0_state_export_conduit_readdata>), // snake_fpga_0_state_export_conduit.readdata
 		.system_pll_ref_clk_clk                     (<connected-to-system_pll_ref_clk_clk>),                     //                system_pll_ref_clk.clk
@@ -117,7 +106,6 @@
 		.vga_G                                      (<connected-to-vga_G>),                                      //                                  .G
 		.vga_B                                      (<connected-to-vga_B>),                                      //                                  .B
 		.video_pll_ref_clk_clk                      (<connected-to-video_pll_ref_clk_clk>),                      //                 video_pll_ref_clk.clk
-		.video_pll_ref_reset_reset                  (<connected-to-video_pll_ref_reset_reset>),                  //               video_pll_ref_reset.reset
-		.snake_fpga_0_cmd_conduit_readdata          (<connected-to-snake_fpga_0_cmd_conduit_readdata>)           //          snake_fpga_0_cmd_conduit.readdata
+		.video_pll_ref_reset_reset                  (<connected-to-video_pll_ref_reset_reset>)                   //               video_pll_ref_reset.reset
 	);
 
