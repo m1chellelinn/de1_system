@@ -6,12 +6,12 @@ module snake_fpga (
   input  logic        reset_n,            //      reset.reset_n           // 
   input  logic        dbg_rst_n,          //      a conduit               // 
                                           //                              // 
-  output logic [31:0] vga_ch_address,     // vga_master.address           // score_handler
-  output logic        vga_ch_read,        //           .read              // score_handler
+  output logic [31:0] vga_ch_address,     // vga_master.address           // text_handler
+  output logic        vga_ch_read,        //           .read              // text_handler
   input  logic        vga_ch_waitrequest, //           .waitrequest       // 
   input  logic [15:0] vga_ch_readdata,    //           .readdata          // 
-  output logic        vga_ch_write,       //           .write             // score_handler
-  output logic [15:0] vga_ch_writedata,   //           .writedata         // score_handler
+  output logic        vga_ch_write,       //           .write             // text_handler
+  output logic [15:0] vga_ch_writedata,   //           .writedata         // text_handler
                                           //                              // 
   output logic [31:0] vga_px_address,     // vga_master.address           // comb
   output logic        vga_px_read,        //           .read              // comb
@@ -32,17 +32,18 @@ module snake_fpga (
 );
 
 enum { WAITING, PLAYING, REQUESTING_PX,
-       CLEAR_SCREEN_INIT, CLEAR_SCREEN} state, next_state;  // seq
-logic [31:0] score;                                         // seq
-logic [13:0] hps_cmd;                                       // comb
-logic [8:0] hps_x;                                          // comb
-logic [7:0] hps_y;                                          // comb
-logic [15:0] hps_score;                                     // comb
-logic [8:0] cls_x; // "clear screen, x"                     // seq
-logic [7:0] cls_y; // "clear screen, y"                     // seq
-logic hps_rst;                                              // comb
+       CLEAR_SCREEN_INIT, CLEAR_SCREEN} state, next_state;    // seq
+logic [31:0] score;                                           // seq
+logic [13:0] hps_cmd;                                         // comb
+logic [8:0] hps_x;                                            // comb
+logic [7:0] hps_y;                                            // comb
+logic [15:0] hps_score;                                       // comb
+logic [8:0] cls_x; // "clear screen, x"                       // seq
+logic [7:0] cls_y; // "clear screen, y"                       // seq
+logic hps_rst;                                                // comb
+logic is_waiting;                                             // comb, used by text_handler
 
-score_handler handler (.*);
+text_handler handler (.*);
 
 
 always_ff @( posedge clk ) begin
@@ -212,10 +213,12 @@ always_comb begin
   hps_waitrequest = 0;
   hps_readdata = 0;
 
+  is_waiting = 0;
   state_export = state;
 
   case (state) 
     WAITING: begin
+      is_waiting = 1;
     end
 
     PLAYING: begin

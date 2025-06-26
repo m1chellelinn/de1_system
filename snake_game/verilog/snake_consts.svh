@@ -5,6 +5,16 @@
 // https://en.wikipedia.org/wiki/Code_page_437
 `define NUMERIC_ASCII_OFFSET 8'h30
 `define ALPHA_ASCII_OFFSET   8'h37
+`define CHAR_E 8'h45
+`define CHAR_N 8'h4E
+`define CHAR_T 8'h54
+`define CHAR_R 8'h52
+`define CHAR_t 8'h74
+`define CHAR_o 8'h6F
+`define CHAR_s 8'h73
+`define CHAR_a 8'h61
+`define CHAR_r 8'h72
+`define CHAR_  8'h00
 
 `define RESET_GAME 32'h80000000
 
