@@ -343,3 +343,7 @@ int Snake::update_apple(int x, int y, ItemType type, bool if_add) {
 inline int Snake::check_fpga_is_live() {
     return snake_v_addr && snake_fd;
 }
+
+bool Snake::is_speed_boosted() {
+    return speed_boost_remaining > 0;
+}
