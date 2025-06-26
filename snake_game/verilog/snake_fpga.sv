@@ -168,14 +168,14 @@ always_ff @( posedge clk ) begin
         cls_x <= 0;
         cls_y <= 0;
         vga_px_write <= 1'b1;
-        vga_px_writedata <= (cls_y[0] ^ cls_y[0]) ? `BLACK : `GRAY;
+        vga_px_writedata <= (cls_x[0] ^ cls_y[0]) ? `BLACK : `GRAY;
         state <= CLEAR_SCREEN;
 
         // cmd_export <= cmd_export + 1;
       end
 
       CLEAR_SCREEN: begin
-        vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+        vga_px_writedata <= (cls_x[0] ^ cls_y[0]) ? `BLACK : `GRAY;
 
         if (vga_px_waitrequest) ;// do nothing
         else if ( cls_x == `NUM_X_PIXELS && cls_y == `NUM_Y_PIXELS) begin
