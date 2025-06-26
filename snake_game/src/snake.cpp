@@ -256,11 +256,11 @@ void Snake::gen_apples(int num_apples_to_generate) {
         new_apple.y = (rand() % (NUM_Y_PIXELS - 60)) + 30;
 
         int random_value = rand() % 10;
-        if (random_val == 0) {
+        if (random_value == 0) {
             new_apple.type = GOLDEN_APPLE;
             cout << "  + GOLDEN apple @ " << new_apple.x << ", " << new_apple.y << endl;
-        } else if (random_val == 1) {
-            new_apple.type = SPEED_POTION;
+        } else if (random_value == 1) {
+            new_apple.type = SPEED_UP;
             cout << "  + SPEED POTION @ " << new_apple.x << ", " << new_apple.y << endl;
         } else {
             new_apple.type = REGULAR_APPLE;
@@ -323,8 +323,8 @@ int Snake::update_apple(int x, int y, ItemType type, bool if_add) {
     if (type == GOLDEN_APPLE) {
         cmd_base = if_add ? CMD_GOLDEN_APPLE_ADD : CMD_GOLDEN_APPLE_DEL;
         cout << "    Updating GOLDEN apple" << endl;
-    } else if (type == SPEED_POTION) {
-        cmd_base = if_add ? CMD_SPEED_POTION_ADD : CMD_SPEED_POTION_DEL;
+    } else if (type == SPEED_UP) {
+        cmd_base = if_add ? CMD_SPEED_UP_ADD : CMD_SPEED_UP_DEL;
         cout << "    Updating SPEED POTION" << endl;
     } else {
         cmd_base = if_add ? CMD_APPLE_ADD : CMD_APPLE_DEL;
