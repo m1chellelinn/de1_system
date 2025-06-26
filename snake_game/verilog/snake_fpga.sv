@@ -135,11 +135,10 @@ always_ff @( posedge clk ) begin
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
-
           endcase
         end
         else begin
-        end   
+        end  
       end
 
       REQUESTING_PX: begin
@@ -155,19 +154,22 @@ always_ff @( posedge clk ) begin
         cls_x <= 0;
         cls_y <= 0;
         vga_px_write <= 1'b1;
-        vga_px_writedata <= 16'h0000;
+        vga_px_writedata <= `BLACK;
         state <= CLEAR_SCREEN;
 
         // cmd_export <= cmd_export + 1;
       end
 
       CLEAR_SCREEN: begin
+        if (hps_x[0] ^ hps_y[0]) 
+          vga_px_writedata <= `BLACK;
+        else 
+          vga_px_writedata <= `GRAY;
 
         if (vga_px_waitrequest) ;// do nothing
         else if ( cls_x == `NUM_X_PIXELS && cls_y == `NUM_Y_PIXELS) begin
           state <= next_state;
           vga_px_write <= 1'b0;
-
         end
         else if ( cls_x == `NUM_X_PIXELS) begin
           cls_x = 0;
