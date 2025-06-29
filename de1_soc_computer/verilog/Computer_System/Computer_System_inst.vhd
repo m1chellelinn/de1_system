@@ -4,6 +4,9 @@
 			av_config_SCLK                             : out   std_logic;                                        -- SCLK
 			expansion_jp1_export                       : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
 			expansion_jp2_export                       : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			gpio_driver_debug_rst_export               : in    std_logic                     := 'X';             -- export
+			gpio_driver_gpio_0_export                  : inout std_logic_vector(35 downto 0) := (others => 'X'); -- export
+			gpio_driver_gpio_1_export                  : inout std_logic_vector(35 downto 0) := (others => 'X'); -- export
 			hex3_hex0_export                           : out   std_logic_vector(31 downto 0);                    -- export
 			hex5_hex4_export                           : out   std_logic_vector(15 downto 0);                    -- export
 			hps_io_hps_io_emac1_inst_TX_CLK            : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
@@ -117,6 +120,9 @@
 			av_config_SCLK                             => CONNECTED_TO_av_config_SCLK,                             --                                  .SCLK
 			expansion_jp1_export                       => CONNECTED_TO_expansion_jp1_export,                       --                     expansion_jp1.export
 			expansion_jp2_export                       => CONNECTED_TO_expansion_jp2_export,                       --                     expansion_jp2.export
+			gpio_driver_debug_rst_export               => CONNECTED_TO_gpio_driver_debug_rst_export,               --             gpio_driver_debug_rst.export
+			gpio_driver_gpio_0_export                  => CONNECTED_TO_gpio_driver_gpio_0_export,                  --                gpio_driver_gpio_0.export
+			gpio_driver_gpio_1_export                  => CONNECTED_TO_gpio_driver_gpio_1_export,                  --                gpio_driver_gpio_1.export
 			hex3_hex0_export                           => CONNECTED_TO_hex3_hex0_export,                           --                         hex3_hex0.export
 			hex5_hex4_export                           => CONNECTED_TO_hex5_hex4_export,                           --                         hex5_hex4.export
 			hps_io_hps_io_emac1_inst_TX_CLK            => CONNECTED_TO_hps_io_hps_io_emac1_inst_TX_CLK,            --                            hps_io.hps_io_emac1_inst_TX_CLK

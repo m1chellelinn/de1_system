@@ -410,10 +410,12 @@ Computer_System The_System (
 	.pushbuttons_export						(~KEY[3:0]),
 
 	// Expansion JP1
-	.expansion_jp1_export					({GPIO_0[35:19], GPIO_0[17], GPIO_0[15:3], GPIO_0[1]}),
+	// .expansion_jp1_export					({GPIO_0[35:19], GPIO_0[17], GPIO_0[15:3], GPIO_0[1]}),
+	.expansion_jp1_export					(32'bz),
 
 	// Expansion JP2
-	.expansion_jp2_export					({GPIO_1[35:19], GPIO_1[17], GPIO_1[15:3], GPIO_1[1]}),
+	// .expansion_jp2_export					({GPIO_1[35:19], GPIO_1[17], GPIO_1[15:3], GPIO_1[1]}),
+	.expansion_jp2_export					(32'bz),
 
 	// LEDs
 	.leds_export								(LEDR),
@@ -570,6 +572,10 @@ Computer_System The_System (
 	.snake_fpga_0_reset_conduit_reset_n (snake_fpga_0_reset_conduit_reset_n),
 	.snake_fpga_0_state_export_conduit_readdata (snake_fpga_0_state_export_conduit_readdata),
 	// .snake_fpga_0_cmd_conduit_readdata (snake_fpga_0_cmd_conduit_readdata)
+	
+	.gpio_driver_debug_rst_export(KEY[0]),
+	.gpio_driver_gpio_0_export(GPIO_0),
+	.gpio_driver_gpio_1_export(GPIO_1)
 );
 
 

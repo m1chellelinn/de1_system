@@ -3,6 +3,9 @@
 		.av_config_SCLK                             (<connected-to-av_config_SCLK>),                             //                                  .SCLK
 		.expansion_jp1_export                       (<connected-to-expansion_jp1_export>),                       //                     expansion_jp1.export
 		.expansion_jp2_export                       (<connected-to-expansion_jp2_export>),                       //                     expansion_jp2.export
+		.gpio_driver_debug_rst_export               (<connected-to-gpio_driver_debug_rst_export>),               //             gpio_driver_debug_rst.export
+		.gpio_driver_gpio_0_export                  (<connected-to-gpio_driver_gpio_0_export>),                  //                gpio_driver_gpio_0.export
+		.gpio_driver_gpio_1_export                  (<connected-to-gpio_driver_gpio_1_export>),                  //                gpio_driver_gpio_1.export
 		.hex3_hex0_export                           (<connected-to-hex3_hex0_export>),                           //                         hex3_hex0.export
 		.hex5_hex4_export                           (<connected-to-hex5_hex4_export>),                           //                         hex5_hex4.export
 		.hps_io_hps_io_emac1_inst_TX_CLK            (<connected-to-hps_io_hps_io_emac1_inst_TX_CLK>),            //                            hps_io.hps_io_emac1_inst_TX_CLK

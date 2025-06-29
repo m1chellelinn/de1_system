@@ -6,12 +6,12 @@ module snake_fpga (
   input  logic        reset_n,            //      reset.reset_n           // 
   input  logic        dbg_rst_n,          //      a conduit               // 
                                           //                              // 
-  output logic [31:0] vga_ch_address,     // vga_master.address           // score_handler
-  output logic        vga_ch_read,        //           .read              // score_handler
+  output logic [31:0] vga_ch_address,     // vga_master.address           // text_handler
+  output logic        vga_ch_read,        //           .read              // text_handler
   input  logic        vga_ch_waitrequest, //           .waitrequest       // 
   input  logic [15:0] vga_ch_readdata,    //           .readdata          // 
-  output logic        vga_ch_write,       //           .write             // score_handler
-  output logic [15:0] vga_ch_writedata,   //           .writedata         // score_handler
+  output logic        vga_ch_write,       //           .write             // text_handler
+  output logic [15:0] vga_ch_writedata,   //           .writedata         // text_handler
                                           //                              // 
   output logic [31:0] vga_px_address,     // vga_master.address           // comb
   output logic        vga_px_read,        //           .read              // comb
@@ -32,17 +32,18 @@ module snake_fpga (
 );
 
 enum { WAITING, PLAYING, REQUESTING_PX,
-       CLEAR_SCREEN_INIT, CLEAR_SCREEN} state, next_state;  // seq
-logic [31:0] score;                                         // seq
-logic [13:0] hps_cmd;                                       // comb
-logic [8:0] hps_x;                                          // comb
-logic [7:0] hps_y;                                          // comb
-logic [15:0] hps_score;                                     // comb
-logic [8:0] cls_x; // "clear screen, x"                     // seq
-logic [7:0] cls_y; // "clear screen, y"                     // seq
-logic hps_rst;                                              // comb
+       CLEAR_SCREEN_INIT, CLEAR_SCREEN} state, next_state;    // seq
+logic [31:0] score;                                           // seq
+logic [13:0] hps_cmd;                                         // comb
+logic [8:0] hps_x;                                            // comb
+logic [7:0] hps_y;                                            // comb
+logic [15:0] hps_score;                                       // comb
+logic [8:0] cls_x; // "clear screen, x"                       // seq
+logic [7:0] cls_y; // "clear screen, y"                       // seq
+logic hps_rst;                                                // comb
+logic is_waiting;                                             // comb, used by text_handler
 
-score_handler handler (.*);
+text_handler handler (.*);
 
 
 always_ff @( posedge clk ) begin
@@ -99,7 +100,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_SNAKE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -117,7 +118,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -131,7 +132,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_GOLDEN_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -145,7 +146,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_SPEED_UP_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -168,14 +169,14 @@ always_ff @( posedge clk ) begin
         cls_x <= 0;
         cls_y <= 0;
         vga_px_write <= 1'b1;
-        vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+        vga_px_writedata <= (cls_x[0] ^ cls_y[0]) ? `BLACK : `GRAY;
         state <= CLEAR_SCREEN;
 
         // cmd_export <= cmd_export + 1;
       end
 
       CLEAR_SCREEN: begin
-        vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+        vga_px_writedata <= (cls_x[0] ^ cls_y[0]) ? `BLACK : `GRAY;
 
         if (vga_px_waitrequest) ;// do nothing
         else if ( cls_x == `NUM_X_PIXELS && cls_y == `NUM_Y_PIXELS) begin
@@ -212,10 +213,12 @@ always_comb begin
   hps_waitrequest = 0;
   hps_readdata = 0;
 
+  is_waiting = 0;
   state_export = state;
 
   case (state) 
     WAITING: begin
+      is_waiting = 1;
     end
 
     PLAYING: begin

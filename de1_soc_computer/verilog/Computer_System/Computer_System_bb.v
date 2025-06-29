@@ -4,6 +4,9 @@ module Computer_System (
 	av_config_SCLK,
 	expansion_jp1_export,
 	expansion_jp2_export,
+	gpio_driver_debug_rst_export,
+	gpio_driver_gpio_0_export,
+	gpio_driver_gpio_1_export,
 	hex3_hex0_export,
 	hex5_hex4_export,
 	hps_io_hps_io_emac1_inst_TX_CLK,
@@ -113,6 +116,9 @@ module Computer_System (
 	output		av_config_SCLK;
 	inout	[31:0]	expansion_jp1_export;
 	inout	[31:0]	expansion_jp2_export;
+	input		gpio_driver_debug_rst_export;
+	inout	[35:0]	gpio_driver_gpio_0_export;
+	inout	[35:0]	gpio_driver_gpio_1_export;
 	output	[31:0]	hex3_hex0_export;
 	output	[15:0]	hex5_hex4_export;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;

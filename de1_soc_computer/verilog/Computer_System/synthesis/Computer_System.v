@@ -8,6 +8,9 @@ module Computer_System (
 		output wire        av_config_SCLK,                             //                                  .SCLK
 		inout  wire [31:0] expansion_jp1_export,                       //                     expansion_jp1.export
 		inout  wire [31:0] expansion_jp2_export,                       //                     expansion_jp2.export
+		input  wire        gpio_driver_debug_rst_export,               //             gpio_driver_debug_rst.export
+		inout  wire [35:0] gpio_driver_gpio_0_export,                  //                gpio_driver_gpio_0.export
+		inout  wire [35:0] gpio_driver_gpio_1_export,                  //                gpio_driver_gpio_1.export
 		output wire [31:0] hex3_hex0_export,                           //                         hex3_hex0.export
 		output wire [15:0] hex5_hex4_export,                           //                         hex5_hex4.export
 		output wire        hps_io_hps_io_emac1_inst_TX_CLK,            //                            hps_io.hps_io_emac1_inst_TX_CLK
@@ -114,7 +117,7 @@ module Computer_System (
 		input  wire        video_pll_ref_reset_reset                   //               video_pll_ref_reset.reset
 	);
 
-	wire          system_pll_sys_clk_clk;                                                 // System_PLL:sys_clk_clk -> [ARM_A9_HPS:f2h_axi_clk, ARM_A9_HPS:h2f_axi_clk, ARM_A9_HPS:h2f_lw_axi_clk, AV_Config:clk, Char_DMA_Addr_Translation:clk, Expansion_JP1:clk, Expansion_JP2:clk, F2H_Mem_Window_00000000:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, IrDA:clk, JTAG_UART:clk, JTAG_UART_2nd_Core:clk, JTAG_UART_for_ARM_0:clk, JTAG_UART_for_ARM_1:clk, JTAG_to_FPGA_Bridge:clk_clk, JTAG_to_HPS_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pixel_DMA_Addr_Translation:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, mm_interconnect_0:System_PLL_sys_clk_clk, mm_interconnect_1:System_PLL_sys_clk_clk, rst_controller:clk, rst_controller_004:clk, snake_fpga_0:clk]
+	wire          system_pll_sys_clk_clk;                                                 // System_PLL:sys_clk_clk -> [ARM_A9_HPS:f2h_axi_clk, ARM_A9_HPS:h2f_axi_clk, ARM_A9_HPS:h2f_lw_axi_clk, AV_Config:clk, Char_DMA_Addr_Translation:clk, Expansion_JP1:clk, Expansion_JP2:clk, F2H_Mem_Window_00000000:clk, GPIO_Driver_0:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, IrDA:clk, JTAG_UART:clk, JTAG_UART_2nd_Core:clk, JTAG_UART_for_ARM_0:clk, JTAG_UART_for_ARM_1:clk, JTAG_to_FPGA_Bridge:clk_clk, JTAG_to_HPS_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pixel_DMA_Addr_Translation:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, mm_interconnect_0:System_PLL_sys_clk_clk, mm_interconnect_1:System_PLL_sys_clk_clk, rst_controller:clk, rst_controller_004:clk, snake_fpga_0:clk]
 	wire          video_pll_vga_clk_clk;                                                  // Video_PLL:vga_clk_clk -> VGA_Subsystem:vga_clk_clk
 	wire          video_pll_reset_source_reset;                                           // Video_PLL:reset_source_reset -> VGA_Subsystem:vga_reset_reset_n
 	wire          snake_fpga_0_character_master_waitrequest;                              // mm_interconnect_0:snake_fpga_0_character_master_waitrequest -> snake_fpga_0:vga_ch_waitrequest
@@ -344,6 +347,12 @@ module Computer_System (
 	wire          mm_interconnect_0_jtag_uart_for_arm_1_avalon_jtag_slave_read;           // mm_interconnect_0:JTAG_UART_for_ARM_1_avalon_jtag_slave_read -> JTAG_UART_for_ARM_1:av_read_n
 	wire          mm_interconnect_0_jtag_uart_for_arm_1_avalon_jtag_slave_write;          // mm_interconnect_0:JTAG_UART_for_ARM_1_avalon_jtag_slave_write -> JTAG_UART_for_ARM_1:av_write_n
 	wire   [31:0] mm_interconnect_0_jtag_uart_for_arm_1_avalon_jtag_slave_writedata;      // mm_interconnect_0:JTAG_UART_for_ARM_1_avalon_jtag_slave_writedata -> JTAG_UART_for_ARM_1:av_writedata
+	wire   [31:0] mm_interconnect_0_gpio_driver_0_hps_readdata;                           // GPIO_Driver_0:hps_readdata -> mm_interconnect_0:GPIO_Driver_0_hps_readdata
+	wire          mm_interconnect_0_gpio_driver_0_hps_waitrequest;                        // GPIO_Driver_0:hps_waitrequest -> mm_interconnect_0:GPIO_Driver_0_hps_waitrequest
+	wire    [3:0] mm_interconnect_0_gpio_driver_0_hps_address;                            // mm_interconnect_0:GPIO_Driver_0_hps_address -> GPIO_Driver_0:hps_address
+	wire          mm_interconnect_0_gpio_driver_0_hps_read;                               // mm_interconnect_0:GPIO_Driver_0_hps_read -> GPIO_Driver_0:hps_read
+	wire          mm_interconnect_0_gpio_driver_0_hps_write;                              // mm_interconnect_0:GPIO_Driver_0_hps_write -> GPIO_Driver_0:hps_write
+	wire   [31:0] mm_interconnect_0_gpio_driver_0_hps_writedata;                          // mm_interconnect_0:GPIO_Driver_0_hps_writedata -> GPIO_Driver_0:hps_writedata
 	wire   [31:0] mm_interconnect_0_snake_fpga_0_hps_slave_readdata;                      // snake_fpga_0:hps_readdata -> mm_interconnect_0:snake_fpga_0_hps_slave_readdata
 	wire          mm_interconnect_0_snake_fpga_0_hps_slave_waitrequest;                   // snake_fpga_0:hps_waitrequest -> mm_interconnect_0:snake_fpga_0_hps_slave_waitrequest
 	wire    [3:0] mm_interconnect_0_snake_fpga_0_hps_slave_address;                       // mm_interconnect_0:snake_fpga_0_hps_slave_address -> snake_fpga_0:hps_address
@@ -434,7 +443,7 @@ module Computer_System (
 	wire   [31:0] arm_a9_hps_f2h_irq0_irq;                                                // irq_mapper:sender_irq -> ARM_A9_HPS:f2h_irq_p0
 	wire          irq_mapper_001_receiver0_irq;                                           // JTAG_UART_for_ARM_1:av_irq -> irq_mapper_001:receiver0_irq
 	wire   [31:0] arm_a9_hps_f2h_irq1_irq;                                                // irq_mapper_001:sender_irq -> ARM_A9_HPS:f2h_irq_p1
-	wire          rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AV_Config:reset, Char_DMA_Addr_Translation:reset, Expansion_JP1:reset_n, Expansion_JP2:reset_n, F2H_Mem_Window_00000000:reset, HEX3_HEX0:reset_n, HEX5_HEX4:reset_n, IrDA:reset, JTAG_UART:rst_n, JTAG_UART_2nd_Core:rst_n, JTAG_UART_for_ARM_0:rst_n, JTAG_UART_for_ARM_1:rst_n, LEDs:reset_n, Onchip_SRAM:reset, Pixel_DMA_Addr_Translation:reset, Pushbuttons:reset_n, SDRAM:reset_n, Slider_Switches:reset_n, SysID:reset_n, mm_interconnect_0:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:snake_fpga_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:F2H_Mem_Window_00000000_reset_reset_bridge_in_reset_reset, mm_interconnect_1:JTAG_to_HPS_Bridge_clk_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_fpga_0:reset_n]
+	wire          rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AV_Config:reset, Char_DMA_Addr_Translation:reset, Expansion_JP1:reset_n, Expansion_JP2:reset_n, F2H_Mem_Window_00000000:reset, GPIO_Driver_0:reset_n, HEX3_HEX0:reset_n, HEX5_HEX4:reset_n, IrDA:reset, JTAG_UART:rst_n, JTAG_UART_2nd_Core:rst_n, JTAG_UART_for_ARM_0:rst_n, JTAG_UART_for_ARM_1:rst_n, LEDs:reset_n, Onchip_SRAM:reset, Pixel_DMA_Addr_Translation:reset, Pushbuttons:reset_n, SDRAM:reset_n, Slider_Switches:reset_n, SysID:reset_n, mm_interconnect_0:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:snake_fpga_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:F2H_Mem_Window_00000000_reset_reset_bridge_in_reset_reset, mm_interconnect_1:JTAG_to_HPS_Bridge_clk_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_fpga_0:reset_n]
 	wire          rst_controller_reset_out_reset_req;                                     // rst_controller:reset_req -> [Onchip_SRAM:reset_req, rst_translator:reset_req_in]
 	wire          arm_a9_hps_h2f_reset_reset;                                             // ARM_A9_HPS:h2f_rst_n -> [rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0, rst_controller_003:reset_in0, rst_controller_004:reset_in0]
 	wire          system_pll_reset_source_reset;                                          // System_PLL:reset_source_reset -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1]
@@ -734,6 +743,20 @@ module Computer_System (
 		.avs_cntl_write       (1'b0),                                                                   //     (terminated)
 		.avs_cntl_writedata   (64'b0000000000000000000000000000000000000000000000000000000000000000),   //     (terminated)
 		.avs_cntl_byteenable  (8'b00000000)                                                             //     (terminated)
+	);
+
+	gpio_driver gpio_driver_0 (
+		.clk             (system_pll_sys_clk_clk),                          //       clock.clk
+		.reset_n         (~rst_controller_reset_out_reset),                 //       reset.reset_n
+		.hps_address     (mm_interconnect_0_gpio_driver_0_hps_address),     //         hps.address
+		.hps_read        (mm_interconnect_0_gpio_driver_0_hps_read),        //            .read
+		.hps_waitrequest (mm_interconnect_0_gpio_driver_0_hps_waitrequest), //            .waitrequest
+		.hps_readdata    (mm_interconnect_0_gpio_driver_0_hps_readdata),    //            .readdata
+		.hps_write       (mm_interconnect_0_gpio_driver_0_hps_write),       //            .write
+		.hps_writedata   (mm_interconnect_0_gpio_driver_0_hps_writedata),   //            .writedata
+		.gpio_0          (gpio_driver_gpio_0_export),                       //      gpio_0.export
+		.gpio_1          (gpio_driver_gpio_1_export),                       //      gpio_1.export
+		.dbg_rst_n       (gpio_driver_debug_rst_export)                     // debug_reset.export
 	);
 
 	Computer_System_HEX3_HEX0 hex3_hex0 (
@@ -1197,6 +1220,12 @@ module Computer_System (
 		.F2H_Mem_Window_00000000_windowed_slave_byteenable                     (mm_interconnect_0_f2h_mem_window_00000000_windowed_slave_byteenable),    //                                                                .byteenable
 		.F2H_Mem_Window_00000000_windowed_slave_readdatavalid                  (mm_interconnect_0_f2h_mem_window_00000000_windowed_slave_readdatavalid), //                                                                .readdatavalid
 		.F2H_Mem_Window_00000000_windowed_slave_waitrequest                    (mm_interconnect_0_f2h_mem_window_00000000_windowed_slave_waitrequest),   //                                                                .waitrequest
+		.GPIO_Driver_0_hps_address                                             (mm_interconnect_0_gpio_driver_0_hps_address),                            //                                               GPIO_Driver_0_hps.address
+		.GPIO_Driver_0_hps_write                                               (mm_interconnect_0_gpio_driver_0_hps_write),                              //                                                                .write
+		.GPIO_Driver_0_hps_read                                                (mm_interconnect_0_gpio_driver_0_hps_read),                               //                                                                .read
+		.GPIO_Driver_0_hps_readdata                                            (mm_interconnect_0_gpio_driver_0_hps_readdata),                           //                                                                .readdata
+		.GPIO_Driver_0_hps_writedata                                           (mm_interconnect_0_gpio_driver_0_hps_writedata),                          //                                                                .writedata
+		.GPIO_Driver_0_hps_waitrequest                                         (mm_interconnect_0_gpio_driver_0_hps_waitrequest),                        //                                                                .waitrequest
 		.HEX3_HEX0_s1_address                                                  (mm_interconnect_0_hex3_hex0_s1_address),                                 //                                                    HEX3_HEX0_s1.address
 		.HEX3_HEX0_s1_write                                                    (mm_interconnect_0_hex3_hex0_s1_write),                                   //                                                                .write
 		.HEX3_HEX0_s1_readdata                                                 (mm_interconnect_0_hex3_hex0_s1_readdata),                                //                                                                .readdata

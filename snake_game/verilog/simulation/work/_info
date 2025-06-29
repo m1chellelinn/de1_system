@@ -15,49 +15,73 @@ R0
 R0
 vsnake_fpga
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1748145629
+!s110 1750965325
 !i10b 1
-!s100 >UVH>jV`94AUDn74H^bI60
-IQOT>Phg]cV2BOe<7i7[9f1
-Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s100 FNUE1JgD`dM=>6K[=mPhi1
+I9gPnHnP<jfQ2jYeYVL8U92
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 !s105 snake_fpga_sv_unit
 S1
-Z4 dC:/Users/micha/code/de1_system/snake_game/verilog/simulation
-w1748144807
+Z3 dC:/Users/micha/code/de1_system/snake_game/verilog/simulation
+w1750965240
 8C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv
 FC:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv
-L0 5
-Z5 OV;L;10.5b;63
+L0 4
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z6 !s108 1748145629.000000
-!s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_fpga.svh|C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv|
+!s108 1750965325.000000
+!s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_consts.svh|C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/snake_game/verilog/snake_fpga.sv|
 !i113 1
-Z7 o-work work -sv
-Z8 tCvgOpt 0
+Z5 o-work work -sv
+Z6 tCvgOpt 0
 vtb_snake
 R1
-R2
+!s110 1748145629
 !i10b 1
 !s100 ?ddbd[[QjDnzfk=[Bcf6Q2
 IIBokH7ba=haVb7nKB3mQ;2
-R3
+R2
 !s105 tb_snake_fpga_sv_unit
 S1
-R4
+R3
 w1748145624
 8C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv
 FC:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv
 L0 6
-R5
+R4
 r1
 !s85 0
 31
-R6
+!s108 1748145629.000000
 !s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_fpga.svh|C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/snake_game/verilog/tb_snake_fpga.sv|
 !i113 1
-R7
-R8
+R5
+R6
+vtext_handler
+R1
+!s110 1750965326
+!i10b 1
+!s100 Z9cnLafFL^EmJXDkZ63_=2
+ICfngo0J]SmbIh]9U]^S3:1
+R2
+!s105 scores_sv_unit
+S1
+R3
+w1750965304
+8C:/Users/micha/code/de1_system/snake_game/verilog/scores.sv
+FC:/Users/micha/code/de1_system/snake_game/verilog/scores.sv
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1750965326.000000
+!s107 C:\Users\micha\code\de1_system\snake_game\verilog\snake_consts.svh|C:/Users/micha/code/de1_system/snake_game/verilog/scores.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/snake_game/verilog/scores.sv|
+!i113 1
+R5
+R6

@@ -121,6 +121,46 @@
          type = "String";
       }
    }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Expansion_JP1
    {
       datum _sortIndex
@@ -199,6 +239,22 @@
       {
          value = "1";
          type = "boolean";
+      }
+   }
+   element GPIO_Driver_0
+   {
+      datum _sortIndex
+      {
+         value = "42";
+         type = "int";
+      }
+   }
+   element GPIO_Driver_0.hps
+   {
+      datum baseAddress
+      {
+         value = "320";
+         type = "String";
       }
    }
    element HEX3_HEX0
@@ -743,6 +799,21 @@
  <interface
    name="expansion_jp2"
    internal="Expansion_JP2.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_driver_debug_rst"
+   internal="GPIO_Driver_0.debug_reset"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_driver_gpio_0"
+   internal="GPIO_Driver_0.gpio_0"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_driver_gpio_1"
+   internal="GPIO_Driver_0.gpio_1"
    type="conduit"
    dir="end" />
  <interface
@@ -1484,6 +1555,7 @@
   <parameter name="SLAVE_ADDRESS_WIDTH" value="21" />
   <parameter name="SUB_WINDOW_COUNT" value="1" />
  </module>
+ <module name="GPIO_Driver_0" kind="GPIO_Driver" version="1.0" enabled="1" />
  <module name="HEX3_HEX0" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -2959,6 +3031,15 @@
    kind="avalon"
    version="18.1"
    start="ARM_A9_HPS.h2f_lw_axi_master"
+   end="GPIO_Driver_0.hps">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0140" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="ARM_A9_HPS.h2f_lw_axi_master"
    end="snake_fpga_0.hps_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0100" />
@@ -3648,6 +3729,11 @@
    kind="clock"
    version="18.1"
    start="System_PLL.sys_clk"
+   end="GPIO_Driver_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="System_PLL.sys_clk"
    end="ARM_A9_HPS.f2h_axi_clock" />
  <connection
    kind="clock"
@@ -4054,11 +4140,6 @@
    kind="reset"
    version="18.1"
    start="ARM_A9_HPS.h2f_reset"
-   end="ADC.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="ARM_A9_HPS.h2f_reset"
    end="Pixel_DMA_Addr_Translation.reset" />
  <connection
    kind="reset"
@@ -4085,6 +4166,16 @@
    version="18.1"
    start="ARM_A9_HPS.h2f_reset"
    end="snake_fpga_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="ARM_A9_HPS.h2f_reset"
+   end="ADC.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="ARM_A9_HPS.h2f_reset"
+   end="GPIO_Driver_0.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -4239,11 +4330,6 @@
    kind="reset"
    version="18.1"
    start="System_PLL.reset_source"
-   end="ADC.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="System_PLL.reset_source"
    end="Pixel_DMA_Addr_Translation.reset" />
  <connection
    kind="reset"
@@ -4270,6 +4356,16 @@
    version="18.1"
    start="System_PLL.reset_source"
    end="snake_fpga_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="System_PLL.reset_source"
+   end="ADC.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="System_PLL.reset_source"
+   end="GPIO_Driver_0.reset" />
  <connection
    kind="reset"
    version="18.1"

@@ -100,7 +100,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_SNAKE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -118,7 +118,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -132,7 +132,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_GOLDEN_APPLE_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end
@@ -146,7 +146,7 @@ always_ff @( posedge clk ) begin
 
             `CMD_SPEED_UP_DEL: begin
               vga_px_write <= 1;
-              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `BLACK : `GRAY;
+              vga_px_writedata <= (hps_x[0] ^ hps_y[0]) ? `GRAY : `BLACK;
               state <= REQUESTING_PX;
               next_state <= PLAYING;
             end

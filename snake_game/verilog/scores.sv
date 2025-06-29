@@ -20,7 +20,7 @@ module text_handler (
 
 enum { POLLING, UPDATING1, UPDATING2, WRITE_START_GAME_TEXT, CLEAR_START_GAME_TEXT} state;
 logic [7:0] local_score;                                      // seq
-logic [7:0] local_is_waiting;                                 // seq
+logic [7:0] local_is_waiting = 1;                             // seq
 logic [7:0] digit1, digit2;                                   // hexadecimals, comb
 
 logic [7:0] game_begin_text [0:13] =                          // constant
@@ -32,9 +32,10 @@ logic [7:0] game_text_index;
 
 always_ff @( posedge clk ) begin
   if ((~reset_n) | (~dbg_rst_n)) begin
-    state <= UPDATING1;
+    state <= WRITE_START_GAME_TEXT;
     local_score <= 0;
-    game_text_index <= 0
+    local_is_waiting <= 1;
+    game_text_index <= 0;
   end
 
   else begin
@@ -64,21 +65,21 @@ always_ff @( posedge clk ) begin
       end
 
       WRITE_START_GAME_TEXT: begin
-          if (game_text_index < game_begin_text_len) begin
-            game_text_index += 1;
-          end
-          else begin
+        if (~vga_ch_waitrequest) begin
+          if (game_text_index >= (game_begin_text_len - 1)) begin
             state <= POLLING;
           end
+          game_text_index <= game_text_index + 1;
+        end
       end
 
       CLEAR_START_GAME_TEXT: begin
-          if (game_text_index < game_begin_text_len) begin
-            game_text_index <= game_text_index + 1;
-          end
-          else begin
+        if (~vga_ch_waitrequest) begin
+          if (game_text_index >= (game_begin_text_len - 1)) begin
             state <= POLLING;
           end
+          game_text_index <= game_text_index + 1;
+        end
       end
     endcase
   end
@@ -119,13 +120,13 @@ always_comb begin
       WRITE_START_GAME_TEXT: begin
         vga_ch_write = 1;
         vga_ch_writedata = game_begin_text[game_text_index];
-        vga_ch_address = `VGA_PX_BASE | (25 << 7) | (32 + game_text_index);
+        vga_ch_address = `VGA_PX_BASE | (25 << 7) | (25 + (game_text_index << 2));
       end
 
       CLEAR_START_GAME_TEXT: begin
         vga_ch_write = 1;
         vga_ch_writedata = `CHAR_;
-        vga_ch_address = `VGA_PX_BASE | (25 << 7) | (32 + game_text_index);
+        vga_ch_address = `VGA_PX_BASE | (25 << 7) | (25 + (game_text_index << 2));
       end
   endcase
 end
