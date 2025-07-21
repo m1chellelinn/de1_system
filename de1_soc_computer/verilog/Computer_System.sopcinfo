@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2025.06.26.16:54:29 -->
+ <!-- 2025.07.21.13:17:24 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1750982069</value>
+  <value>1753129043</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -16660,11 +16660,11 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>snake_fpga_0</moduleName>
-    <slaveName>hps_slave</slaveName>
-    <name>snake_fpga_0.hps_slave</name>
-    <baseAddress>256</baseAddress>
-    <span>64</span>
+    <moduleName>doom_driver_0</moduleName>
+    <slaveName>hps</slaveName>
+    <name>doom_driver_0.hps</name>
+    <baseAddress>16384</baseAddress>
+    <span>1024</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -43611,11 +43611,11 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>snake_fpga_0</moduleName>
-    <slaveName>hps_slave</slaveName>
-    <name>snake_fpga_0.hps_slave</name>
-    <baseAddress>256</baseAddress>
-    <span>64</span>
+    <moduleName>doom_driver_0</moduleName>
+    <slaveName>hps</slaveName>
+    <name>doom_driver_0.hps</name>
+    <baseAddress>16384</baseAddress>
+    <span>1024</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -45290,11 +45290,11 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>snake_fpga_0</moduleName>
-    <slaveName>hps_slave</slaveName>
-    <name>snake_fpga_0.hps_slave</name>
-    <baseAddress>4280287488</baseAddress>
-    <span>64</span>
+    <moduleName>doom_driver_0</moduleName>
+    <slaveName>hps</slaveName>
+    <name>doom_driver_0.hps</name>
+    <baseAddress>4280303616</baseAddress>
+    <span>1024</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -46273,11 +46273,11 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>snake_fpga_0</moduleName>
-    <slaveName>hps_slave</slaveName>
-    <name>snake_fpga_0.hps_slave</name>
-    <baseAddress>4280287488</baseAddress>
-    <span>64</span>
+    <moduleName>doom_driver_0</moduleName>
+    <slaveName>hps</slaveName>
+    <name>doom_driver_0.hps</name>
+    <baseAddress>4280303616</baseAddress>
+    <span>1024</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -91597,7 +91597,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1750982069</value>
+   <value>1753129043</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -91617,7 +91617,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1750982069</value>
+   <value>1753129043</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -91633,7 +91633,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1750982069</value>
+   <value>1753129043</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -92506,15 +92506,15 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>snake_fpga_0</moduleName>
-    <slaveName>clock</slaveName>
-    <name>snake_fpga_0.clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>GPIO_Driver_0</moduleName>
     <slaveName>clock</slaveName>
     <name>GPIO_Driver_0.clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>doom_driver_0</moduleName>
+    <slaveName>clock</slaveName>
+    <name>doom_driver_0.clock</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -92765,7 +92765,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1750982069</value>
+   <value>1753129043</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -95011,7 +95011,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1750982069</value>
+   <value>1753129043</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -106810,10 +106810,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="snake_fpga_0"
-   kind="snake_fpga"
+   name="doom_driver_0"
+   kind="doom_driver"
    version="1.0"
-   path="snake_fpga_0">
+   path="doom_driver_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="deviceFamily">
@@ -106922,7 +106922,7 @@ parameters are a RESULT of the module parameters. -->
     <role>reset_n</role>
    </port>
   </interface>
-  <interface name="hps_slave" kind="avalon_slave" version="18.1">
+  <interface name="hps" kind="avalon_slave" version="18.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -106960,7 +106960,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>64</value>
+    <value>1024</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -107008,7 +107008,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="bridgedAddressOffset">
     <type>java.math.BigInteger</type>
-    <value>0</value>
+    <value></value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -107259,7 +107259,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>hps_address</name>
     <direction>Input</direction>
-    <width>4</width>
+    <width>8</width>
     <role>address</role>
    </port>
    <port>
@@ -107267,6 +107267,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>read</role>
+   </port>
+   <port>
+    <name>hps_waitrequest</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>waitrequest</role>
    </port>
    <port>
     <name>hps_readdata</name>
@@ -107286,14 +107292,8 @@ parameters are a RESULT of the module parameters. -->
     <width>32</width>
     <role>writedata</role>
    </port>
-   <port>
-    <name>hps_waitrequest</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>waitrequest</role>
-   </port>
   </interface>
-  <interface name="pixel_master" kind="avalon_master" version="18.1">
+  <interface name="vga" kind="avalon_master" version="18.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -107556,49 +107556,41 @@ parameters are a RESULT of the module parameters. -->
    <type>avalon</type>
    <isStart>true</isStart>
    <port>
-    <name>vga_px_address</name>
+    <name>vga_address</name>
     <direction>Output</direction>
     <width>32</width>
     <role>address</role>
    </port>
    <port>
-    <name>vga_px_read</name>
+    <name>vga_read</name>
     <direction>Output</direction>
     <width>1</width>
     <role>read</role>
    </port>
    <port>
-    <name>vga_px_readdata</name>
+    <name>vga_readdata</name>
     <direction>Input</direction>
     <width>16</width>
     <role>readdata</role>
    </port>
    <port>
-    <name>vga_px_waitrequest</name>
+    <name>vga_waitrequest</name>
     <direction>Input</direction>
     <width>1</width>
     <role>waitrequest</role>
    </port>
    <port>
-    <name>vga_px_write</name>
+    <name>vga_write</name>
     <direction>Output</direction>
     <width>1</width>
     <role>write</role>
    </port>
    <port>
-    <name>vga_px_writedata</name>
+    <name>vga_writedata</name>
     <direction>Output</direction>
     <width>16</width>
     <role>writedata</role>
    </port>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>SDRAM</moduleName>
-    <slaveName>s1</slaveName>
-    <name>SDRAM.s1</name>
-    <baseAddress>0</baseAddress>
-    <span>67108864</span>
-   </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
     <moduleName>Onchip_SRAM</moduleName>
@@ -107607,8 +107599,16 @@ parameters are a RESULT of the module parameters. -->
     <baseAddress>134217728</baseAddress>
     <span>262144</span>
    </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>SDRAM</moduleName>
+    <slaveName>s1</slaveName>
+    <name>SDRAM.s1</name>
+    <baseAddress>0</baseAddress>
+    <span>67108864</span>
+   </memoryBlock>
   </interface>
-  <interface name="character_master" kind="avalon_master" version="18.1">
+  <interface name="mem" kind="avalon_master" version="18.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -107871,67 +107871,371 @@ parameters are a RESULT of the module parameters. -->
    <type>avalon</type>
    <isStart>true</isStart>
    <port>
-    <name>vga_ch_address</name>
+    <name>mem_address</name>
     <direction>Output</direction>
     <width>32</width>
     <role>address</role>
    </port>
    <port>
-    <name>vga_ch_read</name>
+    <name>mem_read</name>
     <direction>Output</direction>
     <width>1</width>
     <role>read</role>
    </port>
    <port>
-    <name>vga_ch_waitrequest</name>
+    <name>mem_waitrequest</name>
     <direction>Input</direction>
     <width>1</width>
     <role>waitrequest</role>
    </port>
    <port>
-    <name>vga_ch_readdata</name>
+    <name>mem_readdata</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>8</width>
     <role>readdata</role>
    </port>
    <port>
-    <name>vga_ch_write</name>
+    <name>mem_write</name>
     <direction>Output</direction>
     <width>1</width>
     <role>write</role>
    </port>
    <port>
-    <name>vga_ch_writedata</name>
+    <name>mem_writedata</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>8</width>
     <role>writedata</role>
    </port>
    <memoryBlock>
+    <isBridge>true</isBridge>
+    <moduleName>ARM_A9_HPS_bridges</moduleName>
+    <slaveName>f2h</slaveName>
+    <name>ARM_A9_HPS_bridges.f2h</name>
+    <baseAddress>0</baseAddress>
+    <span>4294967296</span>
+   </memoryBlock>
+   <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>VGA_Subsystem_Char_Buf_Subsystem_Onchip_SRAM</moduleName>
-    <slaveName>s1</slaveName>
-    <name>VGA_Subsystem_Char_Buf_Subsystem_Onchip_SRAM.s1</name>
-    <baseAddress>150994944</baseAddress>
+    <moduleName>ARM_A9_HPS_arm_gic_0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_arm_gic_0.axi_slave0</name>
+    <baseAddress>4294889472</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_arm_gic_0</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_arm_gic_0.axi_slave1</name>
+    <baseAddress>4294885632</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_L2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_L2.axi_slave0</name>
+    <baseAddress>4294897664</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dma</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dma.axi_slave0</name>
+    <baseAddress>4292874240</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sysmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sysmgr.axi_slave0</name>
+    <baseAddress>4291854336</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_clkmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_clkmgr.axi_slave0</name>
+    <baseAddress>4291837952</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_rstmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_rstmgr.axi_slave0</name>
+    <baseAddress>4291842048</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_fpgamgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_fpgamgr.axi_slave0</name>
+    <baseAddress>4285554688</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_fpgamgr</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_fpgamgr.axi_slave1</name>
+    <baseAddress>4290314240</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_uart0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_uart0.axi_slave0</name>
+    <baseAddress>4290781184</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_uart1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_uart1.axi_slave0</name>
+    <baseAddress>4290785280</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer0.axi_slave0</name>
+    <baseAddress>4290805760</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer1.axi_slave0</name>
+    <baseAddress>4290809856</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer2.axi_slave0</name>
+    <baseAddress>4291821568</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer3</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer3.axi_slave0</name>
+    <baseAddress>4291825664</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio0.axi_slave0</name>
+    <baseAddress>4285562880</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio1.axi_slave0</name>
+    <baseAddress>4285566976</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio2.axi_slave0</name>
+    <baseAddress>4285571072</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c0.axi_slave0</name>
+    <baseAddress>4290789376</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c1.axi_slave0</name>
+    <baseAddress>4290793472</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c2.axi_slave0</name>
+    <baseAddress>4290797568</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c3</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c3.axi_slave0</name>
+    <baseAddress>4290801664</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_nand0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_nand0.axi_slave0</name>
+    <baseAddress>4287627264</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_nand0</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_nand0.axi_slave1</name>
+    <baseAddress>4290248704</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_spim0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_spim0.axi_slave0</name>
+    <baseAddress>4293918720</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_spim1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_spim1.axi_slave0</name>
+    <baseAddress>4293922816</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_qspi</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_qspi.axi_slave0</name>
+    <baseAddress>4285550592</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_qspi</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_qspi.axi_slave1</name>
+    <baseAddress>4288675840</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sdmmc</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sdmmc.axi_slave0</name>
+    <baseAddress>4285546496</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_usb0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_usb0.axi_slave0</name>
+    <baseAddress>4289724416</baseAddress>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_usb1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_usb1.axi_slave0</name>
+    <baseAddress>4289986560</baseAddress>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gmac0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gmac0.axi_slave0</name>
+    <baseAddress>4285530112</baseAddress>
     <span>8192</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>HEX3_HEX0</moduleName>
-    <slaveName>s1</slaveName>
-    <name>HEX3_HEX0.s1</name>
-    <baseAddress>4280287264</baseAddress>
-    <span>16</span>
+    <moduleName>ARM_A9_HPS_gmac1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gmac1.axi_slave0</name>
+    <baseAddress>4285538304</baseAddress>
+    <span>8192</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>HEX5_HEX4</moduleName>
-    <slaveName>s1</slaveName>
-    <name>HEX5_HEX4.s1</name>
-    <baseAddress>4280287280</baseAddress>
-    <span>16</span>
+    <moduleName>ARM_A9_HPS_axi_ocram</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_axi_ocram.axi_slave0</name>
+    <baseAddress>4294901760</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_axi_sdram</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_axi_sdram.axi_slave0</name>
+    <baseAddress>0</baseAddress>
+    <span>2147483648</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer.axi_slave0</name>
+    <baseAddress>4294886912</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dcan0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dcan0.axi_slave0</name>
+    <baseAddress>4290772992</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dcan1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dcan1.axi_slave0</name>
+    <baseAddress>4290777088</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_l3regs</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_l3regs.axi_slave0</name>
+    <baseAddress>4286578688</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sdrctl</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sdrctl.axi_slave0</name>
+    <baseAddress>4290924544</baseAddress>
+    <span>4096</span>
    </memoryBlock>
   </interface>
-  <interface name="reset_conduit" kind="conduit_end" version="18.1">
+  <interface name="debug_seg" kind="conduit_end" version="18.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -107945,7 +108249,97 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value>reset</value>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>debug_seg_export</name>
+    <direction>Output</direction>
+    <width>42</width>
+    <role>conduit</role>
+   </port>
+  </interface>
+  <interface name="debug_light" kind="conduit_end" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>debug_light_export</name>
+    <direction>Output</direction>
+    <width>10</width>
+    <role>conduit</role>
+   </port>
+  </interface>
+  <interface name="debug_rst" kind="conduit_end" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -107973,97 +108367,7 @@ parameters are a RESULT of the module parameters. -->
     <name>dbg_rst_n</name>
     <direction>Input</direction>
     <width>1</width>
-    <role>reset_n</role>
-   </port>
-  </interface>
-  <interface name="state_export_conduit" kind="conduit_end" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>conduit</type>
-   <isStart>false</isStart>
-   <port>
-    <name>state_export</name>
-    <direction>Output</direction>
-    <width>7</width>
-    <role>readdata</role>
-   </port>
-  </interface>
-  <interface name="cmd_conduit" kind="conduit_end" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>conduit</type>
-   <isStart>false</isStart>
-   <port>
-    <name>cmd_export</name>
-    <direction>Output</direction>
-    <width>7</width>
-    <role>readdata</role>
+    <role>reset</role>
    </port>
   </interface>
  </module>
@@ -119406,159 +119710,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_in_reset</endConnectionPoint>
  </connection>
  <connection
-   name="snake_fpga_0.character_master/VGA_Subsystem_Char_Buf_Subsystem_Onchip_SRAM.s1"
-   kind="avalon"
-   version="18.1"
-   start="snake_fpga_0.character_master"
-   end="VGA_Subsystem_Char_Buf_Subsystem_Onchip_SRAM.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x09000000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>snake_fpga_0</startModule>
-  <startConnectionPoint>character_master</startConnectionPoint>
-  <endModule>VGA_Subsystem_Char_Buf_Subsystem_Onchip_SRAM</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="snake_fpga_0.character_master/HEX3_HEX0.s1"
-   kind="avalon"
-   version="18.1"
-   start="snake_fpga_0.character_master"
-   end="HEX3_HEX0.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0xff200020</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>snake_fpga_0</startModule>
-  <startConnectionPoint>character_master</startConnectionPoint>
-  <endModule>HEX3_HEX0</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="snake_fpga_0.character_master/HEX5_HEX4.s1"
-   kind="avalon"
-   version="18.1"
-   start="snake_fpga_0.character_master"
-   end="HEX5_HEX4.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0xff200030</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>snake_fpga_0</startModule>
-  <startConnectionPoint>character_master</startConnectionPoint>
-  <endModule>HEX5_HEX4</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
    name="F2H_Mem_Window_00000000.expanded_master/ARM_A9_HPS_bridges.f2h"
    kind="avalon"
    version="18.1"
@@ -120069,11 +120220,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>hps</endConnectionPoint>
  </connection>
  <connection
-   name="ARM_A9_HPS_bridges.h2f_lw/snake_fpga_0.hps_slave"
+   name="ARM_A9_HPS_bridges.h2f_lw/doom_driver_0.hps"
    kind="avalon"
    version="18.1"
    start="ARM_A9_HPS_bridges.h2f_lw"
-   end="snake_fpga_0.hps_slave">
+   end="doom_driver_0.hps">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -120084,7 +120235,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0100</value>
+   <value>0x4000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -120116,8 +120267,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>ARM_A9_HPS_bridges</startModule>
   <startConnectionPoint>h2f_lw</startConnectionPoint>
-  <endModule>snake_fpga_0</endModule>
-  <endConnectionPoint>hps_slave</endConnectionPoint>
+  <endModule>doom_driver_0</endModule>
+  <endConnectionPoint>hps</endConnectionPoint>
  </connection>
  <connection
    name="ARM_A9_HPS_bridges.h2f_lw/VGA_Subsystem_VGA_Pixel_RGB_Resampler.avalon_rgb_slave"
@@ -121701,6 +121852,57 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>windowed_slave</endConnectionPoint>
  </connection>
  <connection
+   name="doom_driver_0.mem/ARM_A9_HPS_bridges.f2h"
+   kind="avalon"
+   version="18.1"
+   start="doom_driver_0.mem"
+   end="ARM_A9_HPS_bridges.f2h">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x0000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>doom_driver_0</startModule>
+  <startConnectionPoint>mem</startConnectionPoint>
+  <endModule>ARM_A9_HPS_bridges</endModule>
+  <endConnectionPoint>f2h</endConnectionPoint>
+ </connection>
+ <connection
    name="VGA_Subsystem_VGA_Pixel_DMA.avalon_dma_master/SDRAM.s1"
    kind="avalon"
    version="18.1"
@@ -121803,61 +122005,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s2</endConnectionPoint>
  </connection>
  <connection
-   name="snake_fpga_0.pixel_master/SDRAM.s1"
+   name="doom_driver_0.vga/Onchip_SRAM.s1"
    kind="avalon"
    version="18.1"
-   start="snake_fpga_0.pixel_master"
-   end="SDRAM.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x0000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>snake_fpga_0</startModule>
-  <startConnectionPoint>pixel_master</startConnectionPoint>
-  <endModule>SDRAM</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="snake_fpga_0.pixel_master/Onchip_SRAM.s1"
-   kind="avalon"
-   version="18.1"
-   start="snake_fpga_0.pixel_master"
+   start="doom_driver_0.vga"
    end="Onchip_SRAM.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
@@ -121899,9 +122050,60 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>snake_fpga_0</startModule>
-  <startConnectionPoint>pixel_master</startConnectionPoint>
+  <startModule>doom_driver_0</startModule>
+  <startConnectionPoint>vga</startConnectionPoint>
   <endModule>Onchip_SRAM</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="doom_driver_0.vga/SDRAM.s1"
+   kind="avalon"
+   version="18.1"
+   start="doom_driver_0.vga"
+   end="SDRAM.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x0000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>doom_driver_0</startModule>
+  <startConnectionPoint>vga</startConnectionPoint>
+  <endModule>SDRAM</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -122472,33 +122674,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clock</endConnectionPoint>
  </connection>
  <connection
-   name="System_PLL.sys_clk/snake_fpga_0.clock"
-   kind="clock"
-   version="18.1"
-   start="System_PLL.sys_clk"
-   end="snake_fpga_0.clock">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>System_PLL</startModule>
-  <startConnectionPoint>sys_clk</startConnectionPoint>
-  <endModule>snake_fpga_0</endModule>
-  <endConnectionPoint>clock</endConnectionPoint>
- </connection>
- <connection
    name="System_PLL.sys_clk/GPIO_Driver_0.clock"
    kind="clock"
    version="18.1"
@@ -122523,6 +122698,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>System_PLL</startModule>
   <startConnectionPoint>sys_clk</startConnectionPoint>
   <endModule>GPIO_Driver_0</endModule>
+  <endConnectionPoint>clock</endConnectionPoint>
+ </connection>
+ <connection
+   name="System_PLL.sys_clk/doom_driver_0.clock"
+   kind="clock"
+   version="18.1"
+   start="System_PLL.sys_clk"
+   end="doom_driver_0.clock">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>System_PLL</startModule>
+  <startConnectionPoint>sys_clk</startConnectionPoint>
+  <endModule>doom_driver_0</endModule>
   <endConnectionPoint>clock</endConnectionPoint>
  </connection>
  <connection
@@ -123411,33 +123613,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="ARM_A9_HPS_bridges.h2f_reset/snake_fpga_0.reset"
-   kind="reset"
-   version="18.1"
-   start="ARM_A9_HPS_bridges.h2f_reset"
-   end="snake_fpga_0.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>ARM_A9_HPS_bridges</startModule>
-  <startConnectionPoint>h2f_reset</startConnectionPoint>
-  <endModule>snake_fpga_0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
    name="ARM_A9_HPS_bridges.h2f_reset/GPIO_Driver_0.reset"
    kind="reset"
    version="18.1"
@@ -123462,6 +123637,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>ARM_A9_HPS_bridges</startModule>
   <startConnectionPoint>h2f_reset</startConnectionPoint>
   <endModule>GPIO_Driver_0</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="ARM_A9_HPS_bridges.h2f_reset/doom_driver_0.reset"
+   kind="reset"
+   version="18.1"
+   start="ARM_A9_HPS_bridges.h2f_reset"
+   end="doom_driver_0.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>ARM_A9_HPS_bridges</startModule>
+  <startConnectionPoint>h2f_reset</startConnectionPoint>
+  <endModule>doom_driver_0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
@@ -124059,33 +124261,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="System_PLL.reset_source/snake_fpga_0.reset"
-   kind="reset"
-   version="18.1"
-   start="System_PLL.reset_source"
-   end="snake_fpga_0.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>System_PLL</startModule>
-  <startConnectionPoint>reset_source</startConnectionPoint>
-  <endModule>snake_fpga_0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
    name="System_PLL.reset_source/GPIO_Driver_0.reset"
    kind="reset"
    version="18.1"
@@ -124110,6 +124285,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>System_PLL</startModule>
   <startConnectionPoint>reset_source</startConnectionPoint>
   <endModule>GPIO_Driver_0</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="System_PLL.reset_source/doom_driver_0.reset"
+   kind="reset"
+   version="18.1"
+   start="System_PLL.reset_source"
+   end="doom_driver_0.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>System_PLL</startModule>
+  <startConnectionPoint>reset_source</startConnectionPoint>
+  <endModule>doom_driver_0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
@@ -124787,10 +124989,10 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>snake_fpga</name>
+  <name>doom_driver</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>Snake_Game_Driver</displayName>
+  <displayName>Doom_Driver</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
@@ -124810,7 +125012,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>180</instanceCount>
+  <instanceCount>178</instanceCount>
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>

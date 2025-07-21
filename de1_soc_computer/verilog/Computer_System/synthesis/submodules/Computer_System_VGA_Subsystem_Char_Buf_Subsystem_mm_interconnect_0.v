@@ -684,7 +684,7 @@ module Computer_System_VGA_Subsystem_Char_Buf_Subsystem_mm_interconnect_0 (
 		.in_command_size_data (3'b000)                                              // (terminated)
 	);
 
-	Computer_System_mm_interconnect_0_avalon_st_adapter #(
+	Computer_System_mm_interconnect_1_avalon_st_adapter #(
 		.inBitsPerSymbol (34),
 		.inUsePackets    (0),
 		.inDataWidth     (34),

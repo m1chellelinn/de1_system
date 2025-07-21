@@ -1,0 +1,106 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/micha/code/de1_system/snake_game/verilog/simulation
+vdoom_fpga
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1753072881
+!i10b 1
+!s100 jU5l6_Dc<NGI3O;6H<WaK0
+IUi=neO3Jl]YA5A>C9;BBh2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 main_sv_unit
+S1
+Z3 dC:/Users/micha/code/de1_system/doom/simulation
+w1753072627
+8C:/Users/micha/code/de1_system/doom/main.sv
+FC:/Users/micha/code/de1_system/doom/main.sv
+L0 4
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1753072881.000000
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/main.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/main.sv|
+!i113 1
+Z6 o-work work -sv
+Z7 tCvgOpt 0
+vpalette_handler
+R0
+R1
+!i10b 1
+!s100 ?LUlONF^<mFLC`9SZ7@W73
+IY[AOT@NJNBJg5C_m=?zVA2
+R2
+!s105 palette_handler_sv_unit
+S1
+R3
+w1753071674
+8C:/Users/micha/code/de1_system/doom/palette_handler.sv
+FC:/Users/micha/code/de1_system/doom/palette_handler.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/palette_handler.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/palette_handler.sv|
+!i113 1
+R6
+R7
+vpatch_handler
+R0
+R1
+!i10b 1
+!s100 2Sj``i9=OEzzgZF]UCk`60
+I9lGz5CI=SY2@OBoXUI<7c2
+R2
+!s105 patch_handler_sv_unit
+S1
+R3
+w1753072801
+8C:/Users/micha/code/de1_system/doom/patch_handler.sv
+FC:/Users/micha/code/de1_system/doom/patch_handler.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/patch_handler.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/patch_handler.sv|
+!i113 1
+R6
+R7
+vtb_doom_fpga
+R0
+R1
+!i10b 1
+!s100 KXQ<Icd3BPNGo5N]Y;:0A3
+IJl1HCgZJcEm2]4Sk15=oJ2
+R2
+!s105 tb_main_sv_unit
+S1
+R3
+w1753072857
+8C:/Users/micha/code/de1_system/doom/tb_main.sv
+FC:/Users/micha/code/de1_system/doom/tb_main.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/tb_main.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/tb_main.sv|
+!i113 1
+R6
+R7

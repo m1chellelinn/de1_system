@@ -161,6 +161,14 @@
          type = "String";
       }
    }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Expansion_JP1
    {
       datum _sortIndex
@@ -742,6 +750,14 @@
          type = "int";
       }
    }
+   element doom_driver_0
+   {
+      datum _sortIndex
+      {
+         value = "43";
+         type = "int";
+      }
+   }
    element snake_fpga_0
    {
       datum _sortIndex
@@ -789,6 +805,21 @@
  <interface
    name="av_config"
    internal="AV_Config.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="debug_light"
+   internal="doom_driver_0.debug_light"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="debug_rst"
+   internal="doom_driver_0.debug_rst"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="debug_seg"
+   internal="doom_driver_0.debug_seg"
    type="conduit"
    dir="end" />
  <interface
@@ -856,21 +887,13 @@
    internal="Slider_Switches.external_connection"
    type="conduit"
    dir="end" />
- <interface
-   name="snake_fpga_0_cmd_conduit"
-   internal="snake_fpga_0.cmd_conduit"
-   type="conduit"
-   dir="end" />
+ <interface name="snake_fpga_0_cmd_conduit" internal="snake_fpga_0.cmd_conduit" />
  <interface
    name="snake_fpga_0_reset_conduit"
-   internal="snake_fpga_0.reset_conduit"
-   type="conduit"
-   dir="end" />
+   internal="snake_fpga_0.reset_conduit" />
  <interface
    name="snake_fpga_0_state_export_conduit"
-   internal="snake_fpga_0.state_export_conduit"
-   type="conduit"
-   dir="end" />
+   internal="snake_fpga_0.state_export_conduit" />
  <interface
    name="system_pll_ref_clk"
    internal="System_PLL.ref_clk"
@@ -2350,7 +2373,8 @@
   <parameter name="vga_clk_en" value="true" />
   <parameter name="video_in_clk_en" value="false" />
  </module>
- <module name="snake_fpga_0" kind="snake_fpga" version="1.0" enabled="1" />
+ <module name="doom_driver_0" kind="doom_driver" version="1.0" enabled="1" />
+ <module name="snake_fpga_0" kind="snake_fpga" version="1.0" enabled="0" />
  <connection
    kind="avalon"
    version="18.1"
@@ -3040,6 +3064,15 @@
    kind="avalon"
    version="18.1"
    start="ARM_A9_HPS.h2f_lw_axi_master"
+   end="doom_driver_0.hps">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="ARM_A9_HPS.h2f_lw_axi_master"
    end="snake_fpga_0.hps_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0100" />
@@ -3516,6 +3549,15 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="doom_driver_0.mem"
+   end="ARM_A9_HPS.f2h_axi_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="VGA_Subsystem.pixel_dma_master"
    end="SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -3547,6 +3589,20 @@
    end="Onchip_SRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="doom_driver_0.vga"
+   end="Onchip_SRAM.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.1" start="doom_driver_0.vga" end="SDRAM.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3730,6 +3786,11 @@
    version="18.1"
    start="System_PLL.sys_clk"
    end="GPIO_Driver_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="System_PLL.sys_clk"
+   end="doom_driver_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -4180,6 +4241,11 @@
    kind="reset"
    version="18.1"
    start="ARM_A9_HPS.h2f_reset"
+   end="doom_driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="ARM_A9_HPS.h2f_reset"
    end="Onchip_SRAM.reset1" />
  <connection
    kind="reset"
@@ -4366,6 +4432,11 @@
    version="18.1"
    start="System_PLL.reset_source"
    end="GPIO_Driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="System_PLL.reset_source"
+   end="doom_driver_0.reset" />
  <connection
    kind="reset"
    version="18.1"

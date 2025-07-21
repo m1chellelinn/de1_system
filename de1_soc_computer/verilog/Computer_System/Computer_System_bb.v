@@ -2,6 +2,9 @@
 module Computer_System (
 	av_config_SDAT,
 	av_config_SCLK,
+	debug_light_conduit,
+	debug_rst_reset,
+	debug_seg_conduit,
 	expansion_jp1_export,
 	expansion_jp2_export,
 	gpio_driver_debug_rst_export,
@@ -96,9 +99,6 @@ module Computer_System (
 	sdram_we_n,
 	sdram_clk_clk,
 	slider_switches_export,
-	snake_fpga_0_cmd_conduit_readdata,
-	snake_fpga_0_reset_conduit_reset_n,
-	snake_fpga_0_state_export_conduit_readdata,
 	system_pll_ref_clk_clk,
 	system_pll_ref_reset_reset,
 	vga_CLK,
@@ -114,6 +114,9 @@ module Computer_System (
 
 	inout		av_config_SDAT;
 	output		av_config_SCLK;
+	output	[9:0]	debug_light_conduit;
+	input		debug_rst_reset;
+	output	[41:0]	debug_seg_conduit;
 	inout	[31:0]	expansion_jp1_export;
 	inout	[31:0]	expansion_jp2_export;
 	input		gpio_driver_debug_rst_export;
@@ -208,9 +211,6 @@ module Computer_System (
 	output		sdram_we_n;
 	output		sdram_clk_clk;
 	input	[9:0]	slider_switches_export;
-	output	[6:0]	snake_fpga_0_cmd_conduit_readdata;
-	input		snake_fpga_0_reset_conduit_reset_n;
-	output	[6:0]	snake_fpga_0_state_export_conduit_readdata;
 	input		system_pll_ref_clk_clk;
 	input		system_pll_ref_reset_reset;
 	output		vga_CLK;

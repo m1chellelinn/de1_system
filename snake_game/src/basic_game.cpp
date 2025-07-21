@@ -48,6 +48,7 @@ int main(void)
     void *LW_virtual; // physical addresses for light-weight bridge
     volatile int * snake_ptr; // virtual address pointer to red LEDs
     volatile int * LEDR_ptr; // virtual address pointer to red LEDs
+    volatile int * doom_ptr; // 
     int x = 100;
     int y = 100;
 
@@ -113,6 +114,7 @@ int main(void)
             int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
             
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
+            doom_ptr = (int *) ((int)LW_virtual + 0x4000);
             
             vga_ptr = (uint16_t *) ((int)SRAM_virtual + ((x+5) << MSG_X_OFFSET) + ((y+5) << MSG_Y_OFFSET));
             
@@ -125,7 +127,8 @@ int main(void)
                 (int)vga_ptr - (int)SRAM_virtual
             );
             *snake_ptr = cmd;
-            *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
+            // *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
+            *doom_ptr = 0;
             // *vga_ptr = 0xFF00;
         }
     }

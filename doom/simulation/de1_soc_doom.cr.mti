@@ -1,0 +1,32 @@
+C:/Users/micha/code/de1_system/doom/tb_main.sv {1 {vlog -work work -sv -stats=none C:/Users/micha/code/de1_system/doom/tb_main.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module tb_doom_fpga
+
+Top level modules:
+	tb_doom_fpga
+
+} {} {}} C:/Users/micha/code/de1_system/doom/palette_handler.sv {1 {vlog -work work -sv -stats=none C:/Users/micha/code/de1_system/doom/palette_handler.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module palette_handler
+
+Top level modules:
+	palette_handler
+
+} {} {}} C:/Users/micha/code/de1_system/doom/doom_consts.svh {1 {vlog -work work -sv -stats=none C:/Users/micha/code/de1_system/doom/doom_consts.svh
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+
+} {} {}} C:/Users/micha/code/de1_system/doom/patch_handler.sv {1 {vlog -work work -sv -stats=none C:/Users/micha/code/de1_system/doom/patch_handler.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module patch_handler
+
+Top level modules:
+	patch_handler
+
+} {} {}} C:/Users/micha/code/de1_system/doom/main.sv {1 {vlog -work work -sv -stats=none C:/Users/micha/code/de1_system/doom/main.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module doom_fpga
+
+Top level modules:
+	doom_fpga
+
+} {} {}}

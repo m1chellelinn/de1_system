@@ -1,5 +1,6 @@
 `define VGA_PX_BASE 32'hC8000000
-`define VGA_CH_BASE 32'h09000000
+`define RAM_BASE    32'h00000000
+`define RAM_SPAN    32'h3FFFFFFF
 
 // Character display uses Code Page 437 format:
 // https://en.wikipedia.org/wiki/Code_page_437

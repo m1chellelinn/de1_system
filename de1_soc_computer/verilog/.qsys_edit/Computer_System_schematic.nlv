@@ -1,17 +1,18 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.p2b -pg 1
-preplace inst Computer_System.Video_PLL -pg 1 -lvl 1 -y 1830
+preplace inst Computer_System.Video_PLL -pg 1 -lvl 1 -y 1820
 preplace inst Computer_System.VGA_Subsystem.VGA_Pixel_FIFO -pg 1
-preplace inst Computer_System.VGA_Subsystem -pg 1 -lvl 2 -y 1770
+preplace inst Computer_System.VGA_Subsystem -pg 1 -lvl 2 -y 1760
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.b2p_adapter -pg 1
 preplace inst Computer_System.ARM_A9_HPS.fpga_interfaces -pg 1
 preplace inst Computer_System.ARM_A9_HPS.arm_a9_0 -pg 1
+preplace inst Computer_System.doom_driver_0 -pg 1 -lvl 6 -y 180
 preplace inst Computer_System.VGA_Subsystem.VGA_Pixel_DMA -pg 1
 preplace inst Computer_System.ARM_A9_HPS.axi_ocram -pg 1
 preplace inst Computer_System.ARM_A9_HPS.clkmgr -pg 1
 preplace inst Computer_System.ARM_A9_HPS.arm_a9_1 -pg 1
-preplace inst Computer_System.SysID -pg 1 -lvl 4 -y 1590
+preplace inst Computer_System.SysID -pg 1 -lvl 4 -y 1580
 preplace inst Computer_System.JTAG_to_HPS_Bridge.fifo -pg 1
 preplace inst Computer_System.ARM_A9_HPS.clk_0 -pg 1
 preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem.ASCII_to_Image -pg 1
@@ -23,7 +24,7 @@ preplace inst Computer_System.ARM_A9_HPS.hps_io -pg 1
 preplace inst Computer_System.ARM_A9_HPS.wd_timer1 -pg 1
 preplace inst Computer_System.ARM_A9_HPS.f2s_periph_ref_clk -pg 1
 preplace inst Computer_System.Video_PLL.reset_from_locked -pg 1
-preplace inst Computer_System.Pushbuttons -pg 1 -lvl 6 -y 1800
+preplace inst Computer_System.Pushbuttons -pg 1 -lvl 6 -y 1790
 preplace inst Computer_System.ARM_A9_HPS.i2c0 -pg 1
 preplace inst Computer_System.ARM_A9_HPS.qspi -pg 1
 preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem -pg 1
@@ -42,16 +43,16 @@ preplace inst Computer_System.JTAG_to_HPS_Bridge.clk_rst -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.fifo -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.jtag_phy_embedded_in_jtag_master -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.clk_src -pg 1
-preplace inst Computer_System.ARM_A9_HPS -pg 1 -lvl 5 -y 630
-preplace inst Computer_System.HEX3_HEX0 -pg 1 -lvl 4 -y 940
-preplace inst Computer_System.snake_fpga_0 -pg 1 -lvl 6 -y 260
+preplace inst Computer_System.ARM_A9_HPS -pg 1 -lvl 5 -y 620
+preplace inst Computer_System.HEX3_HEX0 -pg 1 -lvl 4 -y 900
+preplace inst Computer_System.snake_fpga_0 -pg 1 -lvl 6 -y 340
 preplace inst Computer_System.JTAG_to_HPS_Bridge.p2b_adapter -pg 1
 preplace inst Computer_System.JTAG_to_HPS_Bridge.jtag_phy_embedded_in_jtag_master -pg 1
 preplace inst Computer_System.JTAG_to_HPS_Bridge.clk_src -pg 1
 preplace inst Computer_System.ARM_A9_HPS.L2 -pg 1
-preplace inst Computer_System.Char_DMA_Addr_Translation -pg 1 -lvl 2 -y 1460
+preplace inst Computer_System.Char_DMA_Addr_Translation -pg 1 -lvl 2 -y 1450
 preplace inst Computer_System.System_PLL.reset_from_locked -pg 1
-preplace inst Computer_System.HEX5_HEX4 -pg 1 -lvl 4 -y 1070
+preplace inst Computer_System.HEX5_HEX4 -pg 1 -lvl 4 -y 1060
 preplace inst Computer_System.ARM_A9_HPS.fpgamgr -pg 1
 preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem.Char_Buf_Scaler -pg 1
 preplace inst Computer_System.JTAG_to_HPS_Bridge.b2p_adapter -pg 1
@@ -62,30 +63,30 @@ preplace inst Computer_System.ARM_A9_HPS.gpio1 -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.p2b_adapter -pg 1
 preplace inst Computer_System.ARM_A9_HPS.gpio2 -pg 1
 preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem.Char_Buf_DMA -pg 1
-preplace inst Computer_System.Onchip_SRAM -pg 1 -lvl 4 -y 1330
+preplace inst Computer_System.Onchip_SRAM -pg 1 -lvl 4 -y 1320
 preplace inst Computer_System.Video_PLL.video_pll -pg 1
 preplace inst Computer_System.VGA_Subsystem.VGA_Pixel_RGB_Resampler -pg 1
-preplace inst Computer_System.System_PLL -pg 1 -lvl 1 -y 2110
+preplace inst Computer_System.System_PLL -pg 1 -lvl 1 -y 2100
 preplace inst Computer_System.ARM_A9_HPS.usb0 -pg 1
-preplace inst Computer_System.Pixel_DMA_Addr_Translation -pg 1 -lvl 2 -y 2060
+preplace inst Computer_System.Pixel_DMA_Addr_Translation -pg 1 -lvl 2 -y 2050
 preplace inst Computer_System.ARM_A9_HPS.axi_sdram -pg 1
 preplace inst Computer_System.ARM_A9_HPS.usb1 -pg 1
-preplace inst Computer_System.Expansion_JP1 -pg 1 -lvl 6 -y 900
-preplace inst Computer_System.AV_Config -pg 1 -lvl 4 -y 820
+preplace inst Computer_System.Expansion_JP1 -pg 1 -lvl 6 -y 890
+preplace inst Computer_System.AV_Config -pg 1 -lvl 4 -y 800
 preplace inst Computer_System.ARM_A9_HPS.dcan0 -pg 1
 preplace inst Computer_System.Expansion_JP2 -pg 1 -lvl 6 -y 1020
-preplace inst Computer_System.Slider_Switches -pg 1 -lvl 4 -y 1720
+preplace inst Computer_System.Slider_Switches -pg 1 -lvl 4 -y 1710
 preplace inst Computer_System.ARM_A9_HPS.dcan1 -pg 1
 preplace inst Computer_System.JTAG_to_HPS_Bridge.transacto -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.transacto -pg 1
 preplace inst Computer_System.ARM_A9_HPS.nand0 -pg 1
-preplace inst Computer_System.JTAG_UART_2nd_Core -pg 1 -lvl 6 -y 1440
+preplace inst Computer_System.JTAG_UART_2nd_Core -pg 1 -lvl 6 -y 1430
 preplace inst Computer_System.JTAG_UART -pg 1 -lvl 6 -y 500
 preplace inst Computer_System.ARM_A9_HPS.sdrctl -pg 1
 preplace inst Computer_System.ARM_A9_HPS.spim0 -pg 1
-preplace inst Computer_System.F2H_Mem_Window_00000000 -pg 1 -lvl 4 -y 320
+preplace inst Computer_System.F2H_Mem_Window_00000000 -pg 1 -lvl 4 -y 330
 preplace inst Computer_System.ARM_A9_HPS.rstmgr -pg 1
-preplace inst Computer_System.JTAG_to_HPS_Bridge -pg 1 -lvl 4 -y 620
+preplace inst Computer_System.JTAG_to_HPS_Bridge -pg 1 -lvl 4 -y 610
 preplace inst Computer_System.ARM_A9_HPS.spim1 -pg 1
 preplace inst Computer_System.ARM_A9_HPS.hps_io.border -pg 1
 preplace inst Computer_System.ARM_A9_HPS.l3regs -pg 1
@@ -93,13 +94,13 @@ preplace inst Computer_System.ARM_A9_HPS.scu -pg 1
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.clk_rst -pg 1
 preplace inst Computer_System.VGA_Subsystem.VGA_Controller -pg 1
 preplace inst Computer_System.JTAG_to_HPS_Bridge.p2b -pg 1
-preplace inst Computer_System.SDRAM -pg 1 -lvl 4 -y 1450
+preplace inst Computer_System.SDRAM -pg 1 -lvl 4 -y 1440
 preplace inst Computer_System.JTAG_to_FPGA_Bridge.b2p -pg 1
 preplace inst Computer_System.IrDA -pg 1 -lvl 6 -y 1140
 preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem.Set_Black_Transparent -pg 1
 preplace inst Computer_System.ARM_A9_HPS.timer -pg 1
 preplace inst Computer_System.ARM_A9_HPS.timer0 -pg 1
-preplace inst Computer_System.GPIO_Driver_0 -pg 1 -lvl 6 -y 100
+preplace inst Computer_System.GPIO_Driver_0 -pg 1 -lvl 6 -y 40
 preplace inst Computer_System.VGA_Subsystem.VGA_Dual_Clock_FIFO -pg 1
 preplace inst Computer_System.VGA_Subsystem.VGA_Clk -pg 1
 preplace inst Computer_System.ARM_A9_HPS.f2s_sdram_ref_clk -pg 1
@@ -116,40 +117,43 @@ preplace inst Computer_System.VGA_Subsystem.Char_Buf_Subsystem.Onchip_SRAM -pg 1
 preplace inst Computer_System.ARM_A9_HPS.gmac1 -pg 1
 preplace inst Computer_System.ARM_A9_HPS.sysmgr -pg 1
 preplace inst Computer_System -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst Computer_System.LEDs -pg 1 -lvl 4 -y 1190
-preplace inst Computer_System.JTAG_to_FPGA_Bridge -pg 1 -lvl 2 -y 1590
+preplace inst Computer_System.LEDs -pg 1 -lvl 4 -y 1180
+preplace inst Computer_System.JTAG_to_FPGA_Bridge -pg 1 -lvl 2 -y 1580
 preplace inst Computer_System.ARM_A9_HPS.dma -pg 1
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.video_pll_ref_reset,(SLAVE)Video_PLL.ref_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Video_PLL.ref_clk,(SLAVE)Computer_System.video_pll_ref_clk) 1 0 1 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(MASTER)Computer_System.sdram_clk,(MASTER)System_PLL.sdram_clk) 1 1 6 NJ 2150 NJ 2150 NJ 2150 NJ 2150 NJ 2150 NJ
-preplace netloc FAN_OUT<net_container>Computer_System</net_container>(SLAVE)SDRAM.clk,(SLAVE)JTAG_to_HPS_Bridge.clk,(SLAVE)Onchip_SRAM.clk1,(SLAVE)Pixel_DMA_Addr_Translation.clock,(SLAVE)Char_DMA_Addr_Translation.clock,(SLAVE)IrDA.clk,(SLAVE)ARM_A9_HPS.h2f_axi_clock,(SLAVE)Expansion_JP1.clk,(MASTER)System_PLL.sys_clk,(SLAVE)GPIO_Driver_0.clock,(SLAVE)SysID.clk,(SLAVE)JTAG_UART.clk,(SLAVE)HEX5_HEX4.clk,(SLAVE)snake_fpga_0.clock,(SLAVE)JTAG_to_FPGA_Bridge.clk,(SLAVE)ARM_A9_HPS.f2h_axi_clock,(SLAVE)F2H_Mem_Window_00000000.clock,(SLAVE)VGA_Subsystem.sys_clk,(SLAVE)LEDs.clk,(SLAVE)JTAG_UART_for_ARM_1.clk,(SLAVE)Slider_Switches.clk,(SLAVE)AV_Config.clk,(SLAVE)Pushbuttons.clk,(SLAVE)JTAG_UART_2nd_Core.clk,(SLAVE)JTAG_UART_for_ARM_0.clk,(SLAVE)ARM_A9_HPS.h2f_lw_axi_clock,(SLAVE)HEX3_HEX0.clk,(SLAVE)Expansion_JP2.clk) 1 1 5 510 1670 NJ 1670 1280 580 1870 810 2370
+preplace netloc EXPORT<net_container>Computer_System</net_container>(MASTER)Computer_System.sdram_clk,(MASTER)System_PLL.sdram_clk) 1 1 6 NJ 2140 NJ 2140 NJ 2140 NJ 2140 NJ 2140 NJ
 preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.system_pll_ref_clk,(SLAVE)System_PLL.ref_clk) 1 0 1 NJ
 preplace netloc POINT_TO_POINT<net_container>Computer_System</net_container>(SLAVE)VGA_Subsystem.vga_reset,(MASTER)Video_PLL.reset_source) 1 1 1 490
-preplace netloc INTERCONNECT<net_container>Computer_System</net_container>(SLAVE)LEDs.reset,(SLAVE)F2H_Mem_Window_00000000.reset,(SLAVE)JTAG_UART_for_ARM_1.reset,(SLAVE)JTAG_to_FPGA_Bridge.clk_reset,(SLAVE)JTAG_to_HPS_Bridge.clk_reset,(SLAVE)Pixel_DMA_Addr_Translation.reset,(SLAVE)Char_DMA_Addr_Translation.reset,(SLAVE)JTAG_UART_for_ARM_0.reset,(SLAVE)GPIO_Driver_0.reset,(SLAVE)Expansion_JP2.reset,(MASTER)ARM_A9_HPS.h2f_reset,(SLAVE)snake_fpga_0.reset,(SLAVE)SDRAM.reset,(SLAVE)JTAG_UART.reset,(SLAVE)VGA_Subsystem.sys_reset,(MASTER)System_PLL.reset_source,(SLAVE)Slider_Switches.reset,(SLAVE)Onchip_SRAM.reset1,(SLAVE)AV_Config.reset,(SLAVE)HEX3_HEX0.reset,(SLAVE)SysID.reset,(SLAVE)Pushbuttons.reset,(SLAVE)HEX5_HEX4.reset,(SLAVE)IrDA.reset,(SLAVE)Expansion_JP1.reset,(SLAVE)JTAG_UART_2nd_Core.reset) 1 1 5 530 1690 NJ 1690 1300 410 NJ 410 2390
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)HEX5_HEX4.external_connection,(SLAVE)Computer_System.hex5_hex4) 1 0 4 NJ 1100 NJ 1100 NJ 1100 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Expansion_JP1.external_connection,(SLAVE)Computer_System.expansion_jp1) 1 0 6 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.snake_fpga_0_cmd_conduit,(SLAVE)snake_fpga_0.cmd_conduit) 1 0 6 NJ 180 NJ 100 NJ 100 NJ 100 NJ 290 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Pushbuttons.external_connection,(SLAVE)Computer_System.pushbuttons) 1 0 6 NJ 1730 NJ 1730 NJ 1830 NJ 1830 NJ 1830 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.av_config,(SLAVE)AV_Config.external_interface) 1 0 4 NJ 870 NJ 870 NJ 870 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.snake_fpga_0_reset_conduit,(SLAVE)snake_fpga_0.reset_conduit) 1 0 6 NJ 140 NJ 140 NJ 140 NJ 140 NJ 350 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_gpio_1,(SLAVE)GPIO_Driver_0.gpio_1) 1 0 6 NJ 160 NJ 80 NJ 80 NJ 80 NJ 170 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Expansion_JP2.external_connection,(SLAVE)Computer_System.expansion_jp2) 1 0 6 NJ 1050 NJ 1050 NJ 1050 NJ 1050 NJ 1050 NJ
-preplace netloc INTERCONNECT<net_container>Computer_System</net_container>(MASTER)Pixel_DMA_Addr_Translation.master,(SLAVE)JTAG_UART_for_ARM_0.avalon_jtag_slave,(MASTER)snake_fpga_0.pixel_master,(SLAVE)AV_Config.avalon_av_config_slave,(SLAVE)JTAG_UART.avalon_jtag_slave,(SLAVE)VGA_Subsystem.pixel_dma_control_slave,(MASTER)VGA_Subsystem.pixel_dma_master,(SLAVE)snake_fpga_0.hps_slave,(SLAVE)LEDs.s1,(SLAVE)Slider_Switches.s1,(MASTER)JTAG_to_FPGA_Bridge.master,(SLAVE)JTAG_UART_for_ARM_1.avalon_jtag_slave,(SLAVE)F2H_Mem_Window_00000000.windowed_slave,(SLAVE)Onchip_SRAM.s2,(SLAVE)VGA_Subsystem.rgb_slave,(SLAVE)IrDA.avalon_irda_slave,(SLAVE)SDRAM.s1,(MASTER)snake_fpga_0.character_master,(SLAVE)HEX3_HEX0.s1,(SLAVE)VGA_Subsystem.char_buffer_slave,(SLAVE)Onchip_SRAM.s1,(SLAVE)SysID.control_slave,(MASTER)ARM_A9_HPS.h2f_lw_axi_master,(MASTER)Char_DMA_Addr_Translation.master,(SLAVE)Expansion_JP1.s1,(SLAVE)Expansion_JP2.s1,(SLAVE)HEX5_HEX4.s1,(SLAVE)Pixel_DMA_Addr_Translation.slave,(SLAVE)Char_DMA_Addr_Translation.slave,(MASTER)ARM_A9_HPS.h2f_axi_master,(SLAVE)GPIO_Driver_0.hps,(SLAVE)Pushbuttons.s1,(SLAVE)VGA_Subsystem.char_buffer_control_slave) 1 1 6 550 2050 960 1790 1240 120 NJ 310 2330 250 2710
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.leds,(SLAVE)LEDs.external_connection) 1 0 4 NJ 1220 NJ 1220 NJ 1220 NJ
-preplace netloc POINT_TO_POINT<net_container>Computer_System</net_container>(SLAVE)JTAG_UART_for_ARM_1.irq,(MASTER)ARM_A9_HPS.f2h_irq1) 1 3 3 1320 700 NJ 590 2290
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.irda,(SLAVE)IrDA.external_interface) 1 0 6 NJ 1180 NJ 1180 NJ 1180 NJ 1180 NJ 1190 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_debug_rst,(SLAVE)GPIO_Driver_0.debug_reset) 1 0 6 NJ 40 NJ 40 NJ 40 NJ 40 NJ 130 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.hex3_hex0,(SLAVE)HEX3_HEX0.external_connection) 1 0 4 NJ 970 NJ 970 NJ 970 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.snake_fpga_0_state_export_conduit,(SLAVE)snake_fpga_0.state_export_conduit) 1 0 6 NJ 310 NJ 310 NJ 310 NJ 310 NJ 390 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.memory,(SLAVE)ARM_A9_HPS.memory) 1 0 5 NJ 810 NJ 810 NJ 810 NJ 810 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.sdram,(SLAVE)SDRAM.wire) 1 0 4 NJ 1550 NJ 1550 NJ 1550 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.expansion_jp2,(SLAVE)Expansion_JP2.external_connection) 1 0 6 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 900 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.hex5_hex4,(SLAVE)HEX5_HEX4.external_connection) 1 0 4 NJ 1090 NJ 1090 NJ 1090 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Pushbuttons.external_connection,(SLAVE)Computer_System.pushbuttons) 1 0 6 NJ 1720 NJ 1720 NJ 1820 NJ 1820 NJ 1820 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.expansion_jp1,(SLAVE)Expansion_JP1.external_connection) 1 0 6 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 920 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.debug_seg,(SLAVE)doom_driver_0.debug_seg) 1 0 6 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_gpio_1,(SLAVE)GPIO_Driver_0.gpio_1) 1 0 6 NJ 150 NJ 70 NJ 70 NJ 70 NJ 160 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)snake_fpga_0.reset_conduit,(SLAVE)Computer_System.snake_fpga_0_reset_conduit) 1 0 6 NJ 280 NJ 280 NJ 280 NJ 280 NJ 330 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Video_PLL.ref_reset,(SLAVE)Computer_System.video_pll_ref_reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>Computer_System</net_container>(SLAVE)JTAG_UART_for_ARM_1.irq,(MASTER)ARM_A9_HPS.f2h_irq1) 1 3 3 1300 690 NJ 560 2290
+preplace netloc FAN_OUT<net_container>Computer_System</net_container>(SLAVE)Expansion_JP2.irq,(MASTER)ARM_A9_HPS.f2h_irq0,(SLAVE)Pushbuttons.irq,(SLAVE)Expansion_JP1.irq,(SLAVE)IrDA.interrupt,(SLAVE)JTAG_UART_for_ARM_0.irq) 1 5 1 2310
+preplace netloc INTERCONNECT<net_container>Computer_System</net_container>(MASTER)JTAG_to_FPGA_Bridge.master,(SLAVE)Pushbuttons.s1,(SLAVE)VGA_Subsystem.rgb_slave,(SLAVE)IrDA.avalon_irda_slave,(SLAVE)Onchip_SRAM.s1,(SLAVE)SDRAM.s1,(SLAVE)snake_fpga_0.hps_slave,(SLAVE)Pixel_DMA_Addr_Translation.slave,(MASTER)snake_fpga_0.pixel_master,(SLAVE)AV_Config.avalon_av_config_slave,(MASTER)ARM_A9_HPS.h2f_lw_axi_master,(SLAVE)HEX5_HEX4.s1,(SLAVE)Expansion_JP1.s1,(MASTER)doom_driver_0.vga,(MASTER)VGA_Subsystem.pixel_dma_master,(SLAVE)Expansion_JP2.s1,(SLAVE)VGA_Subsystem.char_buffer_slave,(SLAVE)JTAG_UART.avalon_jtag_slave,(MASTER)Pixel_DMA_Addr_Translation.master,(SLAVE)Slider_Switches.s1,(SLAVE)JTAG_UART_for_ARM_1.avalon_jtag_slave,(SLAVE)Onchip_SRAM.s2,(SLAVE)doom_driver_0.hps,(MASTER)snake_fpga_0.character_master,(SLAVE)VGA_Subsystem.pixel_dma_control_slave,(SLAVE)GPIO_Driver_0.hps,(SLAVE)JTAG_UART_for_ARM_0.avalon_jtag_slave,(MASTER)ARM_A9_HPS.h2f_axi_master,(SLAVE)VGA_Subsystem.char_buffer_control_slave,(SLAVE)F2H_Mem_Window_00000000.windowed_slave,(SLAVE)LEDs.s1,(MASTER)Char_DMA_Addr_Translation.master,(SLAVE)Char_DMA_Addr_Translation.slave,(SLAVE)HEX3_HEX0.s1,(SLAVE)SysID.control_slave) 1 1 6 550 2040 960 1780 1280 440 NJ 530 2370 330 2710
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_debug_rst,(SLAVE)GPIO_Driver_0.debug_reset) 1 0 6 NJ 90 NJ 90 NJ 30 NJ 30 NJ 70 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.hex3_hex0,(SLAVE)HEX3_HEX0.external_connection) 1 0 4 NJ 930 NJ 930 NJ 930 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.snake_fpga_0_state_export_conduit,(SLAVE)snake_fpga_0.state_export_conduit) 1 0 6 NJ 300 NJ 300 NJ 300 NJ 300 NJ 450 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.sdram,(SLAVE)SDRAM.wire) 1 0 4 NJ 1540 NJ 1540 NJ 1510 NJ
+preplace netloc FAN_OUT<net_container>Computer_System</net_container>(SLAVE)Expansion_JP1.clk,(SLAVE)Pixel_DMA_Addr_Translation.clock,(SLAVE)HEX3_HEX0.clk,(SLAVE)JTAG_UART_for_ARM_1.clk,(SLAVE)Pushbuttons.clk,(SLAVE)ARM_A9_HPS.h2f_lw_axi_clock,(SLAVE)JTAG_UART_2nd_Core.clk,(SLAVE)JTAG_to_HPS_Bridge.clk,(SLAVE)Slider_Switches.clk,(SLAVE)snake_fpga_0.clock,(SLAVE)doom_driver_0.clock,(SLAVE)SDRAM.clk,(SLAVE)F2H_Mem_Window_00000000.clock,(SLAVE)JTAG_UART.clk,(SLAVE)JTAG_UART_for_ARM_0.clk,(SLAVE)HEX5_HEX4.clk,(SLAVE)GPIO_Driver_0.clock,(SLAVE)ARM_A9_HPS.h2f_axi_clock,(SLAVE)VGA_Subsystem.sys_clk,(SLAVE)LEDs.clk,(SLAVE)IrDA.clk,(SLAVE)Onchip_SRAM.clk1,(SLAVE)Char_DMA_Addr_Translation.clock,(SLAVE)Expansion_JP2.clk,(SLAVE)JTAG_to_FPGA_Bridge.clk,(SLAVE)AV_Config.clk,(SLAVE)ARM_A9_HPS.f2h_axi_clock,(MASTER)System_PLL.sys_clk,(SLAVE)SysID.clk) 1 1 5 510 1660 NJ 1660 1240 790 1930 800 2390
 preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.system_pll_ref_reset,(SLAVE)System_PLL.ref_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_gpio_0,(SLAVE)GPIO_Driver_0.gpio_0) 1 0 6 NJ 60 NJ 60 NJ 60 NJ 60 NJ 150 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)ARM_A9_HPS.hps_io,(SLAVE)Computer_System.hps_io) 1 0 5 NJ 560 NJ 560 NJ 560 NJ 560 NJ
-preplace netloc FAN_OUT<net_container>Computer_System</net_container>(MASTER)ARM_A9_HPS.f2h_irq0,(SLAVE)IrDA.interrupt,(SLAVE)Expansion_JP2.irq,(SLAVE)JTAG_UART_for_ARM_0.irq,(SLAVE)Expansion_JP1.irq,(SLAVE)Pushbuttons.irq) 1 5 1 2310
-preplace netloc FAN_IN<net_container>Computer_System</net_container>(SLAVE)ARM_A9_HPS.f2h_axi_slave,(MASTER)F2H_Mem_Window_00000000.expanded_master,(MASTER)JTAG_to_HPS_Bridge.master) 1 4 1 1830
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)ARM_A9_HPS.memory,(SLAVE)Computer_System.memory) 1 0 5 NJ 750 NJ 750 NJ 750 NJ 750 NJ
+preplace netloc INTERCONNECT<net_container>Computer_System</net_container>(SLAVE)Char_DMA_Addr_Translation.reset,(SLAVE)JTAG_UART_for_ARM_0.reset,(SLAVE)JTAG_UART.reset,(SLAVE)AV_Config.reset,(SLAVE)JTAG_to_HPS_Bridge.clk_reset,(SLAVE)Expansion_JP2.reset,(SLAVE)snake_fpga_0.reset,(SLAVE)VGA_Subsystem.sys_reset,(SLAVE)JTAG_UART_2nd_Core.reset,(SLAVE)doom_driver_0.reset,(SLAVE)LEDs.reset,(SLAVE)SDRAM.reset,(SLAVE)Pushbuttons.reset,(SLAVE)HEX3_HEX0.reset,(SLAVE)Onchip_SRAM.reset1,(SLAVE)HEX5_HEX4.reset,(SLAVE)GPIO_Driver_0.reset,(MASTER)ARM_A9_HPS.h2f_reset,(SLAVE)JTAG_to_FPGA_Bridge.clk_reset,(SLAVE)Expansion_JP1.reset,(MASTER)System_PLL.reset_source,(SLAVE)JTAG_UART_for_ARM_1.reset,(SLAVE)Pixel_DMA_Addr_Translation.reset,(SLAVE)SysID.reset,(SLAVE)Slider_Switches.reset,(SLAVE)F2H_Mem_Window_00000000.reset,(SLAVE)IrDA.reset) 1 1 5 530 1680 NJ 1680 1260 420 NJ 510 2330
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.vga,(SLAVE)VGA_Subsystem.vga) 1 0 2 NJ 1900 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.gpio_driver_gpio_0,(SLAVE)GPIO_Driver_0.gpio_0) 1 0 6 NJ 50 NJ 50 NJ 50 NJ 50 NJ 140 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)LEDs.external_connection,(SLAVE)Computer_System.leds) 1 0 4 NJ 1210 NJ 1210 NJ 1210 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)AV_Config.external_interface,(SLAVE)Computer_System.av_config) 1 0 4 NJ 850 NJ 850 NJ 850 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)doom_driver_0.debug_light,(SLAVE)Computer_System.debug_light) 1 0 6 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.hps_io,(SLAVE)ARM_A9_HPS.hps_io) 1 0 5 NJ 710 NJ 710 NJ 710 NJ 710 NJ
+preplace netloc FAN_IN<net_container>Computer_System</net_container>(SLAVE)ARM_A9_HPS.f2h_axi_slave,(MASTER)F2H_Mem_Window_00000000.expanded_master,(MASTER)doom_driver_0.mem,(MASTER)JTAG_to_HPS_Bridge.master) 1 4 3 1850 490 NJ 490 2730
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.slider_switches,(SLAVE)Slider_Switches.external_connection) 1 0 4 NJ 1740 NJ 1700 NJ 1740 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.video_pll_ref_clk,(SLAVE)Video_PLL.ref_clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)IrDA.external_interface,(SLAVE)Computer_System.irda) 1 0 6 NJ 1290 NJ 1290 NJ 1290 NJ 1290 NJ 1190 NJ
 preplace netloc POINT_TO_POINT<net_container>Computer_System</net_container>(MASTER)Video_PLL.vga_clk,(SLAVE)VGA_Subsystem.vga_clk) 1 1 1 470
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)VGA_Subsystem.vga,(SLAVE)Computer_System.vga) 1 0 2 NJ 1910 NJ
-preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Slider_Switches.external_connection,(SLAVE)Computer_System.slider_switches) 1 0 4 NJ 1710 NJ 1710 NJ 1750 NJ
-levelinfo -pg 1 0 200 2820
-levelinfo -hier Computer_System 210 290 760 1220 1660 2100 2510 2730
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)snake_fpga_0.cmd_conduit,(SLAVE)Computer_System.snake_fpga_0_cmd_conduit) 1 0 6 NJ 320 NJ 320 NJ 320 NJ 320 NJ 470 NJ
+preplace netloc EXPORT<net_container>Computer_System</net_container>(SLAVE)Computer_System.debug_rst,(SLAVE)doom_driver_0.debug_rst) 1 0 6 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ
+levelinfo -pg 1 0 200 2840
+levelinfo -hier Computer_System 210 290 760 1220 1660 2100 2510 2750
