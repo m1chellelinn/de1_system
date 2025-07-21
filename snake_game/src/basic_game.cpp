@@ -114,7 +114,7 @@ int main(void)
             int cmd = (CMD_SNAKE_ADD << MSG_CMD_OFFSET) + (x << MSG_X_OFFSET) + (y << MSG_Y_OFFSET);
             
             LEDR_ptr = (int *) (LW_virtual + LEDR_BASE);
-            doom_ptr = (int *) ((int)LW_virtual + 0x4000);
+            doom_ptr = (int *) ((int)LW_virtual + 0x2400);
             
             vga_ptr = (uint16_t *) ((int)SRAM_virtual + ((x+5) << MSG_X_OFFSET) + ((y+5) << MSG_Y_OFFSET));
             
