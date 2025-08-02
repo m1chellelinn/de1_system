@@ -370,13 +370,19 @@ wire [9:0] debug_light_conduit;
 wire debug_rst_reset;
 
 assign debug_rst_reset = KEY[0];
-assign LEDR = (~KEY[0]) ? 10'b1010101010 : debug_light_conduit; 
-assign HEX0 = (~KEY[0]) ? 7'b0010010 : debug_seg_conduit[41:35];
-assign HEX1 = (~KEY[0]) ? 7'b1000111 : debug_seg_conduit[34:28];
-assign HEX2 = (~KEY[0]) ? 7'b1000111 : debug_seg_conduit[27:21];
-assign HEX3 = (~KEY[0]) ? 7'b1001000 : debug_seg_conduit[20:14];
-assign HEX4 = (~KEY[0]) ? 7'b0000011 : debug_seg_conduit[13:7];
-assign HEX5 = (~KEY[0]) ? 7'b1111111 : debug_seg_conduit[6:0];
+assign LEDR = debug_light_conduit;
+assign HEX0 = debug_seg_conduit[41:35];
+assign HEX1 = debug_seg_conduit[34:28];
+assign HEX2 = debug_seg_conduit[27:21];
+assign HEX3 = debug_seg_conduit[20:14];
+assign HEX4 = debug_seg_conduit[13:7];
+assign HEX5 = debug_seg_conduit[6:0];
+// assign HEX0 = (~KEY[0]) ? 7'b0010010 : debug_seg_conduit[41:35];
+// assign HEX1 = (~KEY[0]) ? 7'b1000111 : debug_seg_conduit[34:28];
+// assign HEX2 = (~KEY[0]) ? 7'b1000111 : debug_seg_conduit[27:21];
+// assign HEX3 = (~KEY[0]) ? 7'b1001000 : debug_seg_conduit[20:14];
+// assign HEX4 = (~KEY[0]) ? 7'b0000011 : debug_seg_conduit[13:7];
+// assign HEX5 = (~KEY[0]) ? 7'b1111111 : debug_seg_conduit[6:0];
 
 // assign HEX4 = snake_fpga_0_cmd_conduit_readdata;
 // assign HEX5 = snake_fpga_0_state_export_conduit_readdata;
@@ -583,6 +589,10 @@ Computer_System The_System (
 	// .gpio_driver_debug_rst_export(KEY[0]),
 	// .gpio_driver_gpio_0_export(GPIO_0),
 	// .gpio_driver_gpio_1_export(GPIO_1)
+	
+	.debug_light_conduit(debug_light_conduit),
+	.debug_rst_reset(debug_rst_reset),
+	.debug_seg_conduit(debug_seg_conduit),
 );
 
 

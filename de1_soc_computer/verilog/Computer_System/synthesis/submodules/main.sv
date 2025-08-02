@@ -32,14 +32,12 @@ module doom_fpga (
 );
 
 /* Top-level module signals */
-enum { WAITING, PATCH, PALETTE } 
+enum { WAITING, PATCH, PALETTE, UPDATE, SELFCHECK, RESET } 
               state, next_state;              // seq
 logic         main_rst;                       // assign
 logic         hps_rst;                        // comb
 logic [31:0]  hps_params      [7:0];          // comb
-// logic [7:0]   local_palette   [255:0][2:0];   // comb TODO: re-enable
-
-assign main_rst = (~reset_n) | (~dbg_rst_n) | (hps_rst);
+logic [7:0]   local_palette   [255:0][2:0];   // comb
 
 
 /* Patch handler */
@@ -53,20 +51,20 @@ logic [31:0]  pat_mem_address;                // comb
 logic         pat_mem_read;                   // comb
 logic         pat_mem_write;                  // comb
 logic [7:0]   pat_mem_writedata;              // comb
-patch_handler patch_handler (
-  .clk(clk), .reset(main_rst),
+// patch_handler patch_handler (
+//   .clk(clk), .reset(main_rst),
 
-  .vga_address(pat_vga_address), .vga_read(pat_vga_read),
-  .vga_waitrequest(vga_waitrequest), .vga_readdata(vga_readdata),
-  .vga_write(pat_vga_write), .vga_writedata(pat_vga_writedata),
+//   .vga_address(pat_vga_address), .vga_read(pat_vga_read),
+//   .vga_waitrequest(vga_waitrequest), .vga_readdata(vga_readdata),
+//   .vga_write(pat_vga_write), .vga_writedata(pat_vga_writedata),
 
-  .mem_address(pat_mem_address), .mem_read(pat_mem_read),
-  .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
-  .mem_write(pat_mem_write), .mem_writedata(pat_mem_writedata),
+//   .mem_address(pat_mem_address), .mem_read(pat_mem_read),
+//   .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
+//   .mem_write(pat_mem_write), .mem_writedata(pat_mem_writedata),
 
-  .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
-  .start(pat_start), .processing(pat_processing)
-);
+//   .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
+//   .start(pat_start), .processing(pat_processing)
+// );
 
 
 /* Palette handler */
@@ -76,25 +74,70 @@ logic [31:0]  pal_mem_address;                // comb
 logic         pal_mem_read;                   // comb
 logic         pal_mem_write;                  // comb
 logic [7:0]   pal_mem_writedata;              // comb
-// palette_handler palette_handler ( // TODO: re-enable
-//   .clk(clk), .reset(main_rst),
+palette_handler palette_handler (
+  .clk(clk), .reset(main_rst),
+  .mem_address(pal_mem_address), .mem_read(pal_mem_read),
+  .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
+  .mem_write(pal_mem_write), .mem_writedata(pal_mem_writedata),
 
-//   .mem_address(pal_mem_address), .mem_read(pal_mem_read),
-//   .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
-//   .mem_write(pal_mem_write), .mem_writedata(pal_mem_writedata),
-
-//   .debug_seg_export(debug_seg_export[27:21]),
-//   .hps_params(hps_params), .local_palette(local_palette),
-//   .start(pal_start), .processing(pal_processing) 
-// );
+  .debug_seg_export(debug_seg_export[34:28]),
+  .hps_params(hps_params), .local_palette(local_palette),
+  .start(pal_start), .processing(pal_processing) 
+);
 
 
+/* Selfcheck handler */
+logic         chk_start;                      // comb
+logic         chk_processing;                 // seq
+logic [31:0]  chk_mem_address;                // comb
+logic         chk_mem_read;                   // comb
+logic         chk_mem_write;                  // comb
+logic [7:0]   chk_mem_writedata;              // comb
+selfcheck_handler selfcheck_handler (
+  .clk(clk), .reset(main_rst),
+
+  .mem_address(chk_mem_address), .mem_read(chk_mem_read),
+  .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
+  .mem_write(chk_mem_write), .mem_writedata(chk_mem_writedata),
+
+  .debug_seg_export(debug_seg_export[27:21]),
+  .hps_params(hps_params),
+  .start(chk_start), .processing(chk_processing) 
+);
+
+
+/* Update handler */
+logic         upd_start;                      // comb
+logic         upd_processing;                 // seq
+logic [31:0]  upd_vga_address;                // comb
+logic         upd_vga_read;                   // comb
+logic         upd_vga_write;                  // comb
+logic [15:0]  upd_vga_writedata;              // comb
+logic [31:0]  upd_mem_address;                // comb
+logic         upd_mem_read;                   // comb
+logic         upd_mem_write;                  // comb
+logic [7:0]   upd_mem_writedata;              // comb
+update_handler update_handler (
+  .clk(clk), .reset(main_rst),
+
+  .vga_address(upd_vga_address), .vga_read(upd_vga_read),
+  .vga_waitrequest(vga_waitrequest), .vga_readdata(vga_readdata),
+  .vga_write(upd_vga_write), .vga_writedata(upd_vga_writedata),
+
+  .mem_address(upd_mem_address), .mem_read(upd_mem_read),
+  .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
+  .mem_write(upd_mem_write), .mem_writedata(upd_mem_writedata),
+
+  .debug_seg_export(debug_seg_export[20:14]),
+  .hps_params(hps_params), .local_palette(local_palette),
+  .start(upd_start), .processing(upd_processing) 
+);
 
 
 always_ff @( posedge clk ) begin
   if (main_rst) begin
-    state <= WAITING;
-    next_state <= WAITING;
+    state <= RESET;
+    next_state <= RESET;
 
     debug_light_export <= 10'd0;
   end
@@ -102,24 +145,30 @@ always_ff @( posedge clk ) begin
   else begin
     case (state)
 
+      RESET: begin
+        state <= WAITING;
+        next_state <= WAITING;
+      end
+
       WAITING: begin
         if (hps_write) begin
           debug_light_export <= ~(hps_address);
 
+          hps_params[hps_address] <= hps_writedata;
           if (hps_address == 0) begin
             case (hps_writedata)
               `CMD_V_Init: begin
-                state <= PATCH;
+                state <= SELFCHECK;
               end
 
               `CMD_I_SetPalette: begin
                 state <= PALETTE;
               end
-            endcase
-          end
 
-          else begin
-            hps_params[hps_address-1] <= hps_writedata;
+              `CMD_I_FinishUpdate: begin
+                state <= UPDATE;
+              end
+            endcase
           end
         end
 
@@ -137,20 +186,35 @@ always_ff @( posedge clk ) begin
         end
       end
 
+      UPDATE: begin
+        if (!upd_processing) begin
+          state <= WAITING;
+        end
+      end
+
+      SELFCHECK: begin
+        if (!chk_processing) begin
+          state <= WAITING;
+        end
+      end
+
     endcase
   end
 end
 
 
 always_comb begin
-  hps_rst =   (hps_writedata == `RESET) & hps_write;
+  hps_rst =   (hps_writedata == `CMD_RESET) & hps_write;
+  main_rst = (~reset_n) | (~dbg_rst_n) | (hps_rst);
+  debug_seg_export[41:35] = state;
+
   hps_waitrequest = 0;
   hps_readdata = 0;
 
-  debug_seg_export[41:35] = state;
-
   pat_start = 0;
   pal_start = 0;
+  chk_start = 0;
+  upd_start = 0;
 
   vga_address = 0;
   vga_read = 0;
@@ -166,9 +230,6 @@ always_comb begin
   hps_readdata = 0;
 
   case (state) 
-    WAITING: begin
-
-    end
 
     PATCH: begin
       hps_waitrequest = 1;
@@ -193,6 +254,31 @@ always_comb begin
       mem_read = pal_mem_read;
       mem_write = pal_mem_write;
       mem_writedata = pal_mem_writedata;
+    end
+    
+    UPDATE: begin
+      hps_waitrequest = 1;
+      upd_start = 1;
+
+      vga_address = upd_vga_address;
+      vga_read = upd_vga_read;
+      vga_write = upd_vga_write;
+      vga_writedata = upd_vga_writedata;
+
+      mem_address = upd_mem_address;
+      mem_read = upd_mem_read;
+      mem_write = upd_mem_write;
+      mem_writedata = upd_mem_writedata;
+    end
+
+    SELFCHECK: begin
+      hps_waitrequest = 1;
+      chk_start = 1;
+
+      mem_address = chk_mem_address;
+      mem_read = chk_mem_read;
+      mem_write = chk_mem_write;
+      mem_writedata = chk_mem_writedata;
     end
 
   endcase

@@ -10,15 +10,15 @@ cModel Technology
 dC:/Users/micha/code/de1_system/snake_game/verilog/simulation
 vdoom_fpga
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z1 !s110 1753072881
+Z1 !s110 1754092261
 !i10b 1
-!s100 jU5l6_Dc<NGI3O;6H<WaK0
-IUi=neO3Jl]YA5A>C9;BBh2
+!s100 ^>MWzH1a]J<T]6>VWg[W>0
+IUagTc;WdM3_LY8ezQOeT_3
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 !s105 main_sv_unit
 S1
 Z3 dC:/Users/micha/code/de1_system/doom/simulation
-w1753072627
+w1754089797
 8C:/Users/micha/code/de1_system/doom/main.sv
 FC:/Users/micha/code/de1_system/doom/main.sv
 L0 4
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1753072881.000000
+Z5 !s108 1754092261.000000
 !s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/main.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/main.sv|
 !i113 1
@@ -36,13 +36,13 @@ vpalette_handler
 R0
 R1
 !i10b 1
-!s100 ?LUlONF^<mFLC`9SZ7@W73
-IY[AOT@NJNBJg5C_m=?zVA2
+!s100 3Tc^i9CWQc96ZFQHK=RKI2
+IY@m6Vl;aPW>@VDXz1JgOl0
 R2
 !s105 palette_handler_sv_unit
 S1
 R3
-w1753071674
+w1754089477
 8C:/Users/micha/code/de1_system/doom/palette_handler.sv
 FC:/Users/micha/code/de1_system/doom/palette_handler.sv
 L0 4
@@ -60,13 +60,13 @@ vpatch_handler
 R0
 R1
 !i10b 1
-!s100 2Sj``i9=OEzzgZF]UCk`60
-I9lGz5CI=SY2@OBoXUI<7c2
+!s100 3=400KQfz;m28`V`K<HhF0
+I8dPh17L0bXn@iBQ7eKgKi0
 R2
 !s105 patch_handler_sv_unit
 S1
 R3
-w1753072801
+w1754074937
 8C:/Users/micha/code/de1_system/doom/patch_handler.sv
 FC:/Users/micha/code/de1_system/doom/patch_handler.sv
 L0 4
@@ -80,27 +80,123 @@ R5
 !i113 1
 R6
 R7
-vtb_doom_fpga
+vselfcheck_handler
 R0
 R1
 !i10b 1
-!s100 KXQ<Icd3BPNGo5N]Y;:0A3
-IJl1HCgZJcEm2]4Sk15=oJ2
+!s100 I1><W27Ni]N;TMMhfcgIe0
+IJ>_HHZe`:ckM1FANJQ>gK2
 R2
-!s105 tb_main_sv_unit
+!s105 selfcheck_sv_unit
 S1
 R3
-w1753072857
-8C:/Users/micha/code/de1_system/doom/tb_main.sv
-FC:/Users/micha/code/de1_system/doom/tb_main.sv
+w1754073780
+8C:/Users/micha/code/de1_system/doom/selfcheck.sv
+FC:/Users/micha/code/de1_system/doom/selfcheck.sv
 L0 4
 R4
 r1
 !s85 0
 31
 R5
-!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/tb_main.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/tb_main.sv|
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/selfcheck.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/selfcheck.sv|
+!i113 1
+R6
+R7
+vtb_doom_fpga
+R0
+R1
+!i10b 1
+!s100 5Iz@8fH>G:lZ;]MLH0J672
+IK^5;OULK[h6F3>7gZm?ZZ1
+R2
+!s105 tb_main_sv_unit
+S1
+R3
+w1754090121
+8C:/Users/micha/code/de1_system/doom/tests/tb_main.sv
+FC:/Users/micha/code/de1_system/doom/tests/tb_main.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 ../doom_consts.svh|C:/Users/micha/code/de1_system/doom/tests/tb_main.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/tests/tb_main.sv|
+!i113 1
+R6
+R7
+vtb_palette
+R0
+R1
+!i10b 1
+!s100 <GXzR3<[6P>H`RCW3GQk=0
+IkMl7f6nH2c=I;nU76WoCL1
+R2
+!s105 tb_palette_sv_unit
+S1
+R3
+w1754092251
+8C:/Users/micha/code/de1_system/doom/tests/tb_palette.sv
+FC:/Users/micha/code/de1_system/doom/tests/tb_palette.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 ../doom_consts.svh|C:/Users/micha/code/de1_system/doom/tests/tb_palette.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/tests/tb_palette.sv|
+!i113 1
+R6
+R7
+vtb_update
+R0
+R1
+!i10b 1
+!s100 7R2Tdc@619F<RUDi:RD>70
+IW;D0nPOdFz_@?Je[ezFWd2
+R2
+!s105 tb_update_sv_unit
+S1
+R3
+w1754090265
+8C:/Users/micha/code/de1_system/doom/tests/tb_update.sv
+FC:/Users/micha/code/de1_system/doom/tests/tb_update.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 ../doom_consts.svh|C:/Users/micha/code/de1_system/doom/tests/tb_update.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/tests/tb_update.sv|
+!i113 1
+R6
+R7
+vupdate_handler
+R0
+R1
+!i10b 1
+!s100 J1T4[J9aYkMl04SMcdL;z0
+I9Ji>mJhn1;[fh=L]DR2m:1
+R2
+!s105 update_handler_sv_unit
+S1
+R3
+w1754089468
+8C:/Users/micha/code/de1_system/doom/update_handler.sv
+FC:/Users/micha/code/de1_system/doom/update_handler.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\micha\code\de1_system\doom\doom_consts.svh|C:/Users/micha/code/de1_system/doom/update_handler.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/micha/code/de1_system/doom/update_handler.sv|
 !i113 1
 R6
 R7

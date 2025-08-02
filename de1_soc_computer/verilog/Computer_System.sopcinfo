@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2025.07.21.13:17:24 -->
+ <!-- 2025.08.01.16:58:49 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1753129043</value>
+  <value>1754092728</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -16663,7 +16663,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>doom_driver_0</moduleName>
     <slaveName>hps</slaveName>
     <name>doom_driver_0.hps</name>
-    <baseAddress>16384</baseAddress>
+    <baseAddress>9216</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -43614,7 +43614,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>doom_driver_0</moduleName>
     <slaveName>hps</slaveName>
     <name>doom_driver_0.hps</name>
-    <baseAddress>16384</baseAddress>
+    <baseAddress>9216</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -45293,7 +45293,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>doom_driver_0</moduleName>
     <slaveName>hps</slaveName>
     <name>doom_driver_0.hps</name>
-    <baseAddress>4280303616</baseAddress>
+    <baseAddress>4280296448</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -46276,7 +46276,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>doom_driver_0</moduleName>
     <slaveName>hps</slaveName>
     <name>doom_driver_0.hps</name>
-    <baseAddress>4280303616</baseAddress>
+    <baseAddress>4280296448</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -91597,7 +91597,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1753129043</value>
+   <value>1754092728</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -91617,7 +91617,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1753129043</value>
+   <value>1754092728</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -91633,7 +91633,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1753129043</value>
+   <value>1754092728</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -92765,7 +92765,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1753129043</value>
+   <value>1754092728</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -95011,7 +95011,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1753129043</value>
+   <value>1754092728</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -120235,7 +120235,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x4000</value>
+   <value>0x2400</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

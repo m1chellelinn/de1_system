@@ -46,12 +46,9 @@ logic [1:0]  mod3;                            // seq
 * 
 *     usegamma = 3;
 *     for (i = 0 ; i<256 ; i++) {
-*         c = gammatable[usegamma][*palette++];
-*         local_palette[(i*3)+PALETTE_R_OFFSET] = c >> 3; // VGA R 
-*         c = gammatable[usegamma][*palette++];
-*         local_palette[(i*3)+PALETTE_G_OFFSET] = c >> 2;
-*         c = gammatable[usegamma][*palette++];
-*         local_palette[(i*3)+PALETTE_B_OFFSET] = c >> 3;
+*         local_palette[i][0] = *palette++ // VGA R 
+*         local_palette[i][1] = *palette++;
+*         local_palette[i][2] = *palette++;
 *     }
 * }
 */
@@ -75,7 +72,7 @@ always_ff @( posedge clk ) begin
           state <= WAIT_MEM;
           next_state <= PROCESSING;
 
-          palette_addr <= hps_params[0];
+          palette_addr <= hps_params[1];
           i <= 0;
           ix3 <= 0;
           mod3 <= 0;
@@ -92,9 +89,11 @@ always_ff @( posedge clk ) begin
         else begin
           local_palette[i][mod3] <= mem_readdata;
 
-          if (mod3 == 2'd2) ix3 <= ix3 + 10'd3;
-          i <= i + 8'd1;
-          mod3 <= {!mod3[1] & mod3[0], !mod3[1] & !mod3[0]}; // I can't believe this performs "(mod3 + 1)% 3"
+          if (mod3 == 2'd2) begin
+            ix3 <= ix3 + 10'd3;
+            i <= i + 8'd1;
+          end
+          mod3 <= {!mod3[1] & mod3[0], !mod3[1] & !mod3[0]}; // mod3 = (mod3 + 1)% 3;
 
           state <= WAIT_MEM;
           next_state <= PROCESSING;
@@ -120,13 +119,14 @@ always_comb begin
   debug_seg_export = state;
   processing = 0;
 
-  mem_address = palette_addr + ix3;
+  mem_address = palette_addr + ix3 + mod3;
   mem_read = 0;
   mem_write = 0;
   mem_writedata = 0;
 
   case (state) 
     WAITING: begin
+      processing = start;
     end
 
     PROCESSING: begin

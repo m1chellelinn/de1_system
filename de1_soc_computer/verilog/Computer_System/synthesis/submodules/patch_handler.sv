@@ -106,6 +106,8 @@ always_ff @( posedge clk ) begin
           state <= WAIT_MEM;
           next_state <= PROCESSING;
           i <= 0;
+
+          ram_start_addr <= hps_params[1]; // first parameter
         end
         else begin
           state <= WAITING;

@@ -2,9 +2,6 @@
 module Computer_System (
 	av_config_SDAT,
 	av_config_SCLK,
-	debug_light_conduit,
-	debug_rst_reset,
-	debug_seg_conduit,
 	expansion_jp1_export,
 	expansion_jp2_export,
 	gpio_driver_debug_rst_export,
@@ -110,13 +107,13 @@ module Computer_System (
 	vga_G,
 	vga_B,
 	video_pll_ref_clk_clk,
-	video_pll_ref_reset_reset);	
+	video_pll_ref_reset_reset,
+	debug_seg_conduit,
+	debug_rst_reset,
+	debug_light_conduit);	
 
 	inout		av_config_SDAT;
 	output		av_config_SCLK;
-	output	[9:0]	debug_light_conduit;
-	input		debug_rst_reset;
-	output	[41:0]	debug_seg_conduit;
 	inout	[31:0]	expansion_jp1_export;
 	inout	[31:0]	expansion_jp2_export;
 	input		gpio_driver_debug_rst_export;
@@ -223,4 +220,7 @@ module Computer_System (
 	output	[7:0]	vga_B;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
+	output	[41:0]	debug_seg_conduit;
+	input		debug_rst_reset;
+	output	[9:0]	debug_light_conduit;
 endmodule

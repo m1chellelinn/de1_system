@@ -169,6 +169,14 @@
          type = "String";
       }
    }
+   element Computer_System
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Expansion_JP1
    {
       datum _sortIndex
@@ -3066,7 +3074,7 @@
    start="ARM_A9_HPS.h2f_lw_axi_master"
    end="doom_driver_0.hps">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="baseAddress" value="0x2400" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
