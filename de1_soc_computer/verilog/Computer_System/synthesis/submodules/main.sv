@@ -152,7 +152,6 @@ always_ff @( posedge clk ) begin
 
       WAITING: begin
         if (hps_write) begin
-          debug_light_export <= ~(hps_address);
 
           hps_params[hps_address] <= hps_writedata;
           if (hps_address == 0) begin
@@ -169,6 +168,9 @@ always_ff @( posedge clk ) begin
                 state <= UPDATE;
               end
             endcase
+          end
+          else begin
+            debug_light_export <= hps_writedata[31:22];
           end
         end
 

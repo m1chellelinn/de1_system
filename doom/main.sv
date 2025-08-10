@@ -51,20 +51,20 @@ logic [31:0]  pat_mem_address;                // comb
 logic         pat_mem_read;                   // comb
 logic         pat_mem_write;                  // comb
 logic [7:0]   pat_mem_writedata;              // comb
-// patch_handler patch_handler (
-//   .clk(clk), .reset(main_rst),
+patch_handler patch_handler (
+  .clk(clk), .reset(main_rst),
 
-//   .vga_address(pat_vga_address), .vga_read(pat_vga_read),
-//   .vga_waitrequest(vga_waitrequest), .vga_readdata(vga_readdata),
-//   .vga_write(pat_vga_write), .vga_writedata(pat_vga_writedata),
+  .vga_address(pat_vga_address), .vga_read(pat_vga_read),
+  .vga_waitrequest(vga_waitrequest), .vga_readdata(vga_readdata),
+  .vga_write(pat_vga_write), .vga_writedata(pat_vga_writedata),
 
-//   .mem_address(pat_mem_address), .mem_read(pat_mem_read),
-//   .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
-//   .mem_write(pat_mem_write), .mem_writedata(pat_mem_writedata),
+  .mem_address(pat_mem_address), .mem_read(pat_mem_read),
+  .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
+  .mem_write(pat_mem_write), .mem_writedata(pat_mem_writedata),
 
-//   .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
-//   .start(pat_start), .processing(pat_processing)
-// );
+  .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
+  .start(pat_start), .processing(pat_processing)
+);
 
 
 /* Palette handler */
@@ -152,7 +152,6 @@ always_ff @( posedge clk ) begin
 
       WAITING: begin
         if (hps_write) begin
-          debug_light_export <= ~(hps_address);
 
           hps_params[hps_address] <= hps_writedata;
           if (hps_address == 0) begin
@@ -168,7 +167,14 @@ always_ff @( posedge clk ) begin
               `CMD_I_FinishUpdate: begin
                 state <= UPDATE;
               end
+
+              `CMD_V_DrawPatch: begin
+                state <= PATCH;
+              end
             endcase
+          end
+          else begin
+            debug_light_export <= hps_writedata[31:22];
           end
         end
 

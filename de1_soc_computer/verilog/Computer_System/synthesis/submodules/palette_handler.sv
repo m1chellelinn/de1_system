@@ -33,6 +33,7 @@ logic [31:0]  palette_addr;                   // seq
 logic [7:0]  i;                               // seq
 logic [9:0]  ix3;                             // seq
 logic [1:0]  mod3;                            // seq
+logic [7:0]  palette_val;                     // seq
 
 
 
@@ -59,6 +60,7 @@ always_ff @( posedge clk ) begin
     next_state <= WAITING;
 
     palette_addr <= 0;
+    palette_val <= 0;
     i <= 0;
     ix3 <= 0;
     mod3 <= 0;
@@ -73,6 +75,7 @@ always_ff @( posedge clk ) begin
           next_state <= PROCESSING;
 
           palette_addr <= hps_params[1];
+          palette_val <= 0;
           i <= 0;
           ix3 <= 0;
           mod3 <= 0;
@@ -87,7 +90,7 @@ always_ff @( posedge clk ) begin
           state <= DONE;
         end
         else begin
-          local_palette[i][mod3] <= mem_readdata;
+          local_palette[i][mod3] <= palette_val;
 
           if (mod3 == 2'd2) begin
             ix3 <= ix3 + 10'd3;
@@ -103,6 +106,7 @@ always_ff @( posedge clk ) begin
       WAIT_MEM: begin
         if (!mem_waitrequest) begin
           state <= next_state;
+          palette_val <= mem_readdata;
         end
       end
 

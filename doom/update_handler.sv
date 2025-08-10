@@ -28,8 +28,8 @@ module update_handler (
 );
 
 /* Signals for local use */
-enum { WAITING, 
-       ADVANCE_LOOP, 
+enum { WAITING,
+       ADVANCE_LOOP,
        WAIT_MEM, WAIT_VGA,
        DONE } 
               state;                          // seq
