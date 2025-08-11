@@ -20,6 +20,13 @@ module doom_fpga (
   output logic        mem_write,          //           .write             // seq
   output logic [7:0]  mem_writedata,      //           .writedata         // seq
                                           //                              // 
+  output logic [31:0] w_mem_address,      // wide_mem_master.address      // seq
+  output logic        w_mem_read,         //                .read         // comb
+  input  logic        w_mem_waitrequest,  //                .waitrequest  // 
+  input  logic [31:0] w_mem_readdata,     //                .readdata     // 
+  output logic        w_mem_write,        //                .write        // comb
+  output logic [31:0] w_mem_writedata,    //                .writedata    // seq
+                                          //                              // 
   input  logic [7:0]  hps_address,        //  hps_slave.address           // 
   input  logic        hps_read,           //           .read              // 
   output logic        hps_waitrequest,    //           .waitrequest       // comb
@@ -51,6 +58,10 @@ logic [31:0]  pat_mem_address;                // comb
 logic         pat_mem_read;                   // comb
 logic         pat_mem_write;                  // comb
 logic [7:0]   pat_mem_writedata;              // comb
+logic [31:0]  pat_w_mem_address;              // comb
+logic         pat_w_mem_read;                 // comb
+logic         pat_w_mem_write;                // comb
+logic [31:0]  pat_w_mem_writedata;             // comb
 patch_handler patch_handler (
   .clk(clk), .reset(main_rst),
 
@@ -61,6 +72,10 @@ patch_handler patch_handler (
   .mem_address(pat_mem_address), .mem_read(pat_mem_read),
   .mem_waitrequest(mem_waitrequest), .mem_readdata(mem_readdata),
   .mem_write(pat_mem_write), .mem_writedata(pat_mem_writedata),
+
+  .w_mem_address(pat_w_mem_address), .w_mem_read(pat_w_mem_read), 
+  .w_mem_waitrequest(w_mem_waitrequest), .w_mem_readdata(w_mem_readdata), 
+  .w_mem_write(pat_w_mem_write), .w_mem_writedata(pat_w_mem_writedata), 
 
   .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
   .start(pat_start), .processing(pat_processing)
@@ -177,7 +192,6 @@ always_ff @( posedge clk ) begin
             debug_light_export <= hps_writedata[31:22];
           end
         end
-
       end
 
       PATCH: begin
@@ -250,6 +264,11 @@ always_comb begin
       mem_read = pat_mem_read;
       mem_write = pat_mem_write;
       mem_writedata = pat_mem_writedata;
+
+      w_mem_address = pat_w_mem_address;
+      w_mem_read = pat_w_mem_read;
+      w_mem_write = pat_w_mem_write;
+      w_mem_writedata = pat_w_mem_writedata;
     end
 
     PALETTE: begin

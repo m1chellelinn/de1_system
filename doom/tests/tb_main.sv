@@ -17,6 +17,12 @@ logic        mem_waitrequest=0;
 logic [7:0]  mem_readdata=0;
 logic        mem_write;
 logic [7:0]  mem_writedata;
+logic [31:0] w_mem_address;
+logic        w_mem_read;
+logic        w_mem_waitrequest=0;
+logic [31:0] w_mem_readdata=0;
+logic        w_mem_write;
+logic [31:0] w_mem_writedata;
 logic [7:0]  hps_address=0;
 logic        hps_read=0;
 logic        hps_waitrequest;
@@ -26,7 +32,9 @@ logic [31:0] hps_writedata=0;
 logic [41:0] debug_seg_export;
 logic [9:0]  debug_light_export;
 
+
 doom_fpga DUT( .* );
+
 logic [31:0] test_num = 0;
 logic [31:0] errs = 0;
 
