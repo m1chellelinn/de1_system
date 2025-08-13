@@ -35,21 +35,19 @@ module patch_handler (
 
 /* Signals for local use */
 enum { WAITING, DONE,
-       PROCESSING_INIT0, PROCESSING_INIT1, PROCESS_INIT2,
-       GET_POST, DRAW_POST, READ_COL, DRAW_COL,
+       PROCESSING_INIT0, PROCESSING_INIT1, PROCESSING_INIT2,
+       COL_FOR_LOOP, COL_WHILE_LOOP, READ_COL, DRAW_COL,
        LOOP_ITER,
        WAIT_MEM_WRITE, WAIT_MEM_READ,
        WAIT_W_MEM_WRITE, WAIT_W_MEM_READ}
               state, next_state;          // seq
-logic         hps_rst;                    // comb
-logic [15:0]  x, y, scrn_num;             // seq -- function params
-logic [31:0]  screens, patch;             // seq -- function params
-logic [31:0]  patch_addr,                 // seq -- local pointers
-              col_addr,                   // seq
+logic [15:0]  x, y, scrn;                 // seq -- function params
+logic [31:0]  screens_addr, patch_addr;        // seq -- function params
+logic [31:0]  col_addr,                   // seq -- local pointers
               desttop,                    // seq
               dest,                       // seq
               source;                     // seq
-logic [15:0]  count, col,                 // seq -- local numbers
+logic [15:0]  count, col;                 // seq -- local numbers
 logic [7:0]   post_topdelta, post_length; // seq -- cached memory
 logic [15:0]  patch_width,                // seq -- cached memory
               patch_leftoffset,           // seq
@@ -96,12 +94,12 @@ logic [31:0]  local_w_mem_readdata;       // seq -- captured readdata
 * 
 *     desttop = screens[scrn]+y*SCREENWIDTH+x;
 *
-****GET_POST
+****COL_FOR_LOOP
 *     for (col = 0; col < width; x++, col++, desttop++)
 *     { 
 *         column = (column_t *)((byte *)patch + LONG(patch->columnofs[col])); // read
 *
-****DRAW_POST
+****COL_WHILE_LOOP
 *         // step through the posts in a column 
 *         while (column->topdelta != 0xff ) // read -- also read column->length
 *         { 
@@ -109,7 +107,7 @@ logic [31:0]  local_w_mem_readdata;       // seq -- captured readdata
 *           dest = desttop + column->topdelta*SCREENWIDTH; // read -- aggregated away
 *           count = column->length; // read -- aggregated away
 *
-****DRAW_COL
+****READ_COL/DRAW_COL
 *           while (count--) 
 *           { 
 *             *dest = *source++; // read & write
@@ -117,6 +115,7 @@ logic [31:0]  local_w_mem_readdata;       // seq -- captured readdata
 *           } 
 *           column = (column_t *)( (byte *)column + column->length + 4 );  // read -- aggregated away
 *         } 
+****LOOP_ITER
 *     }
 * } 
 */
@@ -127,7 +126,7 @@ always_ff @( posedge clk ) begin
     state <= WAITING;
     next_state <= WAITING;
 
-    x = 0; y = 0; scrn = 0; screens = 0; patch = 0;
+    x = 0; y = 0; scrn = 0; screens_addr = 0; patch_addr = 0;
     patch_addr = 0; col_addr = 0; desttop = 0; dest = 0; source = 0; 
     count = 0; col = 0;
     post_topdelta = 0; post_length = 0;
@@ -141,36 +140,38 @@ always_ff @( posedge clk ) begin
 
       WAITING: begin
         if (start) begin
-          w_mem_address <= hps_params[4]; // addr of "patch"
+          x = hps_params[1];
+          y = hps_params[2];
+          scrn = hps_params[3];
+          screens_addr = hps_params[4];
+          patch_addr = hps_params[5];
+
+          w_mem_address <= patch_addr;
           state <= WAIT_W_MEM_READ;
           next_state <= PROCESSING_INIT1;
 
-          x <= hps_params[1];
-          y <= hps_params[2];
-          scrn <= hps_params[3];
-          screens <= hps_params[4]
-          patch <= hps_params[5];
-
-          // Reset all locals. Why is my code so CHUNKY
-          patch_addr = 0; col_addr = 0; desttop = 0; dest = 0; source = 0; 
-          count = 0; col = 0;
-          post_topdelta = 0; post_length = 0;
-          patch_width = 0; patch_leftoffset = 0; patch_topoffset = 0;
-          local_mem_readdata = 0; local_w_mem_readdata = 0;
-          mem_address = 0; mem_writedata = 0; w_mem_address = 0; w_mem_writedata = 0;
         end
         else begin
           state <= WAITING;
           next_state <= WAITING;
+
+          // Reset all locals. Why is my code so CHUNKY
+          x <= 0; y <= 0; scrn <= 0; screens_addr <= 0; patch_addr <= 0;
+          patch_addr <= 0; col_addr <= 0; desttop <= 0; dest <= 0; source <= 0; 
+          count <= 0; col <= 0;
+          post_topdelta <= 0; post_length <= 0;
+          patch_width <= 0; patch_leftoffset <= 0; patch_topoffset <= 0;
+          local_mem_readdata <= 0; local_w_mem_readdata <= 0;
+          mem_address <= 0; mem_writedata <= 0; w_mem_address <= 0; w_mem_writedata <= 0;
         end
       end
 
       PROCESSING_INIT1: begin
         patch_width <= local_w_mem_readdata[15:0];
 
-        w_mem_address <= patch + 4; // {patch->topoffset, patch->leftoffset}
+        w_mem_address <= patch_addr + 4; // {patch->topoffset, patch->leftoffset}
         state <= WAIT_W_MEM_READ;
-        next_state <= PROCESS_INIT2;
+        next_state <= PROCESSING_INIT2;
       end
 
       PROCESSING_INIT2: begin
@@ -178,25 +179,25 @@ always_ff @( posedge clk ) begin
         patch_leftoffset = local_w_mem_readdata[15:0];
         y = y - patch_topoffset;
         x = x - patch_leftoffset;
-        desttop <= screens + 
+        desttop <= screens_addr + 
                    (y << 8) + (y << 6) + // y * SCREENWIDTH
                    x +
                    (scrn ? 16'd64000 : 0); // assume DOOM only ever writes to scrn 0 or 1
 
-        w_mem_address <= patch + 8 + col;
+        w_mem_address <= patch_addr + 8 + (col << 2);
         state <= WAIT_W_MEM_READ;
-        next_state <= GET_POST;
+        next_state <= COL_FOR_LOOP;
       end
 
-      GET_POST: begin
-          column = patch + local_w_mem_readdata;
+      COL_FOR_LOOP: begin
+          col_addr = patch_addr + local_w_mem_readdata;
 
-          w_mem_address <= column;
+          w_mem_address <= col_addr;
           state <= WAIT_W_MEM_READ;
-          next_state <= GET_POST;
+          next_state <= COL_WHILE_LOOP;
       end
 
-      DRAW_POST: begin
+      COL_WHILE_LOOP: begin
         post_length = local_w_mem_readdata[15:8];
         post_topdelta = local_w_mem_readdata[7:0];
 
@@ -204,7 +205,7 @@ always_ff @( posedge clk ) begin
           state <= LOOP_ITER;
         end
         else begin
-          source <= column + 3;
+          source <= col_addr + 3;
           dest <= desttop + (post_topdelta << 8) + (post_topdelta << 6); // == desttop + post_topdelta * SCREENWIDTH
           count <= post_length; // FIXME: can get rid of "count" and just decrement post_length going forward
           state <= READ_COL;
@@ -215,29 +216,38 @@ always_ff @( posedge clk ) begin
         if (count > 0) begin
           mem_address <= source;
           state <= WAIT_MEM_READ;
-          next_state <= WRITE_COL;
+          next_state <= DRAW_COL;
 
           source <= source + 1;
         end
         else begin
-          state <= LOOP_ITER;
+          col_addr = col_addr + post_length + 4;
+
+          w_mem_address <= col_addr;
+          state <= WAIT_W_MEM_READ;
+          next_state <= COL_WHILE_LOOP;
         end
       end
 
-      WRITE_COL: begin
+      DRAW_COL: begin
         mem_address <= dest;
+        mem_writedata <= local_mem_readdata;
         state <= WAIT_MEM_WRITE;
         next_state <= READ_COL;
 
-        cout <= cout - 1;
-        dest <= dest + SCREENWIDTH;
+        count <= count - 1;
+        dest <= dest + `SCREENWIDTH;
       end
 
       LOOP_ITER: begin
+        col = col + 1;
         if (col < patch_width) begin
           x <= x + 1;
-          col <= col + 1;
           desttop <= desttop + 1;
+
+          w_mem_address <= patch_addr + 8 + (col << 2);
+          state <= WAIT_W_MEM_READ;
+          next_state <= COL_FOR_LOOP;
         end
         else begin
           state <= DONE;
@@ -310,16 +320,16 @@ always_comb begin
     PROCESSING_INIT2: begin
     end
     
-    GET_POST: begin
+    COL_FOR_LOOP: begin
     end
     
-    DRAW_POST: begin
+    COL_WHILE_LOOP: begin
     end
 
     READ_COL: begin
     end
 
-    WRITE_COL: begin
+    DRAW_COL: begin
     end
 
     LOOP_ITER: begin

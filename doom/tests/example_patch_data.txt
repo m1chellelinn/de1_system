@@ -1,0 +1,67 @@
+Patch at (65,59), scrn=0, &patch=0xb6a16648
+  size: 20x19
+  Column 1, offset 88, len=4, topdelta=8
+    Data: 8 4 47 47 48 49 8d 8d F F --> data end
+  Column 2, offset 97, len=11, topdelta=6
+    Data: 6 b 46 46 49 48 45 47 4c 4d 97 8f 8f 8d 8d F F --> data end
+
+
+
+typedef struct
+{
+    byte		topdelta;	// -1 is the last post in a column
+    byte		length; 	// length data bytes follows
+} post_t;
+
+// column_t is a list of 0 or more post_t, (byte)-1 terminated
+typedef post_t	column_t;
+
+typedef struct 
+{ 
+    short		width;		// bounding box size 
+    short		height; 
+    short		leftoffset;	// pixels to the left of origin 
+    short		topoffset;	// pixels below the origin 
+    int			columnofs[8];	// only [width] used
+    // the [0] is &columnofs[width] 
+} patch_t;
+
+
+
+
+#  Column 3, offset 113, len=15, topdelta=3
+#    Data: 3 f 44 44 44 46 43 42 42 44 45 4d 2 4d 4a 49 49 49 49 F F --> data end
+#  Column 4, offset 133, len=16, topdelta=2
+#    Data: 2 10 43 43 42 43 42 46 4c 4a 43 47 4c 0 2 2 48 4a 4b 4b F F --> data end
+#  Column 5, offset 154, len=17, topdelta=1
+#    Data: 1 11 43 43 41 3f 41 46 bd bd bd 40 49 4c 2 2 4c 4a 4b 1 1 F F --> data end
+#  Column 6, offset 176, len=18, topdelta=1
+#    Data: 1 12 3f 3f 3d 3d 41 4b be bd bc 3e 4b 4d 4e 4d 4b 4a 4e 2 2 2 F F --> data end
+#  Column 7, offset 199, len=19, topdelta=0
+#    Data: 0 13 40 40 3d 3b 3c 43 bf be bc bb 45 4d 49 47 4a 49 48 2 2 2 2 F F --> data end
+#  Column 8, offset 223, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3b 3a 3c 43 bf be bc bc 48 48 45 41 4c 47 48 0 2 2 2 F F --> data end
+#  Column 9, offset 247, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3a 3a 3c 42 bf bf bd 48 4b 4d 49 41 4d 44 46 0 2 2 2 F F --> data end
+#  Column 10, offset 271, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3a 3a 3b 40 48 45 48 2 2 2 45 3f 4e 3e 46 0 2 2 2 F F --> data end
+#  Column 11, offset 295, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3a 3a 3b 41 48 45 48 2 2 2 45 3f 4e 3e 46 0 2 2 2 F F --> data end
+#  Column 12, offset 319, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3b 3a 3c 43 bf bf bd 48 4b 4d 49 41 4d 44 46 0 2 2 2 F F --> data end
+#  Column 13, offset 343, len=19, topdelta=0
+#    Data: 0 13 3d 3d 3c 3b 3c 44 bf be bc bc 48 48 45 41 4c 47 48 0 2 2 2 F F --> data end
+#  Column 14, offset 367, len=19, topdelta=0
+#    Data: 0 13 40 40 3d 3c 3c 43 bf be bc bc 45 4d 49 47 4a 49 48 0 2 2 2 F F --> data end
+#  Column 15, offset 391, len=18, topdelta=1
+#    Data: 1 12 40 40 3e 3d 41 4b be bd ba 40 4b 4d 4e 4d 4b 4a 4e 2 2 2 F F --> data end
+#  Column 16, offset 414, len=17, topdelta=1
+#    Data: 1 11 42 42 41 3f 42 46 bd bd bd 40 49 4d 2 2 4c 4a 4b 1 1 F F --> data end
+#  Column 17, offset 436, len=16, topdelta=2
+#    Data: 2 10 42 42 43 44 42 46 4c 4a 43 47 4d 0 2 2 48 4a 4b 4b F F --> data end
+#  Column 18, offset 457, len=15, topdelta=3
+#    Data: 3 f 44 44 46 46 43 42 42 44 45 4d 2 4d 4a 49 49 49 49 F F --> data end
+#  Column 19, offset 477, len=12, topdelta=5
+#    Data: 5 c 45 45 48 48 47 45 47 4c 4d 97 8f 8f 8d 8d F F --> data end
+#  Column 20, offset 494, len=4, topdelta=8
+#    Data: 8 4 45 45 48 49 8d 8d F F --> data end
