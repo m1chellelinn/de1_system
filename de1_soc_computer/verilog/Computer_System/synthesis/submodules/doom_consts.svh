@@ -20,25 +20,3 @@
 `define SCREENWIDTH  320
 `define SCREENHEIGHT 200
 `define SCREENSIZE   16'd64000
-
-/* 
-* int x, y;
-* for (y = 0; y < SCREENHEIGHT; y++) {
-*     for (x = 0; x < SCREENWIDTH; x++) {
-*         byte index = screens[0][y * SCREENWIDTH + x];
-*         byte r = local_palette[(index*3)+PALETTE_R_OFFSET];
-*         byte g = local_palette[(index*3)+PALETTE_G_OFFSET];
-*         byte b = local_palette[(index*3)+PALETTE_B_OFFSET];
-*         WriteVgaPixel(x, y, r, g, b);
-*     }
-* }
-* 
-* inline void WriteVgaPixel(int x, int y, byte r, byte g, byte b) {
-*     volatile uint16_t *vga_ptr = (uint16_t *) (
-*         (int)sram_v_addr + 
-*         ((x+5) << VGA_ADDR_X_OFFSET) + 
-*         ((y+5) << VGA_ADDR_Y_OFFSET)
-*     );
-*     *vga_ptr = (r << VGA_R_OFFSET) | (g << VGA_G_OFFSET) | (b << VGA_B_OFFSET);
-* }
-*/

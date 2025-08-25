@@ -2,6 +2,9 @@
 		port (
 			av_config_SDAT                  : inout std_logic                     := 'X';             -- SDAT
 			av_config_SCLK                  : out   std_logic;                                        -- SCLK
+			debug_light_conduit             : out   std_logic_vector(9 downto 0);                     -- conduit
+			debug_rst_reset                 : in    std_logic                     := 'X';             -- reset
+			debug_seg_conduit               : out   std_logic_vector(41 downto 0);                    -- conduit
 			expansion_jp1_export            : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
 			expansion_jp2_export            : inout std_logic_vector(31 downto 0) := (others => 'X'); -- export
 			gpio_driver_debug_rst_export    : in    std_logic                     := 'X';             -- export
@@ -107,10 +110,7 @@
 			vga_G                           : out   std_logic_vector(7 downto 0);                     -- G
 			vga_B                           : out   std_logic_vector(7 downto 0);                     -- B
 			video_pll_ref_clk_clk           : in    std_logic                     := 'X';             -- clk
-			video_pll_ref_reset_reset       : in    std_logic                     := 'X';             -- reset
-			debug_seg_conduit               : out   std_logic_vector(41 downto 0);                    -- conduit
-			debug_rst_reset                 : in    std_logic                     := 'X';             -- reset
-			debug_light_conduit             : out   std_logic_vector(9 downto 0)                      -- conduit
+			video_pll_ref_reset_reset       : in    std_logic                     := 'X'              -- reset
 		);
 	end component Computer_System;
 
@@ -118,6 +118,9 @@
 		port map (
 			av_config_SDAT                  => CONNECTED_TO_av_config_SDAT,                  --             av_config.SDAT
 			av_config_SCLK                  => CONNECTED_TO_av_config_SCLK,                  --                      .SCLK
+			debug_light_conduit             => CONNECTED_TO_debug_light_conduit,             --           debug_light.conduit
+			debug_rst_reset                 => CONNECTED_TO_debug_rst_reset,                 --             debug_rst.reset
+			debug_seg_conduit               => CONNECTED_TO_debug_seg_conduit,               --             debug_seg.conduit
 			expansion_jp1_export            => CONNECTED_TO_expansion_jp1_export,            --         expansion_jp1.export
 			expansion_jp2_export            => CONNECTED_TO_expansion_jp2_export,            --         expansion_jp2.export
 			gpio_driver_debug_rst_export    => CONNECTED_TO_gpio_driver_debug_rst_export,    -- gpio_driver_debug_rst.export
@@ -223,9 +226,6 @@
 			vga_G                           => CONNECTED_TO_vga_G,                           --                      .G
 			vga_B                           => CONNECTED_TO_vga_B,                           --                      .B
 			video_pll_ref_clk_clk           => CONNECTED_TO_video_pll_ref_clk_clk,           --     video_pll_ref_clk.clk
-			video_pll_ref_reset_reset       => CONNECTED_TO_video_pll_ref_reset_reset,       --   video_pll_ref_reset.reset
-			debug_seg_conduit               => CONNECTED_TO_debug_seg_conduit,               --             debug_seg.conduit
-			debug_rst_reset                 => CONNECTED_TO_debug_rst_reset,                 --             debug_rst.reset
-			debug_light_conduit             => CONNECTED_TO_debug_light_conduit              --           debug_light.conduit
+			video_pll_ref_reset_reset       => CONNECTED_TO_video_pll_ref_reset_reset        --   video_pll_ref_reset.reset
 		);
 

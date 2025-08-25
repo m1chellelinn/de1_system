@@ -77,7 +77,7 @@ patch_handler patch_handler (
   .w_mem_waitrequest(w_mem_waitrequest), .w_mem_readdata(w_mem_readdata), 
   .w_mem_write(pat_w_mem_write), .w_mem_writedata(pat_w_mem_writedata), 
 
-  .debug_seg_export(debug_seg_export[34:28]), .hps_params(hps_params),
+  .debug_seg_export(debug_seg_export[13:7]), .hps_params(hps_params),
   .start(pat_start), .processing(pat_processing)
 );
 
@@ -245,6 +245,11 @@ always_comb begin
   mem_read = 0;
   mem_write = 0;
   mem_writedata = 0;
+
+  w_mem_address = 0;
+  w_mem_read = 0;
+  w_mem_write = 0;
+  w_mem_writedata = 0;
 
   hps_waitrequest = 0;
   hps_readdata = 0;

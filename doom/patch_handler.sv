@@ -39,7 +39,7 @@ enum { WAITING, DONE,
        COL_FOR_LOOP, COL_WHILE_LOOP, READ_COL, DRAW_COL,
        LOOP_ITER,
        WAIT_MEM_WRITE, WAIT_MEM_READ,
-       WAIT_W_MEM_WRITE, WAIT_W_MEM_READ}
+       WAIT_W_MEM_WRITE, WAIT_W_MEM_READ, WAIT_W_MEM_READ_HOLD, WAIT_MEM_READ_EXTRA}
               state, next_state;          // seq
 logic [15:0]  x, y, scrn;                 // seq -- function params
 logic [31:0]  screens_addr, patch_addr;        // seq -- function params
@@ -51,9 +51,10 @@ logic [15:0]  count, col;                 // seq -- local numbers
 logic [7:0]   post_topdelta, post_length; // seq -- cached memory
 logic [15:0]  patch_width,                // seq -- cached memory
               patch_leftoffset,           // seq
-              patch_topoffset;          // seq
+              patch_topoffset;            // seq
 logic [7:0]   local_mem_readdata;         // seq -- captured readdata
 logic [31:0]  local_w_mem_readdata;       // seq -- captured readdata
+logic [1:0]   w_mem_byteoffset;           // comb -- helper in reading at offsets
 
 
 /*
@@ -258,7 +259,6 @@ always_ff @( posedge clk ) begin
       WAIT_MEM_WRITE: begin
         if (!mem_waitrequest) begin
           state <= next_state;
-          local_mem_readdata <= mem_readdata;
         end
       end
 
@@ -272,19 +272,78 @@ always_ff @( posedge clk ) begin
       WAIT_W_MEM_WRITE: begin
         if (!w_mem_waitrequest) begin
           state <= next_state;
-          local_w_mem_readdata <= w_mem_readdata;
         end
       end
 
       WAIT_W_MEM_READ: begin
         if (!w_mem_waitrequest) begin
+            case (w_mem_byteoffset)
+              2'd0: begin
+                state <= next_state;
+                local_w_mem_readdata = w_mem_readdata;
+              end
+
+              2'd1: begin
+                w_mem_address <= w_mem_address + 4;
+                state <= WAIT_W_MEM_READ_HOLD;
+                local_w_mem_readdata[23:0] = w_mem_readdata[31:8];
+              end
+
+              2'd2: begin
+                w_mem_address <= w_mem_address + 4;
+                state <= WAIT_W_MEM_READ_HOLD;
+                local_w_mem_readdata[15:0] = w_mem_readdata[31:16];
+              end
+
+              2'd3: begin
+                w_mem_address <= w_mem_address + 4;
+                state <= WAIT_W_MEM_READ_HOLD;
+                local_w_mem_readdata[7:0] = w_mem_readdata[31:24];
+              end
+            endcase
+        end
+      end
+
+      WAIT_W_MEM_READ_HOLD: begin
+        state <= WAIT_MEM_READ_EXTRA;
+      end
+
+      WAIT_MEM_READ_EXTRA: begin
+        if (!w_mem_waitrequest) begin
           state <= next_state;
-          local_w_mem_readdata <= w_mem_readdata;
+
+          case (w_mem_byteoffset)
+            2'd0: begin
+              // this should never happen!
+              state <= WAITING; // so just reset
+            end
+
+            2'd1: begin
+              local_w_mem_readdata[31:24] = w_mem_readdata[7:0];
+            end
+
+            2'd2: begin
+              local_w_mem_readdata[31:16] = w_mem_readdata[15:0];
+            end
+
+            2'd3: begin
+              local_w_mem_readdata[31:8] = w_mem_readdata[23:0];
+            end
+          endcase
         end
       end
 
       DONE: begin
-        state <= DONE;
+        state <= WAITING;
+
+        // Reset all locals. Why is my code so CHUNKY
+        x <= 0; y <= 0; scrn <= 0; screens_addr <= 0; patch_addr <= 0;
+        patch_addr <= 0; col_addr <= 0; desttop <= 0; dest <= 0; source <= 0; 
+        count <= 0; col <= 0;
+        post_topdelta <= 0; post_length <= 0;
+        patch_width <= 0; patch_leftoffset <= 0; patch_topoffset <= 0;
+        local_mem_readdata <= 0; local_w_mem_readdata <= 0;
+        mem_address <= 0; mem_writedata <= 0; w_mem_address <= 0; w_mem_writedata <= 0;
       end
 
       default: state <= WAITING;
@@ -308,6 +367,8 @@ always_comb begin
 
   w_mem_read = 0;
   w_mem_write = 0;
+  w_mem_byteoffset = w_mem_address[1:0];
+
 
   case (state) 
     WAITING: begin
@@ -348,6 +409,14 @@ always_comb begin
     end
     
     WAIT_W_MEM_READ: begin
+      w_mem_read = 1;
+    end
+
+    WAIT_W_MEM_READ_HOLD: begin
+      w_mem_read = 0;  
+    end
+
+    WAIT_MEM_READ_EXTRA: begin
       w_mem_read = 1;
     end
 

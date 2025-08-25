@@ -3,7 +3,7 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="351" />
+   <connections preferredWidth="367" />
    <irq preferredWidth="79" />
    <name preferredWidth="385" />
    <inputclock preferredWidth="171" />
@@ -11,6 +11,6 @@
    <description preferredWidth="359" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
+ <library expandedCategories="Project,Library" />
  <window width="2560" height="1528" x="0" y="0" />
 </preferences>

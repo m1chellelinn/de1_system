@@ -1,6 +1,9 @@
 	Computer_System u0 (
 		.av_config_SDAT                  (<connected-to-av_config_SDAT>),                  //             av_config.SDAT
 		.av_config_SCLK                  (<connected-to-av_config_SCLK>),                  //                      .SCLK
+		.debug_light_conduit             (<connected-to-debug_light_conduit>),             //           debug_light.conduit
+		.debug_rst_reset                 (<connected-to-debug_rst_reset>),                 //             debug_rst.reset
+		.debug_seg_conduit               (<connected-to-debug_seg_conduit>),               //             debug_seg.conduit
 		.expansion_jp1_export            (<connected-to-expansion_jp1_export>),            //         expansion_jp1.export
 		.expansion_jp2_export            (<connected-to-expansion_jp2_export>),            //         expansion_jp2.export
 		.gpio_driver_debug_rst_export    (<connected-to-gpio_driver_debug_rst_export>),    // gpio_driver_debug_rst.export
@@ -106,9 +109,6 @@
 		.vga_G                           (<connected-to-vga_G>),                           //                      .G
 		.vga_B                           (<connected-to-vga_B>),                           //                      .B
 		.video_pll_ref_clk_clk           (<connected-to-video_pll_ref_clk_clk>),           //     video_pll_ref_clk.clk
-		.video_pll_ref_reset_reset       (<connected-to-video_pll_ref_reset_reset>),       //   video_pll_ref_reset.reset
-		.debug_seg_conduit               (<connected-to-debug_seg_conduit>),               //             debug_seg.conduit
-		.debug_rst_reset                 (<connected-to-debug_rst_reset>),                 //             debug_rst.reset
-		.debug_light_conduit             (<connected-to-debug_light_conduit>)              //           debug_light.conduit
+		.video_pll_ref_reset_reset       (<connected-to-video_pll_ref_reset_reset>)        //   video_pll_ref_reset.reset
 	);
 

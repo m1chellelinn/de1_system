@@ -143,6 +143,12 @@ module Computer_System (
 	wire          doom_driver_0_mem_read;                                                 // doom_driver_0:mem_read -> mm_interconnect_0:doom_driver_0_mem_read
 	wire          doom_driver_0_mem_write;                                                // doom_driver_0:mem_write -> mm_interconnect_0:doom_driver_0_mem_write
 	wire    [7:0] doom_driver_0_mem_writedata;                                            // doom_driver_0:mem_writedata -> mm_interconnect_0:doom_driver_0_mem_writedata
+	wire          doom_driver_0_wide_mem_waitrequest;                                     // mm_interconnect_0:doom_driver_0_wide_mem_waitrequest -> doom_driver_0:w_mem_waitrequest
+	wire   [31:0] doom_driver_0_wide_mem_readdata;                                        // mm_interconnect_0:doom_driver_0_wide_mem_readdata -> doom_driver_0:w_mem_readdata
+	wire   [31:0] doom_driver_0_wide_mem_address;                                         // doom_driver_0:w_mem_address -> mm_interconnect_0:doom_driver_0_wide_mem_address
+	wire          doom_driver_0_wide_mem_read;                                            // doom_driver_0:w_mem_read -> mm_interconnect_0:doom_driver_0_wide_mem_read
+	wire          doom_driver_0_wide_mem_write;                                           // doom_driver_0:w_mem_write -> mm_interconnect_0:doom_driver_0_wide_mem_write
+	wire   [31:0] doom_driver_0_wide_mem_writedata;                                       // doom_driver_0:w_mem_writedata -> mm_interconnect_0:doom_driver_0_wide_mem_writedata
 	wire    [1:0] mm_interconnect_0_arm_a9_hps_f2h_axi_slave_awburst;                     // mm_interconnect_0:ARM_A9_HPS_f2h_axi_slave_awburst -> ARM_A9_HPS:f2h_AWBURST
 	wire    [4:0] mm_interconnect_0_arm_a9_hps_f2h_axi_slave_awuser;                      // mm_interconnect_0:ARM_A9_HPS_f2h_axi_slave_awuser -> ARM_A9_HPS:f2h_AWUSER
 	wire    [3:0] mm_interconnect_0_arm_a9_hps_f2h_axi_slave_arlen;                       // mm_interconnect_0:ARM_A9_HPS_f2h_axi_slave_arlen -> ARM_A9_HPS:f2h_ARLEN
@@ -1067,7 +1073,13 @@ module Computer_System (
 		.mem_writedata      (doom_driver_0_mem_writedata),                     //            .writedata
 		.debug_seg_export   (debug_seg_conduit),                               //   debug_seg.conduit
 		.debug_light_export (debug_light_conduit),                             // debug_light.conduit
-		.dbg_rst_n          (debug_rst_reset)                                  //   debug_rst.reset
+		.dbg_rst_n          (debug_rst_reset),                                 //   debug_rst.reset
+		.w_mem_address      (doom_driver_0_wide_mem_address),                  //    wide_mem.address
+		.w_mem_read         (doom_driver_0_wide_mem_read),                     //            .read
+		.w_mem_waitrequest  (doom_driver_0_wide_mem_waitrequest),              //            .waitrequest
+		.w_mem_readdata     (doom_driver_0_wide_mem_readdata),                 //            .readdata
+		.w_mem_write        (doom_driver_0_wide_mem_write),                    //            .write
+		.w_mem_writedata    (doom_driver_0_wide_mem_writedata)                 //            .writedata
 	);
 
 	Computer_System_mm_interconnect_0 mm_interconnect_0 (
@@ -1119,6 +1131,12 @@ module Computer_System (
 		.doom_driver_0_mem_readdata                                            (doom_driver_0_mem_readdata),                            //                                                                .readdata
 		.doom_driver_0_mem_write                                               (doom_driver_0_mem_write),                               //                                                                .write
 		.doom_driver_0_mem_writedata                                           (doom_driver_0_mem_writedata),                           //                                                                .writedata
+		.doom_driver_0_wide_mem_address                                        (doom_driver_0_wide_mem_address),                        //                                          doom_driver_0_wide_mem.address
+		.doom_driver_0_wide_mem_waitrequest                                    (doom_driver_0_wide_mem_waitrequest),                    //                                                                .waitrequest
+		.doom_driver_0_wide_mem_read                                           (doom_driver_0_wide_mem_read),                           //                                                                .read
+		.doom_driver_0_wide_mem_readdata                                       (doom_driver_0_wide_mem_readdata),                       //                                                                .readdata
+		.doom_driver_0_wide_mem_write                                          (doom_driver_0_wide_mem_write),                          //                                                                .write
+		.doom_driver_0_wide_mem_writedata                                      (doom_driver_0_wide_mem_writedata),                      //                                                                .writedata
 		.F2H_Mem_Window_00000000_expanded_master_address                       (f2h_mem_window_00000000_expanded_master_address),       //                         F2H_Mem_Window_00000000_expanded_master.address
 		.F2H_Mem_Window_00000000_expanded_master_waitrequest                   (f2h_mem_window_00000000_expanded_master_waitrequest),   //                                                                .waitrequest
 		.F2H_Mem_Window_00000000_expanded_master_burstcount                    (f2h_mem_window_00000000_expanded_master_burstcount),    //                                                                .burstcount

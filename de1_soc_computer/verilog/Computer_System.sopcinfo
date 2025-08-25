@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2025.08.04.13:16:53 -->
+ <!-- 2025.08.17.23:04:27 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1754338612</value>
+  <value>1755497066</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -91597,7 +91597,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1754338612</value>
+   <value>1755497066</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -91617,7 +91617,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1754338612</value>
+   <value>1755497066</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -91633,7 +91633,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1754338612</value>
+   <value>1755497066</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -92765,7 +92765,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1754338612</value>
+   <value>1755497066</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -95011,7 +95011,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1754338612</value>
+   <value>1755497066</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -108369,6 +108369,633 @@ parameters are a RESULT of the module parameters. -->
     <width>1</width>
     <role>reset</role>
    </port>
+  </interface>
+  <interface name="wide_mem" kind="avalon_master" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="adaptsTo">
+    <type>com.altera.entityinterfaces.IConnectionPoint</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="addressGroup">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="addressUnits">
+    <type>com.altera.sopcmodel.avalon.EAddrBurstUnits</type>
+    <value>SYMBOLS</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="alwaysBurstMaxBurst">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value>reset</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="bitsPerSymbol">
+    <type>int</type>
+    <value>8</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="burstOnBurstBoundariesOnly">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="burstcountUnits">
+    <type>com.altera.sopcmodel.avalon.EAddrBurstUnits</type>
+    <value>WORDS</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="constantBurstBehavior">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="dBSBigEndian">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="doStreamReads">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="doStreamWrites">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="holdTime">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="interleaveBursts">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="isAsynchronous">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="isBigEndian">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="isReadable">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="isWriteable">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="linewrapBursts">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="maxAddressWidth">
+    <type>int</type>
+    <value>32</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="maximumPendingReadTransactions">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="maximumPendingWriteTransactions">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="readLatency">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="readWaitTime">
+    <type>int</type>
+    <value>1</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="registerIncomingSignals">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="registerOutgoingSignals">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="setupTime">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="timingUnits">
+    <type>com.altera.sopcmodel.avalon.TimingUnits</type>
+    <value>Cycles</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="writeWaitTime">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>avalon</type>
+   <isStart>true</isStart>
+   <port>
+    <name>w_mem_address</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>address</role>
+   </port>
+   <port>
+    <name>w_mem_read</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>read</role>
+   </port>
+   <port>
+    <name>w_mem_waitrequest</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>waitrequest</role>
+   </port>
+   <port>
+    <name>w_mem_readdata</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>readdata</role>
+   </port>
+   <port>
+    <name>w_mem_write</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>write</role>
+   </port>
+   <port>
+    <name>w_mem_writedata</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>writedata</role>
+   </port>
+   <memoryBlock>
+    <isBridge>true</isBridge>
+    <moduleName>ARM_A9_HPS_bridges</moduleName>
+    <slaveName>f2h</slaveName>
+    <name>ARM_A9_HPS_bridges.f2h</name>
+    <baseAddress>0</baseAddress>
+    <span>4294967296</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_arm_gic_0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_arm_gic_0.axi_slave0</name>
+    <baseAddress>4294889472</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_arm_gic_0</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_arm_gic_0.axi_slave1</name>
+    <baseAddress>4294885632</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_L2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_L2.axi_slave0</name>
+    <baseAddress>4294897664</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dma</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dma.axi_slave0</name>
+    <baseAddress>4292874240</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sysmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sysmgr.axi_slave0</name>
+    <baseAddress>4291854336</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_clkmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_clkmgr.axi_slave0</name>
+    <baseAddress>4291837952</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_rstmgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_rstmgr.axi_slave0</name>
+    <baseAddress>4291842048</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_fpgamgr</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_fpgamgr.axi_slave0</name>
+    <baseAddress>4285554688</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_fpgamgr</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_fpgamgr.axi_slave1</name>
+    <baseAddress>4290314240</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_uart0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_uart0.axi_slave0</name>
+    <baseAddress>4290781184</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_uart1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_uart1.axi_slave0</name>
+    <baseAddress>4290785280</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer0.axi_slave0</name>
+    <baseAddress>4290805760</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer1.axi_slave0</name>
+    <baseAddress>4290809856</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer2.axi_slave0</name>
+    <baseAddress>4291821568</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer3</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer3.axi_slave0</name>
+    <baseAddress>4291825664</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio0.axi_slave0</name>
+    <baseAddress>4285562880</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio1.axi_slave0</name>
+    <baseAddress>4285566976</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gpio2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gpio2.axi_slave0</name>
+    <baseAddress>4285571072</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c0.axi_slave0</name>
+    <baseAddress>4290789376</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c1.axi_slave0</name>
+    <baseAddress>4290793472</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c2</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c2.axi_slave0</name>
+    <baseAddress>4290797568</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_i2c3</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_i2c3.axi_slave0</name>
+    <baseAddress>4290801664</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_nand0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_nand0.axi_slave0</name>
+    <baseAddress>4287627264</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_nand0</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_nand0.axi_slave1</name>
+    <baseAddress>4290248704</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_spim0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_spim0.axi_slave0</name>
+    <baseAddress>4293918720</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_spim1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_spim1.axi_slave0</name>
+    <baseAddress>4293922816</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_qspi</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_qspi.axi_slave0</name>
+    <baseAddress>4285550592</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_qspi</moduleName>
+    <slaveName>axi_slave1</slaveName>
+    <name>ARM_A9_HPS_qspi.axi_slave1</name>
+    <baseAddress>4288675840</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sdmmc</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sdmmc.axi_slave0</name>
+    <baseAddress>4285546496</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_usb0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_usb0.axi_slave0</name>
+    <baseAddress>4289724416</baseAddress>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_usb1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_usb1.axi_slave0</name>
+    <baseAddress>4289986560</baseAddress>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gmac0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gmac0.axi_slave0</name>
+    <baseAddress>4285530112</baseAddress>
+    <span>8192</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_gmac1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_gmac1.axi_slave0</name>
+    <baseAddress>4285538304</baseAddress>
+    <span>8192</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_axi_ocram</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_axi_ocram.axi_slave0</name>
+    <baseAddress>4294901760</baseAddress>
+    <span>65536</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_axi_sdram</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_axi_sdram.axi_slave0</name>
+    <baseAddress>0</baseAddress>
+    <span>2147483648</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_timer</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_timer.axi_slave0</name>
+    <baseAddress>4294886912</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dcan0</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dcan0.axi_slave0</name>
+    <baseAddress>4290772992</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_dcan1</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_dcan1.axi_slave0</name>
+    <baseAddress>4290777088</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_l3regs</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_l3regs.axi_slave0</name>
+    <baseAddress>4286578688</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ARM_A9_HPS_sdrctl</moduleName>
+    <slaveName>axi_slave0</slaveName>
+    <name>ARM_A9_HPS_sdrctl.axi_slave0</name>
+    <baseAddress>4290924544</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
   </interface>
  </module>
  <connection
@@ -122107,6 +122734,57 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
+   name="doom_driver_0.wide_mem/ARM_A9_HPS_bridges.f2h"
+   kind="avalon"
+   version="18.1"
+   start="doom_driver_0.wide_mem"
+   end="ARM_A9_HPS_bridges.f2h">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x0000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>doom_driver_0</startModule>
+  <startConnectionPoint>wide_mem</startConnectionPoint>
+  <endModule>ARM_A9_HPS_bridges</endModule>
+  <endConnectionPoint>f2h</endConnectionPoint>
+ </connection>
+ <connection
    name="System_PLL.sys_clk/JTAG_to_HPS_Bridge.clk"
    kind="clock"
    version="18.1"
@@ -124756,7 +125434,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>10</instanceCount>
+  <instanceCount>11</instanceCount>
   <name>avalon_master</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -125012,7 +125690,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>178</instanceCount>
+  <instanceCount>179</instanceCount>
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
