@@ -1,6 +1,6 @@
 # de1-system
 **This is a (completed) project of mine with the ultimate goal of running the original 
-[DOOM](https://github.com/id-Software/DOOM)
+[DOOM](https://en.wikipedia.org/wiki/Doom_(1993_video_game))
 video game on the [DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836) development board with hardware-accelerated rendering.**
 
 The DE1-SoC board is a development board from Altera (Intel). It houses the Cyclone V chip, which contains an ARM Cortex A9 CPU and an FPGA. The CPU and the FPGA also has an interconnect to communicate with each other, which makes a huge chunk of this project possible. We were required to buy this board for a few courses in the UBC computer engineering curriculum. Usually people re-sell their boards after taking these courses, but I found more interesting things to do with it:
@@ -15,7 +15,7 @@ I started this project off by implementing a classic **Snake** game, where the g
 - `snake/*`, which contains C++ and SystemVerilog code for my implementation of the snake game.
 - `proof_of_concept_1_lights/*`, which contains a basic demo of establishing communication between the CPU and FPGA.
 
-Note that the DOOM C source code is not in this repo. Instead, you can find it here: https://github.com/m1chellelinn/de1_doom
+Note that the DOOM C source code is not in this repo. Instead, you can find it here: **https://github.com/m1chellelinn/de1_doom**. Note that this is a (detached) fork of the official [DOOM source code release](https://github.com/id-Software/DOOM). 
 
 
 ## Implementation Overview (DOOM)
