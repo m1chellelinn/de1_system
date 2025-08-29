@@ -6,8 +6,6 @@ video game on the [DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?L
 The DE1-SoC board is a development board from Altera (Intel). It houses the Cyclone V chip, which contains an ARM Cortex A9 CPU and an FPGA. The CPU and the FPGA also has an interconnect to communicate with each other, which makes a huge chunk of this project possible. We were required to buy this board for a few courses in the UBC computer engineering curriculum. Usually people re-sell their boards after taking these courses, but I found more interesting things to do with it:
 
 
-
-
 ## Repository Overview
 I started this project off by implementing a classic **Snake** game, where the game logic ran on the CPU, and the rendering was done by the FPGA. Then, confident that this system will work, I ported the **DOOM** source code to be compatible with the DE1-SoC. So, in this repository, you can find:
 - `de1_soc_computer/*`, which contains files ran by the FPGA. These are mostly auto-generated files from Quartus. This FPGA system is adapted form the system that the Intel FPGA Monitor Program. This system was heavily modified to make it lighter (2x faster to compile) and compatible with my custom FPGA modules.
@@ -18,15 +16,11 @@ I started this project off by implementing a classic **Snake** game, where the g
 Note that the DOOM C source code is not in this repo. Instead, you can find it here: **https://github.com/m1chellelinn/de1_doom**. Note that this is a (detached) fork of the official [DOOM source code release](https://github.com/id-Software/DOOM). 
 
 
-## Implementation Overview (DOOM)
-The Snake game implementation is very similar to DOOM's but less complex. Thus, I'll only cover DOOM's implementation.
-
-
-
 
 ## External documentation
 - [Specification for the Intel FPGA Monitor Program's "De1-SoC computer system"](https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/Computer_Systems/DE1-SoC/DE1-SoC_Computer_ARM.pdf). My implementations derive from this system. This was extremely helpful in documenting how to access and manipulate DE1-SoC peripherals. 
 - [An online blog about compiling the original DOOM on 64-bit modern Ubuntu](https://www.deusinmachina.net/p/lets-compile-linux-doom). Our De1-SoC runs a 32-bit, custom, very old Linux image. However, the steps were extremely helpful in debugging away compilation errors.
+- [Community-made documentation on the DOOM source code](https://doom.fandom.com/wiki/Doom_source_code)
 - [Altera's user manuals for the De1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=4#contents) (they call it the CD-ROM).
 
 
