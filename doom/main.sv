@@ -251,13 +251,10 @@ always_comb begin
   w_mem_write = 0;
   w_mem_writedata = 0;
 
-  hps_waitrequest = 0;
-  hps_readdata = 0;
-
   case (state) 
 
     PATCH: begin
-      hps_waitrequest = 1;
+      hps_readdata = 1;
       pat_start = 1;
 
       vga_address = pat_vga_address;
@@ -277,7 +274,7 @@ always_comb begin
     end
 
     PALETTE: begin
-      hps_waitrequest = 1;
+      hps_readdata = 1;
       pal_start = 1;
 
       mem_address = pal_mem_address;
@@ -287,7 +284,7 @@ always_comb begin
     end
     
     UPDATE: begin
-      hps_waitrequest = 1;
+      hps_readdata = 1;
       upd_start = 1;
 
       vga_address = upd_vga_address;
@@ -302,7 +299,7 @@ always_comb begin
     end
 
     SELFCHECK: begin
-      hps_waitrequest = 1;
+      hps_readdata = 1;
       chk_start = 1;
 
       mem_address = chk_mem_address;

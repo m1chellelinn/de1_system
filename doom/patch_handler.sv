@@ -55,6 +55,7 @@ logic [15:0]  patch_width,                // seq -- cached memory
 logic [7:0]   local_mem_readdata;         // seq -- captured readdata
 logic [31:0]  local_w_mem_readdata;       // seq -- captured readdata
 logic [1:0]   w_mem_byteoffset;           // comb -- helper in reading at offsets
+logic [31:0]  scrn_addr_offset;           // comb -- helper in computing screen starting offsets
 
 
 /*
@@ -183,7 +184,7 @@ always_ff @( posedge clk ) begin
         desttop <= screens_addr + 
                    (y << 8) + (y << 6) + // y * SCREENWIDTH
                    x +
-                   (scrn ? 16'd64000 : 0); // assume DOOM only ever writes to scrn 0 or 1
+                   scrn_addr_offset;
 
         w_mem_address <= patch_addr + 8 + (col << 2);
         state <= WAIT_W_MEM_READ;
@@ -369,6 +370,14 @@ always_comb begin
   w_mem_write = 0;
   w_mem_byteoffset = w_mem_address[1:0];
 
+  case (scrn)
+    0: scrn_addr_offset = 0;
+    1: scrn_addr_offset = `SCREENSIZE;
+    2: scrn_addr_offset = (`SCREENSIZE << 1);
+    3: scrn_addr_offset = `SCREENSIZE + (`SCREENSIZE << 1);
+    4: scrn_addr_offset = (`SCREENSIZE << 2);
+    default: scrn_addr_offset = 0;
+  endcase
 
   case (state) 
     WAITING: begin
