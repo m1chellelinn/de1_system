@@ -63,11 +63,14 @@ One step in the "Running Linux on DE1-SoC" guide requires you to download USB-UA
 
     The Linux image already automatically programs the FPGA on every startup using the onboard `~/DE1_SoC_Computer.rbf`. To load a different system upon bootup, we'll just need to replace this file.
 
-    This repository has raw binary files at `de1_soc_computer/raw_binary_files`. Pick either `doom_2.rbf` or `snake_4.rbf`, and `cp` its content into the file `~/DE1_SoC_Computer.rbf`.
+    This repository has raw binary files at `de1_soc_computer/raw_binary_files`. Pick either `doom_3.rbf` or `snake_4.rbf`, and `cp` its content into the file `~/DE1_SoC_Computer.rbf`.
 6. Reboot the board: run `reboot` in its shell.
 7. Build the C/C++ source files. Since CMakeLists.txt have already been setup for both games, in either `de1_system/snake` or `de1_doom/linuxdoom`, run:
     ```bash
-    mkdir build; cd build; cmake ..; make
+    mkdir build
+    cd build
+    cmake ..
+    make
     ```
 8. If you're building DOOM, also do the following:
     1. Go to `de1_doom/linuxdoom/loadable_kernel_module`
@@ -81,7 +84,7 @@ One step in the "Running Linux on DE1-SoC" guide requires you to download USB-UA
         insmod mem_allocator.ko
         ```
         Note: this only needs to be done once per system bootup
-9. Run the game! Execute either `de1_system/snake/build/snake` or `de1_doom/linuxdoom/build/linux/linuxdoom`. 
+9. Run the game! Execute either `de1_system/snake/build/snake_game` or `de1_doom/linuxdoom-1.10/build/linux/linuxdoom`. 
     - The DOOM executable is pretty location-dependent because it needs to search for its game data file. Ideally try running it in the `de1_doom/linuxdoom/build/linux` directory
     - Both games use keyboard controls and outputs to the VGA monitor. 
         - For snake: "enter" to start the game, and arrow keys to change directions
