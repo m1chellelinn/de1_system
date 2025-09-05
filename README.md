@@ -5,6 +5,8 @@ video game on the [DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?L
 
 The DE1-SoC board is a development board from Altera (Intel). It houses the Cyclone V chip, which contains an ARM Cortex A9 CPU and an FPGA. The CPU and the FPGA also has an interconnect to communicate with each other, which makes a huge chunk of this project possible. We were required to buy this board for a few courses in the UBC computer engineering curriculum. Usually people re-sell their boards after taking these courses, but I found more interesting things to do with it:
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q6rD5SxrhlM?si=ORsQ6eyOyK0ZYGFd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Repository Overview
 I started this project off by implementing a classic **Snake** game, where the game logic ran on the CPU, and the rendering was done by the FPGA. Then, confident that this system will work, I ported the **DOOM** source code to be compatible with the DE1-SoC. So, in this repository, you can find:
