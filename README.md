@@ -7,7 +7,7 @@ The DE1-SoC board is a development board from Altera (Intel). It houses the Cycl
 
 ### Video demo:
 [<img src="https://img.youtube.com/vi/q6rD5SxrhlM/hqdefault.jpg" width="600" 
-/>](https://www.youtube.com/embed/q6rD5SxrhlM)
+/>](https://www.youtube.com/watch?v=q6rD5SxrhlM)
 
 ## Repository Overview
 I started this project off by implementing a classic **Snake** game, where the game logic ran on the CPU, and the rendering was done by the FPGA. Then, confident that this system will work, I ported the **DOOM** source code to be compatible with the DE1-SoC. So, in this repository, you can find:
