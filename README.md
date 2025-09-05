@@ -6,7 +6,7 @@ video game on the [DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?L
 The DE1-SoC board is a development board from Altera (Intel). It houses the Cyclone V chip, which contains an ARM Cortex A9 CPU and an FPGA. The CPU and the FPGA also has an interconnect to communicate with each other, which makes a huge chunk of this project possible. We were required to buy this board for a few courses in the UBC computer engineering curriculum. Usually people re-sell their boards after taking these courses, but I found more interesting things to do with it:
 
 ### Video demo:
-[<img src="https://img.youtube.com/vi/q6rD5SxrhlM/hqdefault.jpg" width="600" 
+[<img src="https://img.youtube.com/vi/q6rD5SxrhlM/maxresdefault.jpg" width="600" 
 />](https://www.youtube.com/watch?v=q6rD5SxrhlM)
 
 ## Repository Overview
