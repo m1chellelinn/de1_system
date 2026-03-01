@@ -24,7 +24,7 @@ Note that the DOOM C source code is not in this repo. Instead, you can find it h
 - [Specification for the Intel FPGA Monitor Program's "De1-SoC computer system"](https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/Computer_Systems/DE1-SoC/DE1-SoC_Computer_ARM.pdf). My implementations derive from this system. This was extremely helpful in documenting how to access and manipulate DE1-SoC peripherals. 
 - [An online blog about compiling the original DOOM on 64-bit modern Ubuntu](https://www.deusinmachina.net/p/lets-compile-linux-doom). Our De1-SoC runs a 32-bit, custom, very old Linux image. However, the steps were extremely helpful in debugging away compilation errors.
 - [Community-made documentation on the DOOM source code](https://doom.fandom.com/wiki/Doom_source_code)
-- [Altera's user manuals for the De1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=4#contents) (they call it the CD-ROM).
+- [Altera's user manuals for the De1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=4#contents) (see the CD-ROM files).
 
 
 
